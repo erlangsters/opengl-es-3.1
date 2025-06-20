@@ -312,13 +312,13 @@ Another source of reference is the
 -type program_pipeline() :: pos_integer().
 
 -doc "The OpenGL `framebuffer_target` enum.".
--type framebuffer_target() :: 
+-type framebuffer_target() ::
     draw_framebuffer |
     framebuffer |
     read_framebuffer
 .
 -doc "The OpenGL `string_name` enum.".
--type string_name() :: 
+-type string_name() ::
     version |
     shading_language_version |
     extensions |
@@ -326,7 +326,7 @@ Another source of reference is the
     vendor
 .
 -doc "The OpenGL `pixel_format` enum.".
--type pixel_format() :: 
+-type pixel_format() ::
     rgba_integer |
     luminance |
     rgb |
@@ -347,12 +347,12 @@ Another source of reference is the
     unsigned_short
 .
 -doc "The OpenGL `front_face_direction` enum.".
--type front_face_direction() :: 
+-type front_face_direction() ::
     cw |
     ccw
 .
 -doc "The OpenGL `vertex_attrib_type` enum.".
--type vertex_attrib_type() :: 
+-type vertex_attrib_type() ::
     half_float |
     int_2_10_10_10_rev |
     fixed |
@@ -367,7 +367,7 @@ Another source of reference is the
     byte
 .
 -doc "The OpenGL `sized_internal_format` enum.".
--type sized_internal_format() :: 
+-type sized_internal_format() ::
     r32i |
     rgb8 |
     compressed_rg11_eac |
@@ -435,7 +435,7 @@ Another source of reference is the
     rg8
 .
 -doc "The OpenGL `texture_unit` enum.".
--type texture_unit() :: 
+-type texture_unit() ::
     texture19 |
     texture14 |
     texture10 |
@@ -470,7 +470,7 @@ Another source of reference is the
     texture31
 .
 -doc "The OpenGL `internal_format` enum.".
--type internal_format() :: 
+-type internal_format() ::
     r32i |
     rgb8 |
     compressed_rg11_eac |
@@ -546,13 +546,13 @@ Another source of reference is the
     rg8
 .
 -doc "The OpenGL `shader_type` enum.".
--type shader_type() :: 
+-type shader_type() ::
     compute_shader |
     fragment_shader |
     vertex_shader
 .
 -doc "The OpenGL `vertex_attrib_pointer_type` enum.".
--type vertex_attrib_pointer_type() :: 
+-type vertex_attrib_pointer_type() ::
     half_float |
     int_2_10_10_10_rev |
     fixed |
@@ -567,7 +567,7 @@ Another source of reference is the
     byte
 .
 -doc "The OpenGL `buffer_usage_a_r_b` enum.".
--type buffer_usage_a_r_b() :: 
+-type buffer_usage_a_r_b() ::
     dynamic_draw |
     static_draw |
     dynamic_copy |
@@ -579,11 +579,11 @@ Another source of reference is the
     stream_draw
 .
 -doc "The OpenGL `sync_condition` enum.".
--type sync_condition() :: 
+-type sync_condition() ::
     sync_gpu_commands_complete
 .
 -doc "The OpenGL `program_property_a_r_b` enum.".
--type program_property_a_r_b() :: 
+-type program_property_a_r_b() ::
     attached_shaders |
     link_status |
     info_log_length |
@@ -603,7 +603,7 @@ Another source of reference is the
     transform_feedback_buffer_mode
 .
 -doc "The OpenGL `copy_buffer_sub_data_target` enum.".
--type copy_buffer_sub_data_target() :: 
+-type copy_buffer_sub_data_target() ::
     pixel_unpack_buffer |
     dispatch_indirect_buffer |
     array_buffer |
@@ -618,7 +618,7 @@ Another source of reference is the
     element_array_buffer
 .
 -doc "The OpenGL `texture_target` enum.".
--type texture_target() :: 
+-type texture_target() ::
     texture_2d_multisample |
     texture_2d |
     texture_2d_array |
@@ -633,7 +633,7 @@ Another source of reference is the
     texture_cube_map_positive_z
 .
 -doc "The OpenGL `blending_factor` enum.".
--type blending_factor() :: 
+-type blending_factor() ::
     constant_color |
     one_minus_constant_alpha |
     dst_color |
@@ -651,7 +651,7 @@ Another source of reference is the
     src_alpha
 .
 -doc "The OpenGL `get_p_name` enum.".
--type get_p_name() :: 
+-type get_p_name() ::
     max_varying_vectors |
     compressed_texture_formats |
     polygon_offset_fill |
@@ -828,13 +828,13 @@ Another source of reference is the
     polygon_offset_units
 .
 -doc "The OpenGL `query_target` enum.".
--type query_target() :: 
+-type query_target() ::
     any_samples_passed_conservative |
     any_samples_passed |
     transform_feedback_primitives_written
 .
 -doc "The OpenGL `stencil_op` enum.".
--type stencil_op() :: 
+-type stencil_op() ::
     incr_wrap |
     incr |
     invert |
@@ -845,7 +845,7 @@ Another source of reference is the
     replace
 .
 -doc "The OpenGL `enable_cap` enum.".
--type enable_cap() :: 
+-type enable_cap() ::
     polygon_offset_fill |
     dither |
     depth_test |
@@ -862,7 +862,7 @@ Another source of reference is the
     sample_mask
 .
 -doc "The OpenGL `vertex_attrib_i_type` enum.".
--type vertex_attrib_i_type() :: 
+-type vertex_attrib_i_type() ::
     short |
     unsigned_byte |
     int |
@@ -871,14 +871,14 @@ Another source of reference is the
     byte
 .
 -doc "The OpenGL `sync_status` enum.".
--type sync_status() :: 
+-type sync_status() ::
     condition_satisfied |
     already_signaled |
     wait_failed |
     timeout_expired
 .
 -doc "The OpenGL `buffer_target_a_r_b` enum.".
--type buffer_target_a_r_b() :: 
+-type buffer_target_a_r_b() ::
     pixel_unpack_buffer |
     dispatch_indirect_buffer |
     array_buffer |
@@ -893,11 +893,11 @@ Another source of reference is the
     element_array_buffer
 .
 -doc "The OpenGL `bind_transform_feedback_target` enum.".
--type bind_transform_feedback_target() :: 
+-type bind_transform_feedback_target() ::
     transform_feedback
 .
 -doc "The OpenGL `read_buffer_mode` enum.".
--type read_buffer_mode() :: 
+-type read_buffer_mode() ::
     color_attachment2 |
     color_attachment6 |
     color_attachment13 |
@@ -919,7 +919,7 @@ Another source of reference is the
     color_attachment14
 .
 -doc "The OpenGL `pixel_type` enum.".
--type pixel_type() :: 
+-type pixel_type() ::
     half_float |
     unsigned_short_5_6_5 |
     short |
@@ -938,13 +938,13 @@ Another source of reference is the
     byte
 .
 -doc "The OpenGL `hint_target` enum.".
--type hint_target() :: 
+-type hint_target() ::
     generate_mipmap_hint |
     program_binary_retrievable_hint |
     fragment_shader_derivative_hint
 .
 -doc "The OpenGL `blend_equation_mode_e_x_t` enum.".
--type blend_equation_mode_e_x_t() :: 
+-type blend_equation_mode_e_x_t() ::
     func_add |
     max |
     func_subtract |
@@ -952,13 +952,13 @@ Another source of reference is the
     min
 .
 -doc "The OpenGL `triangle_face` enum.".
--type triangle_face() :: 
+-type triangle_face() ::
     front |
     back |
     front_and_back
 .
 -doc "The OpenGL `primitive_type` enum.".
--type primitive_type() :: 
+-type primitive_type() ::
     line_loop |
     points |
     triangle_fan |
@@ -968,12 +968,12 @@ Another source of reference is the
     triangles
 .
 -doc "The OpenGL `blit_framebuffer_filter` enum.".
--type blit_framebuffer_filter() :: 
+-type blit_framebuffer_filter() ::
     nearest |
     linear
 .
 -doc "The OpenGL `framebuffer_attachment` enum.".
--type framebuffer_attachment() :: 
+-type framebuffer_attachment() ::
     color_attachment2 |
     color_attachment16 |
     color_attachment21 |
@@ -1011,7 +1011,7 @@ Another source of reference is the
     stencil_attachment
 .
 -doc "The OpenGL `shader_parameter_name` enum.".
--type shader_parameter_name() :: 
+-type shader_parameter_name() ::
     info_log_length |
     shader_source_length |
     compile_status |
@@ -1019,11 +1019,11 @@ Another source of reference is the
     shader_type
 .
 -doc "The OpenGL `renderbuffer_target` enum.".
--type renderbuffer_target() :: 
+-type renderbuffer_target() ::
     renderbuffer
 .
 -doc "The OpenGL `depth_function` enum.".
--type depth_function() :: 
+-type depth_function() ::
     less |
     notequal |
     greater |
@@ -1034,13 +1034,13 @@ Another source of reference is the
     equal
 .
 -doc "The OpenGL `hint_mode` enum.".
--type hint_mode() :: 
+-type hint_mode() ::
     fastest |
     dont_care |
     nicest
 .
 -doc "The OpenGL `stencil_function` enum.".
--type stencil_function() :: 
+-type stencil_function() ::
     less |
     notequal |
     greater |
@@ -1051,7 +1051,7 @@ Another source of reference is the
     equal
 .
 -doc "The OpenGL `error_code` enum.".
--type error_code() :: 
+-type error_code() ::
     invalid_enum |
     invalid_framebuffer_operation |
     invalid_operation |
@@ -1060,7 +1060,7 @@ Another source of reference is the
     invalid_value
 .
 -doc "The OpenGL `framebuffer_status` enum.".
--type framebuffer_status() :: 
+-type framebuffer_status() ::
     framebuffer_incomplete_attachment |
     framebuffer_incomplete_missing_attachment |
     framebuffer_unsupported |
@@ -7306,453 +7306,453 @@ bind_transform_feedback(Target, Feedback) ->
     glBindTransformFeedback_raw(NewTarget, Feedback).
 
 
-glDisable_raw(_Cap) -> 
+glDisable_raw(_Cap) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glMemoryBarrierByRegion_raw(_Barriers) -> 
+glMemoryBarrierByRegion_raw(_Barriers) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glTexSubImage2D_raw(_Target, _Level, _OffsetX, _OffsetY, _Width, _Height, _Format, _Type, _Pixels) -> 
+glTexSubImage2D_raw(_Target, _Level, _OffsetX, _OffsetY, _Width, _Height, _Format, _Type, _Pixels) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glBindRenderbuffer_raw(_Target, _Buffer) -> 
+glBindRenderbuffer_raw(_Target, _Buffer) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glEnableVertexAttribArray_raw(_Index) -> 
+glEnableVertexAttribArray_raw(_Index) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glClearStencil_raw(_S) -> 
+glClearStencil_raw(_S) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glVertexAttribBinding_raw(_AttribIndex, _BindingIndex) -> 
+glVertexAttribBinding_raw(_AttribIndex, _BindingIndex) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGetProgramInfoLog_raw(_Program, _InfoLog) -> 
+glGetProgramInfoLog_raw(_Program, _InfoLog) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glTexStorage2D_raw(_Target, _Levels, _InternalFormat, _Width, _Height) -> 
+glTexStorage2D_raw(_Target, _Levels, _InternalFormat, _Width, _Height) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGetProgramPipelineInfoLog_raw(_Pipeline, _InfoLog) -> 
+glGetProgramPipelineInfoLog_raw(_Pipeline, _InfoLog) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGetBooleani_v_raw(_Target, _Index, _Data) -> 
+glGetBooleani_v_raw(_Target, _Index, _Data) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glStencilOp_raw(_Fail, _ZFail, _ZPass) -> 
+glStencilOp_raw(_Fail, _ZFail, _ZPass) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glIsRenderbuffer_raw(_Buffer) -> 
+glIsRenderbuffer_raw(_Buffer) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGetShaderiv_raw(_Shader, _PName, _Data) -> 
+glGetShaderiv_raw(_Shader, _PName, _Data) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glFlush_raw() -> 
+glFlush_raw() ->
     erlang:nif_error(nif_library_not_loaded).
 
-glPauseTransformFeedback_raw() -> 
+glPauseTransformFeedback_raw() ->
     erlang:nif_error(nif_library_not_loaded).
 
-glIsQuery_raw(_Query) -> 
+glIsQuery_raw(_Query) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glIsTransformFeedback_raw(_Feedback) -> 
+glIsTransformFeedback_raw(_Feedback) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glReadBuffer_raw(_Source) -> 
+glReadBuffer_raw(_Source) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glDeleteTransformFeedbacks_raw(_N, _Feedbacks) -> 
+glDeleteTransformFeedbacks_raw(_N, _Feedbacks) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glCreateShader_raw(_Type) -> 
+glCreateShader_raw(_Type) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glBindProgramPipeline_raw(_Pipeline) -> 
+glBindProgramPipeline_raw(_Pipeline) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glVertexAttribPointer_raw(_Index, _Size, _Type, _Normalized, _Stride, _Pointer) -> 
+glVertexAttribPointer_raw(_Index, _Size, _Type, _Normalized, _Stride, _Pointer) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGetInteger64v_raw(_PName, _Data) -> 
+glGetInteger64v_raw(_PName, _Data) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glDrawArraysInstanced_raw(_Mode, _First, _Count, _InstanceCount) -> 
+glDrawArraysInstanced_raw(_Mode, _First, _Count, _InstanceCount) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glDeleteFramebuffers_raw(_N, _Buffers) -> 
+glDeleteFramebuffers_raw(_N, _Buffers) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glPolygonOffset_raw(_Factor, _Units) -> 
+glPolygonOffset_raw(_Factor, _Units) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glEndTransformFeedback_raw() -> 
+glEndTransformFeedback_raw() ->
     erlang:nif_error(nif_library_not_loaded).
 
-glActiveShaderProgram_raw(_Pipeline, _Program) -> 
+glActiveShaderProgram_raw(_Pipeline, _Program) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glStencilMask_raw(_Mask) -> 
+glStencilMask_raw(_Mask) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glCopyBufferSubData_raw(_ReadTarget, _WriteTarget, _ReadOffset, _WriteOffset, _Size) -> 
+glCopyBufferSubData_raw(_ReadTarget, _WriteTarget, _ReadOffset, _WriteOffset, _Size) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glDisableVertexAttribArray_raw(_Index) -> 
+glDisableVertexAttribArray_raw(_Index) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glLinkProgram_raw(_Program) -> 
+glLinkProgram_raw(_Program) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glCompileShader_raw(_Shader) -> 
+glCompileShader_raw(_Shader) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glDetachShader_raw(_Program, _Shader) -> 
+glDetachShader_raw(_Program, _Shader) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glCompressedTexImage2D_raw(_Target, _Level, _InternalFormat, _Width, _Height, _Border, _ImageSize, _ImageData) -> 
+glCompressedTexImage2D_raw(_Target, _Level, _InternalFormat, _Width, _Height, _Border, _ImageSize, _ImageData) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glAttachShader_raw(_Program, _Shader) -> 
+glAttachShader_raw(_Program, _Shader) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGenerateMipmap_raw(_Target) -> 
+glGenerateMipmap_raw(_Target) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glCheckFramebufferStatus_raw(_Target) -> 
+glCheckFramebufferStatus_raw(_Target) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glIsProgram_raw(_Program) -> 
+glIsProgram_raw(_Program) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glFenceSync_raw(_Condition, _Flags) -> 
+glFenceSync_raw(_Condition, _Flags) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glIsShader_raw(_Shader) -> 
+glIsShader_raw(_Shader) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glWaitSync_raw(_Sync, _Flags, _Timeout) -> 
+glWaitSync_raw(_Sync, _Flags, _Timeout) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGenTextures_raw(_Textures) -> 
+glGenTextures_raw(_Textures) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glValidateProgram_raw(_Program) -> 
+glValidateProgram_raw(_Program) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glBindVertexBuffer_raw(_BindingIndex, _Buffer, _Offset, _Stride) -> 
+glBindVertexBuffer_raw(_BindingIndex, _Buffer, _Offset, _Stride) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGetStringi_raw(_Name, _Index) -> 
+glGetStringi_raw(_Name, _Index) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glTexSubImage3D_raw(_Target, _Level, _OffsetX, _OffsetY, _OffsetZ, _Width, _Height, _Depth, _Format, _Type, _Pixels) -> 
+glTexSubImage3D_raw(_Target, _Level, _OffsetX, _OffsetY, _OffsetZ, _Width, _Height, _Depth, _Format, _Type, _Pixels) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glMemoryBarrier_raw(_Barriers) -> 
+glMemoryBarrier_raw(_Barriers) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glCopyTexImage2D_raw(_Target, _Level, _InternalFormat, _X, _Y, _Width, _Height, _Border) -> 
+glCopyTexImage2D_raw(_Target, _Level, _InternalFormat, _X, _Y, _Width, _Height, _Border) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glBindVertexArray_raw(_Array) -> 
+glBindVertexArray_raw(_Array) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glBlitFramebuffer_raw(_SrcX0, _SrcY0, _SrcX1, _SrcY1, _DstX0, _DstY0, _DstX1, _DstY1, _Mask, _Filter) -> 
+glBlitFramebuffer_raw(_SrcX0, _SrcY0, _SrcX1, _SrcY1, _DstX0, _DstY0, _DstX1, _DstY1, _Mask, _Filter) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glStencilMaskSeparate_raw(_Face, _Mask) -> 
+glStencilMaskSeparate_raw(_Face, _Mask) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glVertexAttribFormat_raw(_AttribIndex, _Size, _Type, _Normalized, _RelativeOffset) -> 
+glVertexAttribFormat_raw(_AttribIndex, _Size, _Type, _Normalized, _RelativeOffset) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glScissor_raw(_X, _Y, _Width, _Height) -> 
+glScissor_raw(_X, _Y, _Width, _Height) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glTexImage2D_raw(_Target, _Level, _InternalFormat, _Width, _Height, _Border, _Format, _Type, _Pixels) -> 
+glTexImage2D_raw(_Target, _Level, _InternalFormat, _Width, _Height, _Border, _Format, _Type, _Pixels) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGetError_raw() -> 
+glGetError_raw() ->
     erlang:nif_error(nif_library_not_loaded).
 
-glIsVertexArray_raw(_Array) -> 
+glIsVertexArray_raw(_Array) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glBindTexture_raw(_Target, _Texture) -> 
+glBindTexture_raw(_Target, _Texture) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glDeleteShader_raw(_Shader) -> 
+glDeleteShader_raw(_Shader) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGetIntegeri_v_raw(_Target, _Index, _Data) -> 
+glGetIntegeri_v_raw(_Target, _Index, _Data) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glStencilFunc_raw(_Function, _Ref, _Mask) -> 
+glStencilFunc_raw(_Function, _Ref, _Mask) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGenProgramPipelines_raw(_Pipelines) -> 
+glGenProgramPipelines_raw(_Pipelines) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glIsSync_raw(_Sync) -> 
+glIsSync_raw(_Sync) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glDrawArrays_raw(_Mode, _First, _Count) -> 
+glDrawArrays_raw(_Mode, _First, _Count) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glFramebufferTexture2D_raw(_Target, _Attachment, _TextureTarget, _Texture, _Level) -> 
+glFramebufferTexture2D_raw(_Target, _Attachment, _TextureTarget, _Texture, _Level) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glVertexAttribIFormat_raw(_AttribIndex, _Size, _Type, _RelativeOffset) -> 
+glVertexAttribIFormat_raw(_AttribIndex, _Size, _Type, _RelativeOffset) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glLineWidth_raw(_Width) -> 
+glLineWidth_raw(_Width) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glDepthMask_raw(_Flag) -> 
+glDepthMask_raw(_Flag) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glBlendEquationSeparate_raw(_ModeRGB, _ModeAlpha) -> 
+glBlendEquationSeparate_raw(_ModeRGB, _ModeAlpha) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glCopyTexSubImage3D_raw(_Target, _Level, _OffsetX, _OffsetY, _OffsetZ, _X, _Y, _Width, _Height) -> 
+glCopyTexSubImage3D_raw(_Target, _Level, _OffsetX, _OffsetY, _OffsetZ, _X, _Y, _Width, _Height) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glViewport_raw(_X, _Y, _Width, _Height) -> 
+glViewport_raw(_X, _Y, _Width, _Height) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glTexImage3D_raw(_Target, _Level, _InternalFormat, _Width, _Height, _Depth, _Border, _Format, _Type, _Pixels) -> 
+glTexImage3D_raw(_Target, _Level, _InternalFormat, _Width, _Height, _Depth, _Border, _Format, _Type, _Pixels) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glDeleteRenderbuffers_raw(_N, _Buffers) -> 
+glDeleteRenderbuffers_raw(_N, _Buffers) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glCompressedTexSubImage2D_raw(_Target, _Level, _OffsetX, _OffsetY, _Width, _Height, _Format, _ImageSize, _ImageData) -> 
+glCompressedTexSubImage2D_raw(_Target, _Level, _OffsetX, _OffsetY, _Width, _Height, _Format, _ImageSize, _ImageData) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glBindBuffer_raw(_Target, _Buffer) -> 
+glBindBuffer_raw(_Target, _Buffer) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glVertexBindingDivisor_raw(_Index, _Divisor) -> 
+glVertexBindingDivisor_raw(_Index, _Divisor) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glBufferData_raw(_Target, _Size, _Data, _Usage) -> 
+glBufferData_raw(_Target, _Size, _Data, _Usage) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGetShaderSource_raw(_Shader, _Source) -> 
+glGetShaderSource_raw(_Shader, _Source) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glSampleCoverage_raw(_Value, _Invert) -> 
+glSampleCoverage_raw(_Value, _Invert) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glStencilOpSeparate_raw(_Face, _StencilFail, _DepthPassFail, _DepthPassPass) -> 
+glStencilOpSeparate_raw(_Face, _StencilFail, _DepthPassFail, _DepthPassPass) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glBlendFunc_raw(_SourceFactor, _DestinationFactor) -> 
+glBlendFunc_raw(_SourceFactor, _DestinationFactor) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glUseProgramStages_raw(_Pipeline, _Stages, _Program) -> 
+glUseProgramStages_raw(_Pipeline, _Stages, _Program) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glHint_raw(_Target, _Mode) -> 
+glHint_raw(_Target, _Mode) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGetBooleanv_raw(_Name, _Data) -> 
+glGetBooleanv_raw(_Name, _Data) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glBeginTransformFeedback_raw(_PrimitiveMode) -> 
+glBeginTransformFeedback_raw(_PrimitiveMode) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glBlendColor_raw(_Red, _Green, _Blue, _Alpha) -> 
+glBlendColor_raw(_Red, _Green, _Blue, _Alpha) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glTexStorage2DMultisample_raw(_Target, _Samples, _InternalFormat, _Width, _Height, _FixedSampleLocations) -> 
+glTexStorage2DMultisample_raw(_Target, _Samples, _InternalFormat, _Width, _Height, _FixedSampleLocations) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glIsProgramPipeline_raw(_Piepline) -> 
+glIsProgramPipeline_raw(_Piepline) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glBeginQuery_raw(_Target, _Query) -> 
+glBeginQuery_raw(_Target, _Query) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glReleaseShaderCompiler_raw() -> 
+glReleaseShaderCompiler_raw() ->
     erlang:nif_error(nif_library_not_loaded).
 
-glEndQuery_raw(_Target) -> 
+glEndQuery_raw(_Target) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glDeleteSamplers_raw(_N, _Samplers) -> 
+glDeleteSamplers_raw(_N, _Samplers) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glShaderSource_raw(_Shader, _Source) -> 
+glShaderSource_raw(_Shader, _Source) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glClear_raw(_Mask) -> 
+glClear_raw(_Mask) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glFramebufferRenderbuffer_raw(_Target, _Attachment, _RenderbufferTarget, _Renderbuffer) -> 
+glFramebufferRenderbuffer_raw(_Target, _Attachment, _RenderbufferTarget, _Renderbuffer) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glValidateProgramPipeline_raw(_Pipeline) -> 
+glValidateProgramPipeline_raw(_Pipeline) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glDeleteSync_raw(_Sync) -> 
+glDeleteSync_raw(_Sync) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glCopyTexSubImage2D_raw(_Target, _Level, _OffsetX, _OffsetY, _X, _Y, _Width, _Height) -> 
+glCopyTexSubImage2D_raw(_Target, _Level, _OffsetX, _OffsetY, _X, _Y, _Width, _Height) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glStencilFuncSeparate_raw(_Face, _Function, _Ref, _Mask) -> 
+glStencilFuncSeparate_raw(_Face, _Function, _Ref, _Mask) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGetIntegerv_raw(_Name, _Data) -> 
+glGetIntegerv_raw(_Name, _Data) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGenVertexArrays_raw(_Arrays) -> 
+glGenVertexArrays_raw(_Arrays) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGenRenderbuffers_raw(_Buffers) -> 
+glGenRenderbuffers_raw(_Buffers) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glDepthFunc_raw(_Function) -> 
+glDepthFunc_raw(_Function) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGenFramebuffers_raw(_Buffers) -> 
+glGenFramebuffers_raw(_Buffers) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glVertexAttribDivisor_raw(_Index, _Divisor) -> 
+glVertexAttribDivisor_raw(_Index, _Divisor) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glDeleteProgramPipelines_raw(_N, _Pipelines) -> 
+glDeleteProgramPipelines_raw(_N, _Pipelines) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGetFloatv_raw(_Name, _Data) -> 
+glGetFloatv_raw(_Name, _Data) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glTexStorage3D_raw(_Target, _Levels, _InternalFormat, _Width, _Height, _Depth) -> 
+glTexStorage3D_raw(_Target, _Levels, _InternalFormat, _Width, _Height, _Depth) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glColorMask_raw(_Red, _Green, _Blue, _Alpha) -> 
+glColorMask_raw(_Red, _Green, _Blue, _Alpha) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glRenderbufferStorageMultisample_raw(_Target, _Samples, _InternalFormat, _Width, _Height) -> 
+glRenderbufferStorageMultisample_raw(_Target, _Samples, _InternalFormat, _Width, _Height) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glIsTexture_raw(_Texture) -> 
+glIsTexture_raw(_Texture) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glIsFramebuffer_raw(_Buffer) -> 
+glIsFramebuffer_raw(_Buffer) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGenSamplers_raw(_Samplers) -> 
+glGenSamplers_raw(_Samplers) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGenTransformFeedbacks_raw(_Feedbacks) -> 
+glGenTransformFeedbacks_raw(_Feedbacks) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glIsSampler_raw(_Sampler) -> 
+glIsSampler_raw(_Sampler) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glFrontFace_raw(_Mode) -> 
+glFrontFace_raw(_Mode) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glBlendEquation_raw(_Mode) -> 
+glBlendEquation_raw(_Mode) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGetString_raw(_Name) -> 
+glGetString_raw(_Name) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glClientWaitSync_raw(_Sync, _Flags, _Timeout) -> 
+glClientWaitSync_raw(_Sync, _Flags, _Timeout) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGetShaderInfoLog_raw(_Shader, _InfoLog) -> 
+glGetShaderInfoLog_raw(_Shader, _InfoLog) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGenQueries_raw(_Queries) -> 
+glGenQueries_raw(_Queries) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glEnable_raw(_Cap) -> 
+glEnable_raw(_Cap) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glIsBuffer_raw(_Buffer) -> 
+glIsBuffer_raw(_Buffer) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glBlendFuncSeparate_raw(_SourceRGB, _DestinationRGB, _SourceAlpha, _DestinationAlpha) -> 
+glBlendFuncSeparate_raw(_SourceRGB, _DestinationRGB, _SourceAlpha, _DestinationAlpha) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glBindFramebuffer_raw(_Target, _Buffer) -> 
+glBindFramebuffer_raw(_Target, _Buffer) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glClearColor_raw(_Red, _Green, _Blue, _Alpha) -> 
+glClearColor_raw(_Red, _Green, _Blue, _Alpha) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glCompressedTexImage3D_raw(_Target, _Level, _InternalFormat, _Width, _Height, _Depth, _Border, _ImageSize, _ImageData) -> 
+glCompressedTexImage3D_raw(_Target, _Level, _InternalFormat, _Width, _Height, _Depth, _Border, _ImageSize, _ImageData) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glDeleteQueries_raw(_N, _Queries) -> 
+glDeleteQueries_raw(_N, _Queries) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glDeleteTextures_raw(_N, _Textures) -> 
+glDeleteTextures_raw(_N, _Textures) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glRenderbufferStorage_raw(_Target, _InternalFormat, _Width, _Height) -> 
+glRenderbufferStorage_raw(_Target, _InternalFormat, _Width, _Height) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glIsEnabled_raw(_Capability) -> 
+glIsEnabled_raw(_Capability) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glDispatchCompute_raw(_NumGroupsX, _NumGroupsY, _NumGroupsZ) -> 
+glDispatchCompute_raw(_NumGroupsX, _NumGroupsY, _NumGroupsZ) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glCompressedTexSubImage3D_raw(_Target, _Level, _OffsetX, _OffsetY, _OffsetZ, _Width, _Height, _Depth, _Format, _ImageSize, _ImageData) -> 
+glCompressedTexSubImage3D_raw(_Target, _Level, _OffsetX, _OffsetY, _OffsetZ, _Width, _Height, _Depth, _Format, _ImageSize, _ImageData) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glDeleteBuffers_raw(_N, _Buffers) -> 
+glDeleteBuffers_raw(_N, _Buffers) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGenBuffers_raw(_Buffers) -> 
+glGenBuffers_raw(_Buffers) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glActiveTexture_raw(_Texture) -> 
+glActiveTexture_raw(_Texture) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glResumeTransformFeedback_raw() -> 
+glResumeTransformFeedback_raw() ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGetInteger64i_v_raw(_Target, _Index, _Data) -> 
+glGetInteger64i_v_raw(_Target, _Index, _Data) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glFinish_raw() -> 
+glFinish_raw() ->
     erlang:nif_error(nif_library_not_loaded).
 
-glCreateProgram_raw() -> 
+glCreateProgram_raw() ->
     erlang:nif_error(nif_library_not_loaded).
 
-glFramebufferTextureLayer_raw(_Target, _Attachment, _Texture, _Level, _Layer) -> 
+glFramebufferTextureLayer_raw(_Target, _Attachment, _Texture, _Level, _Layer) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glDispatchComputeIndirect_raw(_Indirect) -> 
+glDispatchComputeIndirect_raw(_Indirect) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glCullFace_raw(_Mode) -> 
+glCullFace_raw(_Mode) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glDeleteVertexArrays_raw(_N, _Arrays) -> 
+glDeleteVertexArrays_raw(_N, _Arrays) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGetProgramiv_raw(_Program, _PName, _Data) -> 
+glGetProgramiv_raw(_Program, _PName, _Data) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glUseProgram_raw(_Program) -> 
+glUseProgram_raw(_Program) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glReadPixels_raw(_X, _Y, _Width, _Height, _Format, _Type, _Data) -> 
+glReadPixels_raw(_X, _Y, _Width, _Height, _Format, _Type, _Data) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glDeleteProgram_raw(_Program) -> 
+glDeleteProgram_raw(_Program) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glBindTransformFeedback_raw(_Target, _Feedback) -> 
+glBindTransformFeedback_raw(_Target, _Feedback) ->
     erlang:nif_error(nif_library_not_loaded).
 

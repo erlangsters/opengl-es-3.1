@@ -226,7 +226,7 @@ static ERL_NIF_TERM nif_glGetProgramInfoLog_command(ErlNifEnv* env, int argc, co
 
     ErlNifBinary arg_1_bin;
     if (!enif_alloc_binary(arg_1_size, &arg_1_bin)) {
-        return enif_make_tuple2(env, 
+        return enif_make_tuple2(env,
             enif_make_atom(env, "error"),
             enif_make_atom(env, "out_of_memory")
         );
@@ -238,7 +238,7 @@ static ERL_NIF_TERM nif_glGetProgramInfoLog_command(ErlNifEnv* env, int argc, co
 
     if (arg_1_length <= 0) {
         enif_release_binary(&arg_1_bin);
-        return enif_make_tuple2(env, 
+        return enif_make_tuple2(env,
             enif_make_atom(env, "error"),
             enif_make_atom(env, "no_source_available")
         );
@@ -246,7 +246,7 @@ static ERL_NIF_TERM nif_glGetProgramInfoLog_command(ErlNifEnv* env, int argc, co
     if ((GLsizei)arg_1_bin.size > arg_1_length) {
         if (!enif_realloc_binary(&arg_1_bin, arg_1_length)) {
             enif_release_binary(&arg_1_bin);
-            return enif_make_tuple2(env, 
+            return enif_make_tuple2(env,
                 enif_make_atom(env, "error"),
                 enif_make_atom(env, "realloc_failed")
             );
@@ -312,7 +312,7 @@ static ERL_NIF_TERM nif_glGetProgramPipelineInfoLog_command(ErlNifEnv* env, int 
 
     ErlNifBinary arg_1_bin;
     if (!enif_alloc_binary(arg_1_size, &arg_1_bin)) {
-        return enif_make_tuple2(env, 
+        return enif_make_tuple2(env,
             enif_make_atom(env, "error"),
             enif_make_atom(env, "out_of_memory")
         );
@@ -324,7 +324,7 @@ static ERL_NIF_TERM nif_glGetProgramPipelineInfoLog_command(ErlNifEnv* env, int 
 
     if (arg_1_length <= 0) {
         enif_release_binary(&arg_1_bin);
-        return enif_make_tuple2(env, 
+        return enif_make_tuple2(env,
             enif_make_atom(env, "error"),
             enif_make_atom(env, "no_source_available")
         );
@@ -332,7 +332,7 @@ static ERL_NIF_TERM nif_glGetProgramPipelineInfoLog_command(ErlNifEnv* env, int 
     if ((GLsizei)arg_1_bin.size > arg_1_length) {
         if (!enif_realloc_binary(&arg_1_bin, arg_1_length)) {
             enif_release_binary(&arg_1_bin);
-            return enif_make_tuple2(env, 
+            return enif_make_tuple2(env,
                 enif_make_atom(env, "error"),
                 enif_make_atom(env, "realloc_failed")
             );
@@ -2219,7 +2219,7 @@ static ERL_NIF_TERM nif_glGetShaderSource_command(ErlNifEnv* env, int argc, cons
 
     ErlNifBinary arg_1_bin;
     if (!enif_alloc_binary(arg_1_size, &arg_1_bin)) {
-        return enif_make_tuple2(env, 
+        return enif_make_tuple2(env,
             enif_make_atom(env, "error"),
             enif_make_atom(env, "out_of_memory")
         );
@@ -2231,7 +2231,7 @@ static ERL_NIF_TERM nif_glGetShaderSource_command(ErlNifEnv* env, int argc, cons
 
     if (arg_1_length <= 0) {
         enif_release_binary(&arg_1_bin);
-        return enif_make_tuple2(env, 
+        return enif_make_tuple2(env,
             enif_make_atom(env, "error"),
             enif_make_atom(env, "no_source_available")
         );
@@ -2239,7 +2239,7 @@ static ERL_NIF_TERM nif_glGetShaderSource_command(ErlNifEnv* env, int argc, cons
     if ((GLsizei)arg_1_bin.size > arg_1_length) {
         if (!enif_realloc_binary(&arg_1_bin, arg_1_length)) {
             enif_release_binary(&arg_1_bin);
-            return enif_make_tuple2(env, 
+            return enif_make_tuple2(env,
                 enif_make_atom(env, "error"),
                 enif_make_atom(env, "realloc_failed")
             );
@@ -2638,7 +2638,7 @@ static ERL_NIF_TERM nif_glShaderSource_command(ErlNifEnv* env, int argc, const E
         if (arg_1_strings) enif_free(arg_1_strings);
         if (arg_1_lengths) enif_free(arg_1_lengths);
         if (arg_1_binaries) enif_free(arg_1_binaries);
-        return enif_make_tuple2(env, 
+        return enif_make_tuple2(env,
             enif_make_atom(env, "error"),
             enif_make_atom(env, "out_of_memory")
         );
@@ -3365,7 +3365,7 @@ static ERL_NIF_TERM nif_glGetShaderInfoLog_command(ErlNifEnv* env, int argc, con
 
     ErlNifBinary arg_1_bin;
     if (!enif_alloc_binary(arg_1_size, &arg_1_bin)) {
-        return enif_make_tuple2(env, 
+        return enif_make_tuple2(env,
             enif_make_atom(env, "error"),
             enif_make_atom(env, "out_of_memory")
         );
@@ -3377,7 +3377,7 @@ static ERL_NIF_TERM nif_glGetShaderInfoLog_command(ErlNifEnv* env, int argc, con
 
     if (arg_1_length <= 0) {
         enif_release_binary(&arg_1_bin);
-        return enif_make_tuple2(env, 
+        return enif_make_tuple2(env,
             enif_make_atom(env, "error"),
             enif_make_atom(env, "no_source_available")
         );
@@ -3385,7 +3385,7 @@ static ERL_NIF_TERM nif_glGetShaderInfoLog_command(ErlNifEnv* env, int argc, con
     if ((GLsizei)arg_1_bin.size > arg_1_length) {
         if (!enif_realloc_binary(&arg_1_bin, arg_1_length)) {
             enif_release_binary(&arg_1_bin);
-            return enif_make_tuple2(env, 
+            return enif_make_tuple2(env,
                 enif_make_atom(env, "error"),
                 enif_make_atom(env, "realloc_failed")
             );
