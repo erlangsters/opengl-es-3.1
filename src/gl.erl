@@ -1263,9 +1263,14 @@ Another source of reference is the
 -on_load(init_nif/0).
 
 init_nif() ->
+    % The OpenGL NIF module depends on the EGL NIF module, so we compute its
+    % location first, then pass it to the OpenGL NIF loader.
+    EGLPrivDir = code:priv_dir(egl),
+    EGLNifLocation = filename:join(EGLPrivDir, "beam-egl") ++ ".so",
+
     PrivDir = code:priv_dir(?MODULE),
     NifPath = filename:join(PrivDir, "beam-gl"),
-    ok = erlang:load_nif(NifPath, 0).
+    ok = erlang:load_nif(NifPath, EGLNifLocation).
 
 -doc """
 foobar

@@ -19,7 +19,14 @@ execute_command_fn egl_nif_execute_command = NULL;
 
 static int nif_module_load(ErlNifEnv *env, void **priv_data, ERL_NIF_TERM arg)
 {
-    egl_nif_lib_handle = dlopen("/home/intjelic/Workspace/erlangsters/opengl-pilot/_checkouts/egl/priv/beam-egl.so", RTLD_LAZY);
+    char beam_egl_so_path[1024];
+    if (!enif_get_string(env, arg, beam_egl_so_path, sizeof(beam_egl_so_path), ERL_NIF_LATIN1)) {
+        fprintf(stderr, "failed to read EGL binding library path from argument\n");
+        return -1;
+    }
+
+
+    egl_nif_lib_handle = dlopen(beam_egl_so_path, RTLD_NOW);
     if (!egl_nif_lib_handle) {
         fprintf(stderr, "failed to load beam-egl.so: %s\n", dlerror());
         return -1;
