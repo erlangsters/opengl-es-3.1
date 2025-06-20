@@ -2181,23 +2181,35 @@ static ERL_NIF_TERM nif_glVertexBindingDivisor(ErlNifEnv* env, int argc, const E
 static ERL_NIF_TERM nif_glBufferData_command(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
     GLenum arg_0;
-    if (!enif_get_int(env, argv[0], &arg_0)) {
+    if (!enif_get_uint(env, argv[0], (unsigned int*)&arg_0)) {
         return enif_make_badarg(env);
     }
+
     GLsizeiptr arg_1;
-    if (!enif_get_int(env, argv[1], &arg_1)) {
+    if (!enif_get_uint64(env, argv[1], (ErlNifUInt64*)&arg_1)) {
         return enif_make_badarg(env);
     }
+
     const void* arg_2 = NULL;
     ErlNifBinary arg_2_bin;
     if (enif_is_identical(argv[2], enif_make_atom(env, "undefined"))) {
         arg_2 = NULL;
     }
     else if (enif_inspect_binary(env, argv[2], &arg_2_bin)) {
+        if (arg_2_bin.size != arg_1) {
+            return enif_make_tuple2(env,
+                enif_make_atom(env, "error"),
+                enif_make_atom(env, "size_mismatch")
+            );
+        }
         arg_2 = arg_2_bin.data;
     }
+    else {
+        return enif_make_badarg(env);
+    }
+
     GLenum arg_3;
-    if (!enif_get_int(env, argv[3], &arg_3)) {
+    if (!enif_get_uint(env, argv[3], (unsigned int*)&arg_3)) {
         return enif_make_badarg(env);
     }
 
@@ -2205,6 +2217,8 @@ static ERL_NIF_TERM nif_glBufferData_command(ErlNifEnv* env, int argc, const ERL
 
     return enif_make_atom(env, "ok");
 }
+
+
 
 static ERL_NIF_TERM nif_glBufferData(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
