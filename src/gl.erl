@@ -1267,9 +1267,11 @@ init_nif() ->
     % location first, then pass it to the OpenGL NIF loader.
     EGLPrivDir = code:priv_dir(egl),
     EGLNifLocation = filename:join(EGLPrivDir, "beam-egl") ++ ".so",
+    io:format("[gl] egl NIF location: ~p~n", [EGLNifLocation]),
 
     PrivDir = code:priv_dir(?MODULE),
     NifPath = filename:join(PrivDir, "beam-gl"),
+    io:format("[gl] gl NIF location ~s~n", [NifPath]),
     ok = erlang:load_nif(NifPath, EGLNifLocation).
 
 -doc """
