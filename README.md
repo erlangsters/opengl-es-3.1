@@ -41,7 +41,100 @@ released under the MIT [license](https://opensource.org/license/mit).
 
 ## Quick preview
 
-To be written.
+All the bits put together (EGL, OpenGL and some optional GLFW because it's
+more fun with a window), here is how it looks like.
+
+```erlang
+Display = egl:get_display(default_display).
+{ok, {_, _}} = egl:initialize(Display).
+
+egl:bind_api(opengl_es_api).
+
+ConfigAttribs = [
+    {surface_type, [window_bit]},
+    {renderable_type, [opengl_bit]}
+].
+{ok, Configs} = egl:choose_config(Display, ConfigAttribs).
+
+ContextAttribs = [{context_major_version, 3}].
+{ok, Context} = egl:create_context(Display, Config, no_context, ContextAttribs).
+
+{ok, Window} = glfw:create_window(640, 480, "Hello World!").
+WindowHandle = glfw:window_egl_handle(Window).
+{ok, Surface} = egl:create_window_surface(Display, Config, WindowHandle, []).
+
+ok = egl:make_current(Display, Surface, Surface, Context).
+
+% Here goes your OpenGL initialization code...
+{ok, Version} = gl:get_string(?GL_VERSION).
+
+loop_window(Display, Surface, Window, Version).
+```
+
+Here is how the loop function looks like.
+
+```erlang
+loop_window(Display, Surface, Window) ->
+  case glfw:window_should_close(Window) of
+    true ->
+      ok;
+    false ->
+      % Here goes your OpenGL rendering code...
+      gl:clear(?GL_COLOR_BUFFER_BIT),
+
+      egl:swap_buffers(Display, Surface),
+      glfw:poll_events(Window),
+
+      loop_window(Display, Surface, Window, Program, Vao, Counter+1)
+  end.
+```
+
+Consult the [OpenGL samples](https://github.com/erlangsters/opengl-samples)
+repository for more examples.
+
+## Working with the binding
+
+To work with the binding, you will need to first hear about the "thread-safety"
+implications (coming from the underlying C language) and how the API is
+adjusted to match look and feel of the Erlang and Elixir languages.
+
+**Thread-safety**
+
+OpenGL is a C library that is not thread-safe -- each OpenGL function executes
+in a OpenGL contexts bound to a single OS thread at a time. However, the BEAM
+layers on top of OS threads (to provide the BEAM process primitive) and does
+not expose them.
+
+How does it work then ?
+
+The thread-safety problem is solved by the EGL binding (hence its strong
+dependency on it) and the solution well-explained in its
+[documentation](https://github.com/erlangsters/egl-1.5) (which you should consult).
+
+However, here is a short version of the story: **think just like a BEAM process
+equates to an OS thread**.
+
+If you do that, all OpenGL code will work exactly like its counter-part in C.
+
+> Under the hood, the EGL binding executes the OpenGL calls in separate OS
+> threads in a way that replicates the layout of the BEAM processes of your
+> application.
+
+**API mapping**
+
+To make a low-level C API available in a higher-level Erlang/Elixir API, some
+transformations are unavoidable. To remain highly consistent, it strictly
+follows a set of mapping rules that are formally explained in the
+[documentation](https://github.com/erlangsters/opengl-x.y-generator) of the
+OpenGL binding generator.
+
+Most of the time, you will be able to intuitively understand how a piece of
+OpenGL code translates into its Erlang/Elixir counter-part. If not, the [API
+reference](http://erlangsters.github.io/opengl-es-3.1/) from the generated
+in-source documentation also helps a great deal.
+
+If it's still not enough, consult either the API mapping rules or the OpenGL
+samples.
 
 ## Using the binding in your project
 
