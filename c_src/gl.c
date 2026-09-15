@@ -4,8 +4,11 @@
 #include <stdio.h>
 #include <limits.h>
 #include <stdint.h>
-#include <pthread.h>
-#include <dlfcn.h>
+#if defined(_WIN32)
+    #include <windows.h>
+#else
+    #include <dlfcn.h>
+#endif
 #include <erl_nif.h>
 #include <EGL/egl.h>
 #include <GLES3/gl32.h>
@@ -55,6 +58,7 @@ static ERL_NIF_TERM beam_atom_vertex_attrib_array_stride;
 static ERL_NIF_TERM beam_atom_texture3;
 static ERL_NIF_TERM beam_atom_read_buffer;
 static ERL_NIF_TERM beam_atom_vertex_binding_divisor;
+static ERL_NIF_TERM beam_atom_active_attribute_max_length;
 static ERL_NIF_TERM beam_atom_pack_skip_pixels;
 static ERL_NIF_TERM beam_atom_compressed_signed_rg11_eac;
 static ERL_NIF_TERM beam_atom_fixed;
@@ -71,6 +75,7 @@ static ERL_NIF_TERM beam_atom_max_server_wait_timeout;
 static ERL_NIF_TERM beam_atom_texture_fetch_barrier_bit;
 static ERL_NIF_TERM beam_atom_uniform_matrix_stride;
 static ERL_NIF_TERM beam_atom_vertex_attrib_array_barrier_bit;
+static ERL_NIF_TERM beam_atom_max_vertex_attrib_stride;
 static ERL_NIF_TERM beam_atom_front_and_back;
 static ERL_NIF_TERM beam_atom_pixel_unpack_buffer_binding;
 static ERL_NIF_TERM beam_atom_pack_row_length;
@@ -101,6 +106,7 @@ static ERL_NIF_TERM beam_atom_color_attachment0;
 static ERL_NIF_TERM beam_atom_unsigned_short;
 static ERL_NIF_TERM beam_atom_blue_bits;
 static ERL_NIF_TERM beam_atom_renderbuffer_height;
+static ERL_NIF_TERM beam_atom_max_fragment_atomic_counter_buffers;
 static ERL_NIF_TERM beam_atom_max_fragment_input_components;
 static ERL_NIF_TERM beam_atom_float_vec4;
 static ERL_NIF_TERM beam_atom_lines;
@@ -110,6 +116,7 @@ static ERL_NIF_TERM beam_atom_element_array_barrier_bit;
 static ERL_NIF_TERM beam_atom_max_draw_buffers;
 static ERL_NIF_TERM beam_atom_minor_version;
 static ERL_NIF_TERM beam_atom_luminance_alpha;
+static ERL_NIF_TERM beam_atom_delete_status;
 static ERL_NIF_TERM beam_atom_unsigned_short_5_6_5;
 static ERL_NIF_TERM beam_atom_scissor_box;
 static ERL_NIF_TERM beam_atom_unsigned_int_10f_11f_11f_rev;
@@ -132,6 +139,7 @@ static ERL_NIF_TERM beam_atom_rg8_snorm;
 static ERL_NIF_TERM beam_atom_green_bits;
 static ERL_NIF_TERM beam_atom_texture30;
 static ERL_NIF_TERM beam_atom_compressed_signed_r11_eac;
+static ERL_NIF_TERM beam_atom_max_combined_shader_output_resources;
 static ERL_NIF_TERM beam_atom_green;
 static ERL_NIF_TERM beam_atom_texture_max_lod;
 static ERL_NIF_TERM beam_atom_float_mat4x3;
@@ -143,6 +151,7 @@ static ERL_NIF_TERM beam_atom_transform_feedback_varying;
 static ERL_NIF_TERM beam_atom_alpha_bits;
 static ERL_NIF_TERM beam_atom_renderbuffer_samples;
 static ERL_NIF_TERM beam_atom_depth_stencil_attachment;
+static ERL_NIF_TERM beam_atom_max_compute_shared_memory_size;
 static ERL_NIF_TERM beam_atom_max_varying_components;
 static ERL_NIF_TERM beam_atom_color_attachment20;
 static ERL_NIF_TERM beam_atom_texture_binding_cube_map;
@@ -172,6 +181,7 @@ static ERL_NIF_TERM beam_atom_shader_storage_buffer_start;
 static ERL_NIF_TERM beam_atom_element_array_buffer;
 static ERL_NIF_TERM beam_atom_type;
 static ERL_NIF_TERM beam_atom_max_combined_fragment_uniform_components;
+static ERL_NIF_TERM beam_atom_shader_source_length;
 static ERL_NIF_TERM beam_atom_texture_swizzle_g;
 static ERL_NIF_TERM beam_atom_color;
 static ERL_NIF_TERM beam_atom_buffer_mapped;
@@ -192,6 +202,8 @@ static ERL_NIF_TERM beam_atom_rg16ui;
 static ERL_NIF_TERM beam_atom_transform_feedback_buffer_size;
 static ERL_NIF_TERM beam_atom_unsigned_int_2_10_10_10_rev;
 static ERL_NIF_TERM beam_atom_texture9;
+static ERL_NIF_TERM beam_atom_transform_feedback_buffer_mode;
+static ERL_NIF_TERM beam_atom_shader_type;
 static ERL_NIF_TERM beam_atom_rg16f;
 static ERL_NIF_TERM beam_atom_implementation_color_read_format;
 static ERL_NIF_TERM beam_atom_bool_vec3;
@@ -199,6 +211,7 @@ static ERL_NIF_TERM beam_atom_unsigned_int_image_2d;
 static ERL_NIF_TERM beam_atom_framebuffer_attachment_component_type;
 static ERL_NIF_TERM beam_atom_stencil_pass_depth_pass;
 static ERL_NIF_TERM beam_atom_color_attachment31;
+static ERL_NIF_TERM beam_atom_active_attributes;
 static ERL_NIF_TERM beam_atom_unsigned_short_5_5_5_1;
 static ERL_NIF_TERM beam_atom_blend_equation_rgb;
 static ERL_NIF_TERM beam_atom_image_2d_array;
@@ -216,6 +229,7 @@ static ERL_NIF_TERM beam_atom_query_result;
 static ERL_NIF_TERM beam_atom_stencil_index8;
 static ERL_NIF_TERM beam_atom_texture_min_lod;
 static ERL_NIF_TERM beam_atom_framebuffer_attachment_object_name;
+static ERL_NIF_TERM beam_atom_max_samples;
 static ERL_NIF_TERM beam_atom_max_compute_work_group_invocations;
 static ERL_NIF_TERM beam_atom_color_attachment15;
 static ERL_NIF_TERM beam_atom_max_fragment_uniform_components;
@@ -236,6 +250,8 @@ static ERL_NIF_TERM beam_atom_read_write;
 static ERL_NIF_TERM beam_atom_texture_binding_3d;
 static ERL_NIF_TERM beam_atom_rgb8_snorm;
 static ERL_NIF_TERM beam_atom_unsigned_int_vec4;
+static ERL_NIF_TERM beam_atom_active_uniform_blocks;
+static ERL_NIF_TERM beam_atom_program_binary_length;
 static ERL_NIF_TERM beam_atom_renderbuffer_width;
 static ERL_NIF_TERM beam_atom_aliased_point_size_range;
 static ERL_NIF_TERM beam_atom_sampler_2d_shadow;
@@ -265,8 +281,10 @@ static ERL_NIF_TERM beam_atom_texture18;
 static ERL_NIF_TERM beam_atom_rgba4;
 static ERL_NIF_TERM beam_atom_uniform_buffer_size;
 static ERL_NIF_TERM beam_atom_int_vec4;
+static ERL_NIF_TERM beam_atom_max_transform_feedback_separate_components;
 static ERL_NIF_TERM beam_atom_stencil_back_pass_depth_fail;
 static ERL_NIF_TERM beam_atom_cull_face_mode;
+static ERL_NIF_TERM beam_atom_max_atomic_counter_buffer_bindings;
 static ERL_NIF_TERM beam_atom_depth_writemask;
 static ERL_NIF_TERM beam_atom_framebuffer_attachment_color_encoding;
 static ERL_NIF_TERM beam_atom_texture_width;
@@ -339,6 +357,9 @@ static ERL_NIF_TERM beam_atom_texture12;
 static ERL_NIF_TERM beam_atom_uniform_block_index;
 static ERL_NIF_TERM beam_atom_color_attachment25;
 static ERL_NIF_TERM beam_atom_texture_cube_map_negative_x;
+static ERL_NIF_TERM beam_atom_transform_feedback_varyings;
+static ERL_NIF_TERM beam_atom_link_status;
+static ERL_NIF_TERM beam_atom_compile_status;
 static ERL_NIF_TERM beam_atom_framebuffer_attachment_alpha_size;
 static ERL_NIF_TERM beam_atom_shader_storage_buffer;
 static ERL_NIF_TERM beam_atom_vertex_attrib_array_size;
@@ -361,6 +382,7 @@ static ERL_NIF_TERM beam_atom_buffer_update_barrier_bit;
 static ERL_NIF_TERM beam_atom_sampler_binding;
 static ERL_NIF_TERM beam_atom_max_combined_vertex_uniform_components;
 static ERL_NIF_TERM beam_atom_nearest;
+static ERL_NIF_TERM beam_atom_max_program_texture_gather_offset;
 static ERL_NIF_TERM beam_atom_bool_vec2;
 static ERL_NIF_TERM beam_atom_texture20;
 static ERL_NIF_TERM beam_atom_array_size;
@@ -376,6 +398,7 @@ static ERL_NIF_TERM beam_atom_max_framebuffer_width;
 static ERL_NIF_TERM beam_atom_sampler_2d_array_shadow;
 static ERL_NIF_TERM beam_atom_one_minus_src_color;
 static ERL_NIF_TERM beam_atom_stencil_ref;
+static ERL_NIF_TERM beam_atom_active_atomic_counter_buffers;
 static ERL_NIF_TERM beam_atom_texture25;
 static ERL_NIF_TERM beam_atom_rgba8ui;
 static ERL_NIF_TERM beam_atom_r32i;
@@ -406,6 +429,7 @@ static ERL_NIF_TERM beam_atom_unsigned_int_sampler_2d_array;
 static ERL_NIF_TERM beam_atom_max_integer_samples;
 static ERL_NIF_TERM beam_atom_uniform_buffer;
 static ERL_NIF_TERM beam_atom_framebuffer_attachment_stencil_size;
+static ERL_NIF_TERM beam_atom_active_uniform_max_length;
 static ERL_NIF_TERM beam_atom_fragment_shader_derivative_hint;
 static ERL_NIF_TERM beam_atom_shader_storage_buffer_size;
 static ERL_NIF_TERM beam_atom_location;
@@ -423,6 +447,7 @@ static ERL_NIF_TERM beam_atom_stencil_writemask;
 static ERL_NIF_TERM beam_atom_max_varying_vectors;
 static ERL_NIF_TERM beam_atom_max_vertex_attrib_bindings;
 static ERL_NIF_TERM beam_atom_uniform_block_referenced_by_vertex_shader;
+static ERL_NIF_TERM beam_atom_max_vertex_image_uniforms;
 static ERL_NIF_TERM beam_atom_unsigned_int_vec3;
 static ERL_NIF_TERM beam_atom_program_separable;
 static ERL_NIF_TERM beam_atom_texture28;
@@ -479,6 +504,7 @@ static ERL_NIF_TERM beam_atom_float_vec2;
 static ERL_NIF_TERM beam_atom_one_minus_dst_alpha;
 static ERL_NIF_TERM beam_atom_texture_max_level;
 static ERL_NIF_TERM beam_atom_back;
+static ERL_NIF_TERM beam_atom_max_shader_storage_block_size;
 static ERL_NIF_TERM beam_atom_color_attachment2;
 static ERL_NIF_TERM beam_atom_red;
 static ERL_NIF_TERM beam_atom_depth_stencil_texture_mode;
@@ -490,6 +516,7 @@ static ERL_NIF_TERM beam_atom_uniform;
 static ERL_NIF_TERM beam_atom_texture29;
 static ERL_NIF_TERM beam_atom_image_cube;
 static ERL_NIF_TERM beam_atom_color_attachment1;
+static ERL_NIF_TERM beam_atom_validate_status;
 static ERL_NIF_TERM beam_atom_scissor_test;
 static ERL_NIF_TERM beam_atom_max_compute_texture_image_units;
 static ERL_NIF_TERM beam_atom_any_samples_passed;
@@ -518,6 +545,7 @@ static ERL_NIF_TERM beam_atom_uniform_block_active_uniforms;
 static ERL_NIF_TERM beam_atom_texture31;
 static ERL_NIF_TERM beam_atom_rgb10_a2ui;
 static ERL_NIF_TERM beam_atom_rgba16ui;
+static ERL_NIF_TERM beam_atom_max_compute_image_uniforms;
 static ERL_NIF_TERM beam_atom_lequal;
 static ERL_NIF_TERM beam_atom_buffer_usage;
 static ERL_NIF_TERM beam_atom_byte;
@@ -536,20 +564,25 @@ static ERL_NIF_TERM beam_atom_color_attachment6;
 static ERL_NIF_TERM beam_atom_max_combined_uniform_blocks;
 static ERL_NIF_TERM beam_atom_pack_alignment;
 static ERL_NIF_TERM beam_atom_draw_framebuffer_binding;
+static ERL_NIF_TERM beam_atom_max_transform_feedback_interleaved_components;
 static ERL_NIF_TERM beam_atom_shading_language_version;
 static ERL_NIF_TERM beam_atom_framebuffer_attachment_object_type;
 static ERL_NIF_TERM beam_atom_matrix_stride;
 static ERL_NIF_TERM beam_atom_rgb32i;
 static ERL_NIF_TERM beam_atom_ccw;
 static ERL_NIF_TERM beam_atom_fragment_shader;
+static ERL_NIF_TERM beam_atom_attached_shaders;
 static ERL_NIF_TERM beam_atom_triangles;
 static ERL_NIF_TERM beam_atom_blend_dst_rgb;
+static ERL_NIF_TERM beam_atom_max_transform_feedback_separate_attribs;
 static ERL_NIF_TERM beam_atom_color_attachment22;
 static ERL_NIF_TERM beam_atom_stencil_index;
 static ERL_NIF_TERM beam_atom_uniform_barrier_bit;
+static ERL_NIF_TERM beam_atom_min_program_texture_gather_offset;
 static ERL_NIF_TERM beam_atom_texture19;
 static ERL_NIF_TERM beam_atom_stencil_pass_depth_fail;
 static ERL_NIF_TERM beam_atom_compressed_rgb8_etc2;
+static ERL_NIF_TERM beam_atom_compute_work_group_size;
 static ERL_NIF_TERM beam_atom_renderbuffer_depth_size;
 static ERL_NIF_TERM beam_atom_framebuffer_attachment_green_size;
 static ERL_NIF_TERM beam_atom_uniform_block_data_size;
@@ -566,9 +599,11 @@ static ERL_NIF_TERM beam_atom_rg32f;
 static ERL_NIF_TERM beam_atom_linear;
 static ERL_NIF_TERM beam_atom_vertex_array_binding;
 static ERL_NIF_TERM beam_atom_depth_func;
+static ERL_NIF_TERM beam_atom_max_combined_image_uniforms;
 static ERL_NIF_TERM beam_atom_invert;
 static ERL_NIF_TERM beam_atom_dither;
 static ERL_NIF_TERM beam_atom_color_attachment23;
+static ERL_NIF_TERM beam_atom_max_vertex_atomic_counter_buffers;
 static ERL_NIF_TERM beam_atom_name_length;
 static ERL_NIF_TERM beam_atom_texture0;
 static ERL_NIF_TERM beam_atom_max_array_texture_layers;
@@ -578,6 +613,7 @@ static ERL_NIF_TERM beam_atom_int;
 static ERL_NIF_TERM beam_atom_line_loop;
 static ERL_NIF_TERM beam_atom_separate_attribs;
 static ERL_NIF_TERM beam_atom_max_vertex_attribs;
+static ERL_NIF_TERM beam_atom_max_atomic_counter_buffer_size;
 static ERL_NIF_TERM beam_atom_r16i;
 static ERL_NIF_TERM beam_atom_transform_feedback;
 static ERL_NIF_TERM beam_atom_vertex_attrib_array_integer;
@@ -623,6 +659,7 @@ static ERL_NIF_TERM beam_atom_uniform_is_row_major;
 static ERL_NIF_TERM beam_atom_rg16i;
 static ERL_NIF_TERM beam_atom_blend_color;
 static ERL_NIF_TERM beam_atom_int_image_cube;
+static ERL_NIF_TERM beam_atom_active_uniform_block_max_name_length;
 static ERL_NIF_TERM beam_atom_r11f_g11f_b10f;
 static ERL_NIF_TERM beam_atom_active_variables;
 static ERL_NIF_TERM beam_atom_subpixel_bits;
@@ -643,8 +680,10 @@ static ERL_NIF_TERM beam_atom_stencil_back_pass_depth_pass;
 static ERL_NIF_TERM beam_atom_invalid_operation;
 static ERL_NIF_TERM beam_atom_depth24_stencil8;
 static ERL_NIF_TERM beam_atom_float_vec3;
+static ERL_NIF_TERM beam_atom_max_fragment_image_uniforms;
 static ERL_NIF_TERM beam_atom_any_samples_passed_conservative;
 static ERL_NIF_TERM beam_atom_line_strip;
+static ERL_NIF_TERM beam_atom_max_image_units;
 static ERL_NIF_TERM beam_atom_float_mat2x3;
 static ERL_NIF_TERM beam_atom_array_buffer;
 static ERL_NIF_TERM beam_atom_max;
@@ -659,6 +698,7 @@ static ERL_NIF_TERM beam_atom_max_texture_size;
 static ERL_NIF_TERM beam_atom_pack_skip_rows;
 static ERL_NIF_TERM beam_atom_texture_update_barrier_bit;
 static ERL_NIF_TERM beam_atom_texture_binding_2d;
+static ERL_NIF_TERM beam_atom_active_uniforms;
 static ERL_NIF_TERM beam_atom_stencil_back_value_mask;
 static ERL_NIF_TERM beam_atom_vertex_attrib_array_buffer_binding;
 static ERL_NIF_TERM beam_atom_int_sampler_3d;
@@ -675,8 +715,10 @@ static ERL_NIF_TERM beam_atom_stencil_back_func;
 static ERL_NIF_TERM beam_atom_unsigned_int_vec2;
 static ERL_NIF_TERM beam_atom_float_mat3;
 static ERL_NIF_TERM beam_atom_unsigned_int;
+static ERL_NIF_TERM beam_atom_transform_feedback_varying_max_length;
 static ERL_NIF_TERM beam_atom_all_barrier_bits;
 static ERL_NIF_TERM beam_atom_medium_int;
+static ERL_NIF_TERM beam_atom_max_combined_atomic_counter_buffers;
 static ERL_NIF_TERM beam_atom_rg32ui;
 static ERL_NIF_TERM beam_atom_int_image_3d;
 static ERL_NIF_TERM beam_atom_rgb565;
@@ -690,7 +732,7 @@ typedef ERL_NIF_TERM (*execute_command_fn)(
     ERL_NIF_TERM (*function)(ErlNifEnv*, int, const ERL_NIF_TERM[]),
     ErlNifEnv*,
     int,
-    ERL_NIF_TERM* []
+    const ERL_NIF_TERM argv[]
 );
 execute_command_fn egl_nif_execute_command = NULL;
 
@@ -703,6 +745,21 @@ if (!enif_get_string(env, arg, beam_egl_so_path, sizeof(beam_egl_so_path), ERL_N
     return -1;
 }
 
+#if defined(_WIN32)
+egl_nif_lib_handle = (void*)LoadLibraryA(beam_egl_so_path);
+if (!egl_nif_lib_handle) {
+    fprintf(stderr, "failed to load beam-egl.dll: %lu\n", GetLastError());
+    return -1;
+}
+
+egl_nif_execute_command = (execute_command_fn)GetProcAddress(
+    (HMODULE)egl_nif_lib_handle, "egl_execute_command");
+if (!egl_nif_execute_command) {
+    fprintf(stderr, "failed to load symbol egl_execute_command: %lu\n", GetLastError());
+    FreeLibrary((HMODULE)egl_nif_lib_handle);
+    return -1;
+}
+#else
 egl_nif_lib_handle = dlopen(beam_egl_so_path, RTLD_NOW);
 if (!egl_nif_lib_handle) {
     fprintf(stderr, "failed to load beam-egl.so: %s\n", dlerror());
@@ -715,6 +772,7 @@ if (!egl_nif_execute_command) {
     dlclose(egl_nif_lib_handle);
     return -1;
 }
+#endif
 
 
     beam_atom_color_attachment24 = enif_make_atom(env, "color_attachment24");
@@ -762,6 +820,7 @@ if (!egl_nif_execute_command) {
     beam_atom_texture3 = enif_make_atom(env, "texture3");
     beam_atom_read_buffer = enif_make_atom(env, "read_buffer");
     beam_atom_vertex_binding_divisor = enif_make_atom(env, "vertex_binding_divisor");
+    beam_atom_active_attribute_max_length = enif_make_atom(env, "active_attribute_max_length");
     beam_atom_pack_skip_pixels = enif_make_atom(env, "pack_skip_pixels");
     beam_atom_compressed_signed_rg11_eac = enif_make_atom(env, "compressed_signed_rg11_eac");
     beam_atom_fixed = enif_make_atom(env, "fixed");
@@ -778,6 +837,7 @@ if (!egl_nif_execute_command) {
     beam_atom_texture_fetch_barrier_bit = enif_make_atom(env, "texture_fetch_barrier_bit");
     beam_atom_uniform_matrix_stride = enif_make_atom(env, "uniform_matrix_stride");
     beam_atom_vertex_attrib_array_barrier_bit = enif_make_atom(env, "vertex_attrib_array_barrier_bit");
+    beam_atom_max_vertex_attrib_stride = enif_make_atom(env, "max_vertex_attrib_stride");
     beam_atom_front_and_back = enif_make_atom(env, "front_and_back");
     beam_atom_pixel_unpack_buffer_binding = enif_make_atom(env, "pixel_unpack_buffer_binding");
     beam_atom_pack_row_length = enif_make_atom(env, "pack_row_length");
@@ -808,6 +868,7 @@ if (!egl_nif_execute_command) {
     beam_atom_unsigned_short = enif_make_atom(env, "unsigned_short");
     beam_atom_blue_bits = enif_make_atom(env, "blue_bits");
     beam_atom_renderbuffer_height = enif_make_atom(env, "renderbuffer_height");
+    beam_atom_max_fragment_atomic_counter_buffers = enif_make_atom(env, "max_fragment_atomic_counter_buffers");
     beam_atom_max_fragment_input_components = enif_make_atom(env, "max_fragment_input_components");
     beam_atom_float_vec4 = enif_make_atom(env, "float_vec4");
     beam_atom_lines = enif_make_atom(env, "lines");
@@ -817,6 +878,7 @@ if (!egl_nif_execute_command) {
     beam_atom_max_draw_buffers = enif_make_atom(env, "max_draw_buffers");
     beam_atom_minor_version = enif_make_atom(env, "minor_version");
     beam_atom_luminance_alpha = enif_make_atom(env, "luminance_alpha");
+    beam_atom_delete_status = enif_make_atom(env, "delete_status");
     beam_atom_unsigned_short_5_6_5 = enif_make_atom(env, "unsigned_short_5_6_5");
     beam_atom_scissor_box = enif_make_atom(env, "scissor_box");
     beam_atom_unsigned_int_10f_11f_11f_rev = enif_make_atom(env, "unsigned_int_10f_11f_11f_rev");
@@ -839,6 +901,7 @@ if (!egl_nif_execute_command) {
     beam_atom_green_bits = enif_make_atom(env, "green_bits");
     beam_atom_texture30 = enif_make_atom(env, "texture30");
     beam_atom_compressed_signed_r11_eac = enif_make_atom(env, "compressed_signed_r11_eac");
+    beam_atom_max_combined_shader_output_resources = enif_make_atom(env, "max_combined_shader_output_resources");
     beam_atom_green = enif_make_atom(env, "green");
     beam_atom_texture_max_lod = enif_make_atom(env, "texture_max_lod");
     beam_atom_float_mat4x3 = enif_make_atom(env, "float_mat4x3");
@@ -850,6 +913,7 @@ if (!egl_nif_execute_command) {
     beam_atom_alpha_bits = enif_make_atom(env, "alpha_bits");
     beam_atom_renderbuffer_samples = enif_make_atom(env, "renderbuffer_samples");
     beam_atom_depth_stencil_attachment = enif_make_atom(env, "depth_stencil_attachment");
+    beam_atom_max_compute_shared_memory_size = enif_make_atom(env, "max_compute_shared_memory_size");
     beam_atom_max_varying_components = enif_make_atom(env, "max_varying_components");
     beam_atom_color_attachment20 = enif_make_atom(env, "color_attachment20");
     beam_atom_texture_binding_cube_map = enif_make_atom(env, "texture_binding_cube_map");
@@ -879,6 +943,7 @@ if (!egl_nif_execute_command) {
     beam_atom_element_array_buffer = enif_make_atom(env, "element_array_buffer");
     beam_atom_type = enif_make_atom(env, "type");
     beam_atom_max_combined_fragment_uniform_components = enif_make_atom(env, "max_combined_fragment_uniform_components");
+    beam_atom_shader_source_length = enif_make_atom(env, "shader_source_length");
     beam_atom_texture_swizzle_g = enif_make_atom(env, "texture_swizzle_g");
     beam_atom_color = enif_make_atom(env, "color");
     beam_atom_buffer_mapped = enif_make_atom(env, "buffer_mapped");
@@ -899,6 +964,8 @@ if (!egl_nif_execute_command) {
     beam_atom_transform_feedback_buffer_size = enif_make_atom(env, "transform_feedback_buffer_size");
     beam_atom_unsigned_int_2_10_10_10_rev = enif_make_atom(env, "unsigned_int_2_10_10_10_rev");
     beam_atom_texture9 = enif_make_atom(env, "texture9");
+    beam_atom_transform_feedback_buffer_mode = enif_make_atom(env, "transform_feedback_buffer_mode");
+    beam_atom_shader_type = enif_make_atom(env, "shader_type");
     beam_atom_rg16f = enif_make_atom(env, "rg16f");
     beam_atom_implementation_color_read_format = enif_make_atom(env, "implementation_color_read_format");
     beam_atom_bool_vec3 = enif_make_atom(env, "bool_vec3");
@@ -906,6 +973,7 @@ if (!egl_nif_execute_command) {
     beam_atom_framebuffer_attachment_component_type = enif_make_atom(env, "framebuffer_attachment_component_type");
     beam_atom_stencil_pass_depth_pass = enif_make_atom(env, "stencil_pass_depth_pass");
     beam_atom_color_attachment31 = enif_make_atom(env, "color_attachment31");
+    beam_atom_active_attributes = enif_make_atom(env, "active_attributes");
     beam_atom_unsigned_short_5_5_5_1 = enif_make_atom(env, "unsigned_short_5_5_5_1");
     beam_atom_blend_equation_rgb = enif_make_atom(env, "blend_equation_rgb");
     beam_atom_image_2d_array = enif_make_atom(env, "image_2d_array");
@@ -923,6 +991,7 @@ if (!egl_nif_execute_command) {
     beam_atom_stencil_index8 = enif_make_atom(env, "stencil_index8");
     beam_atom_texture_min_lod = enif_make_atom(env, "texture_min_lod");
     beam_atom_framebuffer_attachment_object_name = enif_make_atom(env, "framebuffer_attachment_object_name");
+    beam_atom_max_samples = enif_make_atom(env, "max_samples");
     beam_atom_max_compute_work_group_invocations = enif_make_atom(env, "max_compute_work_group_invocations");
     beam_atom_color_attachment15 = enif_make_atom(env, "color_attachment15");
     beam_atom_max_fragment_uniform_components = enif_make_atom(env, "max_fragment_uniform_components");
@@ -943,6 +1012,8 @@ if (!egl_nif_execute_command) {
     beam_atom_texture_binding_3d = enif_make_atom(env, "texture_binding_3d");
     beam_atom_rgb8_snorm = enif_make_atom(env, "rgb8_snorm");
     beam_atom_unsigned_int_vec4 = enif_make_atom(env, "unsigned_int_vec4");
+    beam_atom_active_uniform_blocks = enif_make_atom(env, "active_uniform_blocks");
+    beam_atom_program_binary_length = enif_make_atom(env, "program_binary_length");
     beam_atom_renderbuffer_width = enif_make_atom(env, "renderbuffer_width");
     beam_atom_aliased_point_size_range = enif_make_atom(env, "aliased_point_size_range");
     beam_atom_sampler_2d_shadow = enif_make_atom(env, "sampler_2d_shadow");
@@ -972,8 +1043,10 @@ if (!egl_nif_execute_command) {
     beam_atom_rgba4 = enif_make_atom(env, "rgba4");
     beam_atom_uniform_buffer_size = enif_make_atom(env, "uniform_buffer_size");
     beam_atom_int_vec4 = enif_make_atom(env, "int_vec4");
+    beam_atom_max_transform_feedback_separate_components = enif_make_atom(env, "max_transform_feedback_separate_components");
     beam_atom_stencil_back_pass_depth_fail = enif_make_atom(env, "stencil_back_pass_depth_fail");
     beam_atom_cull_face_mode = enif_make_atom(env, "cull_face_mode");
+    beam_atom_max_atomic_counter_buffer_bindings = enif_make_atom(env, "max_atomic_counter_buffer_bindings");
     beam_atom_depth_writemask = enif_make_atom(env, "depth_writemask");
     beam_atom_framebuffer_attachment_color_encoding = enif_make_atom(env, "framebuffer_attachment_color_encoding");
     beam_atom_texture_width = enif_make_atom(env, "texture_width");
@@ -1046,6 +1119,9 @@ if (!egl_nif_execute_command) {
     beam_atom_uniform_block_index = enif_make_atom(env, "uniform_block_index");
     beam_atom_color_attachment25 = enif_make_atom(env, "color_attachment25");
     beam_atom_texture_cube_map_negative_x = enif_make_atom(env, "texture_cube_map_negative_x");
+    beam_atom_transform_feedback_varyings = enif_make_atom(env, "transform_feedback_varyings");
+    beam_atom_link_status = enif_make_atom(env, "link_status");
+    beam_atom_compile_status = enif_make_atom(env, "compile_status");
     beam_atom_framebuffer_attachment_alpha_size = enif_make_atom(env, "framebuffer_attachment_alpha_size");
     beam_atom_shader_storage_buffer = enif_make_atom(env, "shader_storage_buffer");
     beam_atom_vertex_attrib_array_size = enif_make_atom(env, "vertex_attrib_array_size");
@@ -1068,6 +1144,7 @@ if (!egl_nif_execute_command) {
     beam_atom_sampler_binding = enif_make_atom(env, "sampler_binding");
     beam_atom_max_combined_vertex_uniform_components = enif_make_atom(env, "max_combined_vertex_uniform_components");
     beam_atom_nearest = enif_make_atom(env, "nearest");
+    beam_atom_max_program_texture_gather_offset = enif_make_atom(env, "max_program_texture_gather_offset");
     beam_atom_bool_vec2 = enif_make_atom(env, "bool_vec2");
     beam_atom_texture20 = enif_make_atom(env, "texture20");
     beam_atom_array_size = enif_make_atom(env, "array_size");
@@ -1083,6 +1160,7 @@ if (!egl_nif_execute_command) {
     beam_atom_sampler_2d_array_shadow = enif_make_atom(env, "sampler_2d_array_shadow");
     beam_atom_one_minus_src_color = enif_make_atom(env, "one_minus_src_color");
     beam_atom_stencil_ref = enif_make_atom(env, "stencil_ref");
+    beam_atom_active_atomic_counter_buffers = enif_make_atom(env, "active_atomic_counter_buffers");
     beam_atom_texture25 = enif_make_atom(env, "texture25");
     beam_atom_rgba8ui = enif_make_atom(env, "rgba8ui");
     beam_atom_r32i = enif_make_atom(env, "r32i");
@@ -1113,6 +1191,7 @@ if (!egl_nif_execute_command) {
     beam_atom_max_integer_samples = enif_make_atom(env, "max_integer_samples");
     beam_atom_uniform_buffer = enif_make_atom(env, "uniform_buffer");
     beam_atom_framebuffer_attachment_stencil_size = enif_make_atom(env, "framebuffer_attachment_stencil_size");
+    beam_atom_active_uniform_max_length = enif_make_atom(env, "active_uniform_max_length");
     beam_atom_fragment_shader_derivative_hint = enif_make_atom(env, "fragment_shader_derivative_hint");
     beam_atom_shader_storage_buffer_size = enif_make_atom(env, "shader_storage_buffer_size");
     beam_atom_location = enif_make_atom(env, "location");
@@ -1130,6 +1209,7 @@ if (!egl_nif_execute_command) {
     beam_atom_max_varying_vectors = enif_make_atom(env, "max_varying_vectors");
     beam_atom_max_vertex_attrib_bindings = enif_make_atom(env, "max_vertex_attrib_bindings");
     beam_atom_uniform_block_referenced_by_vertex_shader = enif_make_atom(env, "uniform_block_referenced_by_vertex_shader");
+    beam_atom_max_vertex_image_uniforms = enif_make_atom(env, "max_vertex_image_uniforms");
     beam_atom_unsigned_int_vec3 = enif_make_atom(env, "unsigned_int_vec3");
     beam_atom_program_separable = enif_make_atom(env, "program_separable");
     beam_atom_texture28 = enif_make_atom(env, "texture28");
@@ -1186,6 +1266,7 @@ if (!egl_nif_execute_command) {
     beam_atom_one_minus_dst_alpha = enif_make_atom(env, "one_minus_dst_alpha");
     beam_atom_texture_max_level = enif_make_atom(env, "texture_max_level");
     beam_atom_back = enif_make_atom(env, "back");
+    beam_atom_max_shader_storage_block_size = enif_make_atom(env, "max_shader_storage_block_size");
     beam_atom_color_attachment2 = enif_make_atom(env, "color_attachment2");
     beam_atom_red = enif_make_atom(env, "red");
     beam_atom_depth_stencil_texture_mode = enif_make_atom(env, "depth_stencil_texture_mode");
@@ -1197,6 +1278,7 @@ if (!egl_nif_execute_command) {
     beam_atom_texture29 = enif_make_atom(env, "texture29");
     beam_atom_image_cube = enif_make_atom(env, "image_cube");
     beam_atom_color_attachment1 = enif_make_atom(env, "color_attachment1");
+    beam_atom_validate_status = enif_make_atom(env, "validate_status");
     beam_atom_scissor_test = enif_make_atom(env, "scissor_test");
     beam_atom_max_compute_texture_image_units = enif_make_atom(env, "max_compute_texture_image_units");
     beam_atom_any_samples_passed = enif_make_atom(env, "any_samples_passed");
@@ -1225,6 +1307,7 @@ if (!egl_nif_execute_command) {
     beam_atom_texture31 = enif_make_atom(env, "texture31");
     beam_atom_rgb10_a2ui = enif_make_atom(env, "rgb10_a2ui");
     beam_atom_rgba16ui = enif_make_atom(env, "rgba16ui");
+    beam_atom_max_compute_image_uniforms = enif_make_atom(env, "max_compute_image_uniforms");
     beam_atom_lequal = enif_make_atom(env, "lequal");
     beam_atom_buffer_usage = enif_make_atom(env, "buffer_usage");
     beam_atom_byte = enif_make_atom(env, "byte");
@@ -1243,20 +1326,25 @@ if (!egl_nif_execute_command) {
     beam_atom_max_combined_uniform_blocks = enif_make_atom(env, "max_combined_uniform_blocks");
     beam_atom_pack_alignment = enif_make_atom(env, "pack_alignment");
     beam_atom_draw_framebuffer_binding = enif_make_atom(env, "draw_framebuffer_binding");
+    beam_atom_max_transform_feedback_interleaved_components = enif_make_atom(env, "max_transform_feedback_interleaved_components");
     beam_atom_shading_language_version = enif_make_atom(env, "shading_language_version");
     beam_atom_framebuffer_attachment_object_type = enif_make_atom(env, "framebuffer_attachment_object_type");
     beam_atom_matrix_stride = enif_make_atom(env, "matrix_stride");
     beam_atom_rgb32i = enif_make_atom(env, "rgb32i");
     beam_atom_ccw = enif_make_atom(env, "ccw");
     beam_atom_fragment_shader = enif_make_atom(env, "fragment_shader");
+    beam_atom_attached_shaders = enif_make_atom(env, "attached_shaders");
     beam_atom_triangles = enif_make_atom(env, "triangles");
     beam_atom_blend_dst_rgb = enif_make_atom(env, "blend_dst_rgb");
+    beam_atom_max_transform_feedback_separate_attribs = enif_make_atom(env, "max_transform_feedback_separate_attribs");
     beam_atom_color_attachment22 = enif_make_atom(env, "color_attachment22");
     beam_atom_stencil_index = enif_make_atom(env, "stencil_index");
     beam_atom_uniform_barrier_bit = enif_make_atom(env, "uniform_barrier_bit");
+    beam_atom_min_program_texture_gather_offset = enif_make_atom(env, "min_program_texture_gather_offset");
     beam_atom_texture19 = enif_make_atom(env, "texture19");
     beam_atom_stencil_pass_depth_fail = enif_make_atom(env, "stencil_pass_depth_fail");
     beam_atom_compressed_rgb8_etc2 = enif_make_atom(env, "compressed_rgb8_etc2");
+    beam_atom_compute_work_group_size = enif_make_atom(env, "compute_work_group_size");
     beam_atom_renderbuffer_depth_size = enif_make_atom(env, "renderbuffer_depth_size");
     beam_atom_framebuffer_attachment_green_size = enif_make_atom(env, "framebuffer_attachment_green_size");
     beam_atom_uniform_block_data_size = enif_make_atom(env, "uniform_block_data_size");
@@ -1273,9 +1361,11 @@ if (!egl_nif_execute_command) {
     beam_atom_linear = enif_make_atom(env, "linear");
     beam_atom_vertex_array_binding = enif_make_atom(env, "vertex_array_binding");
     beam_atom_depth_func = enif_make_atom(env, "depth_func");
+    beam_atom_max_combined_image_uniforms = enif_make_atom(env, "max_combined_image_uniforms");
     beam_atom_invert = enif_make_atom(env, "invert");
     beam_atom_dither = enif_make_atom(env, "dither");
     beam_atom_color_attachment23 = enif_make_atom(env, "color_attachment23");
+    beam_atom_max_vertex_atomic_counter_buffers = enif_make_atom(env, "max_vertex_atomic_counter_buffers");
     beam_atom_name_length = enif_make_atom(env, "name_length");
     beam_atom_texture0 = enif_make_atom(env, "texture0");
     beam_atom_max_array_texture_layers = enif_make_atom(env, "max_array_texture_layers");
@@ -1285,6 +1375,7 @@ if (!egl_nif_execute_command) {
     beam_atom_line_loop = enif_make_atom(env, "line_loop");
     beam_atom_separate_attribs = enif_make_atom(env, "separate_attribs");
     beam_atom_max_vertex_attribs = enif_make_atom(env, "max_vertex_attribs");
+    beam_atom_max_atomic_counter_buffer_size = enif_make_atom(env, "max_atomic_counter_buffer_size");
     beam_atom_r16i = enif_make_atom(env, "r16i");
     beam_atom_transform_feedback = enif_make_atom(env, "transform_feedback");
     beam_atom_vertex_attrib_array_integer = enif_make_atom(env, "vertex_attrib_array_integer");
@@ -1330,6 +1421,7 @@ if (!egl_nif_execute_command) {
     beam_atom_rg16i = enif_make_atom(env, "rg16i");
     beam_atom_blend_color = enif_make_atom(env, "blend_color");
     beam_atom_int_image_cube = enif_make_atom(env, "int_image_cube");
+    beam_atom_active_uniform_block_max_name_length = enif_make_atom(env, "active_uniform_block_max_name_length");
     beam_atom_r11f_g11f_b10f = enif_make_atom(env, "r11f_g11f_b10f");
     beam_atom_active_variables = enif_make_atom(env, "active_variables");
     beam_atom_subpixel_bits = enif_make_atom(env, "subpixel_bits");
@@ -1350,8 +1442,10 @@ if (!egl_nif_execute_command) {
     beam_atom_invalid_operation = enif_make_atom(env, "invalid_operation");
     beam_atom_depth24_stencil8 = enif_make_atom(env, "depth24_stencil8");
     beam_atom_float_vec3 = enif_make_atom(env, "float_vec3");
+    beam_atom_max_fragment_image_uniforms = enif_make_atom(env, "max_fragment_image_uniforms");
     beam_atom_any_samples_passed_conservative = enif_make_atom(env, "any_samples_passed_conservative");
     beam_atom_line_strip = enif_make_atom(env, "line_strip");
+    beam_atom_max_image_units = enif_make_atom(env, "max_image_units");
     beam_atom_float_mat2x3 = enif_make_atom(env, "float_mat2x3");
     beam_atom_array_buffer = enif_make_atom(env, "array_buffer");
     beam_atom_max = enif_make_atom(env, "max");
@@ -1366,6 +1460,7 @@ if (!egl_nif_execute_command) {
     beam_atom_pack_skip_rows = enif_make_atom(env, "pack_skip_rows");
     beam_atom_texture_update_barrier_bit = enif_make_atom(env, "texture_update_barrier_bit");
     beam_atom_texture_binding_2d = enif_make_atom(env, "texture_binding_2d");
+    beam_atom_active_uniforms = enif_make_atom(env, "active_uniforms");
     beam_atom_stencil_back_value_mask = enif_make_atom(env, "stencil_back_value_mask");
     beam_atom_vertex_attrib_array_buffer_binding = enif_make_atom(env, "vertex_attrib_array_buffer_binding");
     beam_atom_int_sampler_3d = enif_make_atom(env, "int_sampler_3d");
@@ -1382,8 +1477,10 @@ if (!egl_nif_execute_command) {
     beam_atom_unsigned_int_vec2 = enif_make_atom(env, "unsigned_int_vec2");
     beam_atom_float_mat3 = enif_make_atom(env, "float_mat3");
     beam_atom_unsigned_int = enif_make_atom(env, "unsigned_int");
+    beam_atom_transform_feedback_varying_max_length = enif_make_atom(env, "transform_feedback_varying_max_length");
     beam_atom_all_barrier_bits = enif_make_atom(env, "all_barrier_bits");
     beam_atom_medium_int = enif_make_atom(env, "medium_int");
+    beam_atom_max_combined_atomic_counter_buffers = enif_make_atom(env, "max_combined_atomic_counter_buffers");
     beam_atom_rg32ui = enif_make_atom(env, "rg32ui");
     beam_atom_int_image_3d = enif_make_atom(env, "int_image_3d");
     beam_atom_rgb565 = enif_make_atom(env, "rgb565");
@@ -1615,62 +1712,6 @@ static ERL_NIF_TERM nif_glSamplerParameteriv(ErlNifEnv* env, int argc, const ERL
     return egl_nif_execute_command(nif_glSamplerParameteriv_command, env, argc, (ERL_NIF_TERM *)argv);
 }
 
-static ERL_NIF_TERM nif_glGetIntegervInteger_command(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-    (void)argc;
-
-    GLenum arg_0;
-    unsigned int arg_0_tmp;
-    if (!enif_get_uint(env, argv[0], &arg_0_tmp)) {
-        return enif_make_badarg(env);
-    }
-    arg_0 = (GLenum)arg_0_tmp;
-    GLint out_1;
-
-    glGetIntegerv(arg_0, &out_1);
-
-    ERL_NIF_TERM out_1_ret = enif_make_int(env, out_1);
-    return enif_make_tuple(env, 1,
-        out_1_ret
-    );
-}
-
-static ERL_NIF_TERM nif_glGetIntegervInteger(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-    return egl_nif_execute_command(nif_glGetIntegervInteger_command, env, argc, (ERL_NIF_TERM *)argv);
-}
-
-static ERL_NIF_TERM nif_glGetProgramiv_command(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-    (void)argc;
-
-    GLuint arg_0;
-    unsigned int arg_0_tmp;
-    if (!enif_get_uint(env, argv[0], &arg_0_tmp)) {
-        return enif_make_badarg(env);
-    }
-    arg_0 = (GLuint)arg_0_tmp;
-    GLenum arg_1;
-    unsigned int arg_1_tmp;
-    if (!enif_get_uint(env, argv[1], &arg_1_tmp)) {
-        return enif_make_badarg(env);
-    }
-    arg_1 = (GLenum)arg_1_tmp;
-    GLint out_2;
-
-    glGetProgramiv(arg_0, arg_1, &out_2);
-
-    ERL_NIF_TERM out_2_ret = enif_make_atom(env, out_2 != 0 ? "true" : "false");
-    return enif_make_tuple(env, 1,
-        out_2_ret
-    );
-}
-
-static ERL_NIF_TERM nif_glGetProgramiv(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-    return egl_nif_execute_command(nif_glGetProgramiv_command, env, argc, (ERL_NIF_TERM *)argv);
-}
-
 static ERL_NIF_TERM nif_glTexSubImage2D_command(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
     (void)argc;
@@ -1778,37 +1819,6 @@ static ERL_NIF_TERM nif_glClearStencil_command(ErlNifEnv* env, int argc, const E
 static ERL_NIF_TERM nif_glClearStencil(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
     return egl_nif_execute_command(nif_glClearStencil_command, env, argc, (ERL_NIF_TERM *)argv);
-}
-
-static ERL_NIF_TERM nif_glGetProgramivInteger_command(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-    (void)argc;
-
-    GLuint arg_0;
-    unsigned int arg_0_tmp;
-    if (!enif_get_uint(env, argv[0], &arg_0_tmp)) {
-        return enif_make_badarg(env);
-    }
-    arg_0 = (GLuint)arg_0_tmp;
-    GLenum arg_1;
-    unsigned int arg_1_tmp;
-    if (!enif_get_uint(env, argv[1], &arg_1_tmp)) {
-        return enif_make_badarg(env);
-    }
-    arg_1 = (GLenum)arg_1_tmp;
-    GLint out_2;
-
-    glGetProgramiv(arg_0, arg_1, &out_2);
-
-    ERL_NIF_TERM out_2_ret = enif_make_int(env, out_2);
-    return enif_make_tuple(env, 1,
-        out_2_ret
-    );
-}
-
-static ERL_NIF_TERM nif_glGetProgramivInteger(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-    return egl_nif_execute_command(nif_glGetProgramivInteger_command, env, argc, (ERL_NIF_TERM *)argv);
 }
 
 static ERL_NIF_TERM nif_glBindAttribLocation_command(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -2896,31 +2906,6 @@ static ERL_NIF_TERM nif_glGetInteger64vValues(ErlNifEnv* env, int argc, const ER
     return egl_nif_execute_command(nif_glGetInteger64vValues_command, env, argc, (ERL_NIF_TERM *)argv);
 }
 
-static ERL_NIF_TERM nif_glGetInteger64vInteger_command(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-    (void)argc;
-
-    GLenum arg_0;
-    unsigned int arg_0_tmp;
-    if (!enif_get_uint(env, argv[0], &arg_0_tmp)) {
-        return enif_make_badarg(env);
-    }
-    arg_0 = (GLenum)arg_0_tmp;
-    GLint64 out_1;
-
-    glGetInteger64v(arg_0, &out_1);
-
-    ERL_NIF_TERM out_1_ret = enif_make_int64(env, out_1);
-    return enif_make_tuple(env, 1,
-        out_1_ret
-    );
-}
-
-static ERL_NIF_TERM nif_glGetInteger64vInteger(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-    return egl_nif_execute_command(nif_glGetInteger64vInteger_command, env, argc, (ERL_NIF_TERM *)argv);
-}
-
 static ERL_NIF_TERM nif_glDrawArraysInstanced_command(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
     (void)argc;
@@ -3125,37 +3110,6 @@ static ERL_NIF_TERM nif_glActiveShaderProgram_command(ErlNifEnv* env, int argc, 
 static ERL_NIF_TERM nif_glActiveShaderProgram(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
     return egl_nif_execute_command(nif_glActiveShaderProgram_command, env, argc, (ERL_NIF_TERM *)argv);
-}
-
-static ERL_NIF_TERM nif_glGetShaderivInteger_command(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-    (void)argc;
-
-    GLuint arg_0;
-    unsigned int arg_0_tmp;
-    if (!enif_get_uint(env, argv[0], &arg_0_tmp)) {
-        return enif_make_badarg(env);
-    }
-    arg_0 = (GLuint)arg_0_tmp;
-    GLenum arg_1;
-    unsigned int arg_1_tmp;
-    if (!enif_get_uint(env, argv[1], &arg_1_tmp)) {
-        return enif_make_badarg(env);
-    }
-    arg_1 = (GLenum)arg_1_tmp;
-    GLint out_2;
-
-    glGetShaderiv(arg_0, arg_1, &out_2);
-
-    ERL_NIF_TERM out_2_ret = enif_make_int(env, out_2);
-    return enif_make_tuple(env, 1,
-        out_2_ret
-    );
-}
-
-static ERL_NIF_TERM nif_glGetShaderivInteger(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-    return egl_nif_execute_command(nif_glGetShaderivInteger_command, env, argc, (ERL_NIF_TERM *)argv);
 }
 
 static ERL_NIF_TERM nif_glStencilMask_command(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -4903,31 +4857,6 @@ static ERL_NIF_TERM nif_glTexParameteriv(ErlNifEnv* env, int argc, const ERL_NIF
     return egl_nif_execute_command(nif_glTexParameteriv_command, env, argc, (ERL_NIF_TERM *)argv);
 }
 
-static ERL_NIF_TERM nif_glGetIntegervBoolean_command(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-    (void)argc;
-
-    GLenum arg_0;
-    unsigned int arg_0_tmp;
-    if (!enif_get_uint(env, argv[0], &arg_0_tmp)) {
-        return enif_make_badarg(env);
-    }
-    arg_0 = (GLenum)arg_0_tmp;
-    GLint out_1;
-
-    glGetIntegerv(arg_0, &out_1);
-
-    ERL_NIF_TERM out_1_ret = enif_make_atom(env, out_1 != 0 ? "true" : "false");
-    return enif_make_tuple(env, 1,
-        out_1_ret
-    );
-}
-
-static ERL_NIF_TERM nif_glGetIntegervBoolean(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-    return egl_nif_execute_command(nif_glGetIntegervBoolean_command, env, argc, (ERL_NIF_TERM *)argv);
-}
-
 static ERL_NIF_TERM nif_glDrawBuffers_command(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
     (void)argc;
@@ -5033,31 +4962,6 @@ static ERL_NIF_TERM nif_glBindBufferBase_command(ErlNifEnv* env, int argc, const
 static ERL_NIF_TERM nif_glBindBufferBase(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
     return egl_nif_execute_command(nif_glBindBufferBase_command, env, argc, (ERL_NIF_TERM *)argv);
-}
-
-static ERL_NIF_TERM nif_glGetIntegerv_command(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-    (void)argc;
-
-    GLenum arg_0;
-    unsigned int arg_0_tmp;
-    if (!enif_get_uint(env, argv[0], &arg_0_tmp)) {
-        return enif_make_badarg(env);
-    }
-    arg_0 = (GLenum)arg_0_tmp;
-    GLint out_1;
-
-    glGetIntegerv(arg_0, &out_1);
-
-    ERL_NIF_TERM out_1_ret = enif_make_int(env, out_1);
-    return enif_make_tuple(env, 1,
-        out_1_ret
-    );
-}
-
-static ERL_NIF_TERM nif_glGetIntegerv(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-    return egl_nif_execute_command(nif_glGetIntegerv_command, env, argc, (ERL_NIF_TERM *)argv);
 }
 
 static ERL_NIF_TERM nif_glCheckFramebufferStatus_command(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -9120,7 +9024,7 @@ static ERL_NIF_TERM nif_glStencilOpSeparate(ErlNifEnv* env, int argc, const ERL_
     return egl_nif_execute_command(nif_glStencilOpSeparate_command, env, argc, (ERL_NIF_TERM *)argv);
 }
 
-static ERL_NIF_TERM nif_glGetProgramPipelineivInteger_command(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+static ERL_NIF_TERM nif_glGetShaderivValues_command(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
     (void)argc;
 
@@ -9136,19 +9040,37 @@ static ERL_NIF_TERM nif_glGetProgramPipelineivInteger_command(ErlNifEnv* env, in
         return enif_make_badarg(env);
     }
     arg_1 = (GLenum)arg_1_tmp;
-    GLint out_2;
+    ErlNifUInt64 arg_2_count_tmp;
+    if (!enif_get_uint64(env, argv[2], &arg_2_count_tmp)) {
+        return enif_make_badarg(env);
+    }
+    if (arg_2_count_tmp == 0 || arg_2_count_tmp > (ErlNifUInt64)INT_MAX) {
+        return enif_make_badarg(env);
+    }
+    GLsizei arg_2_count = (GLsizei)arg_2_count_tmp;
+    GLint* arg_2_values = enif_alloc(sizeof(GLint) * (size_t)arg_2_count);
+    if (!arg_2_values) {
+        return enif_make_tuple2(env,
+            enif_make_atom(env, "error"),
+            enif_make_atom(env, "out_of_memory")
+        );
+    }
 
-    glGetProgramPipelineiv(arg_0, arg_1, &out_2);
+    glGetShaderiv(arg_0, arg_1, arg_2_values);
 
-    ERL_NIF_TERM out_2_ret = enif_make_int(env, out_2);
+    ERL_NIF_TERM arg_2_ret = enif_make_list(env, 0);
+    for (int i = arg_2_count-1; i >= 0; i--) {
+    arg_2_ret = enif_make_list_cell(env, enif_make_int(env, arg_2_values[i]), arg_2_ret);
+    }
+    enif_free(arg_2_values);
     return enif_make_tuple(env, 1,
-        out_2_ret
+        arg_2_ret
     );
 }
 
-static ERL_NIF_TERM nif_glGetProgramPipelineivInteger(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+static ERL_NIF_TERM nif_glGetShaderivValues(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-    return egl_nif_execute_command(nif_glGetProgramPipelineivInteger_command, env, argc, (ERL_NIF_TERM *)argv);
+    return egl_nif_execute_command(nif_glGetShaderivValues_command, env, argc, (ERL_NIF_TERM *)argv);
 }
 
 static ERL_NIF_TERM nif_glGetProgramResourceLocation_command(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -12567,37 +12489,6 @@ static ERL_NIF_TERM nif_glGetProgramResourceiv(ErlNifEnv* env, int argc, const E
     return egl_nif_execute_command(nif_glGetProgramResourceiv_command, env, argc, (ERL_NIF_TERM *)argv);
 }
 
-static ERL_NIF_TERM nif_glGetProgramPipelineiv_command(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-    (void)argc;
-
-    GLuint arg_0;
-    unsigned int arg_0_tmp;
-    if (!enif_get_uint(env, argv[0], &arg_0_tmp)) {
-        return enif_make_badarg(env);
-    }
-    arg_0 = (GLuint)arg_0_tmp;
-    GLenum arg_1;
-    unsigned int arg_1_tmp;
-    if (!enif_get_uint(env, argv[1], &arg_1_tmp)) {
-        return enif_make_badarg(env);
-    }
-    arg_1 = (GLenum)arg_1_tmp;
-    GLint out_2;
-
-    glGetProgramPipelineiv(arg_0, arg_1, &out_2);
-
-    ERL_NIF_TERM out_2_ret = enif_make_atom(env, out_2 != 0 ? "true" : "false");
-    return enif_make_tuple(env, 1,
-        out_2_ret
-    );
-}
-
-static ERL_NIF_TERM nif_glGetProgramPipelineiv(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-    return egl_nif_execute_command(nif_glGetProgramPipelineiv_command, env, argc, (ERL_NIF_TERM *)argv);
-}
-
 static ERL_NIF_TERM nif_glGenBuffers_command(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
     (void)argc;
@@ -12925,37 +12816,6 @@ static ERL_NIF_TERM nif_glActiveTexture_command(ErlNifEnv* env, int argc, const 
 static ERL_NIF_TERM nif_glActiveTexture(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
     return egl_nif_execute_command(nif_glActiveTexture_command, env, argc, (ERL_NIF_TERM *)argv);
-}
-
-static ERL_NIF_TERM nif_glGetShaderiv_command(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-    (void)argc;
-
-    GLuint arg_0;
-    unsigned int arg_0_tmp;
-    if (!enif_get_uint(env, argv[0], &arg_0_tmp)) {
-        return enif_make_badarg(env);
-    }
-    arg_0 = (GLuint)arg_0_tmp;
-    GLenum arg_1;
-    unsigned int arg_1_tmp;
-    if (!enif_get_uint(env, argv[1], &arg_1_tmp)) {
-        return enif_make_badarg(env);
-    }
-    arg_1 = (GLenum)arg_1_tmp;
-    GLint out_2;
-
-    glGetShaderiv(arg_0, arg_1, &out_2);
-
-    ERL_NIF_TERM out_2_ret = enif_make_atom(env, out_2 != 0 ? "true" : "false");
-    return enif_make_tuple(env, 1,
-        out_2_ret
-    );
-}
-
-static ERL_NIF_TERM nif_glGetShaderiv(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
-{
-    return egl_nif_execute_command(nif_glGetShaderiv_command, env, argc, (ERL_NIF_TERM *)argv);
 }
 
 static ERL_NIF_TERM nif_glResumeTransformFeedback_command(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
@@ -13509,6 +13369,55 @@ static ERL_NIF_TERM nif_glCullFace(ErlNifEnv* env, int argc, const ERL_NIF_TERM 
     return egl_nif_execute_command(nif_glCullFace_command, env, argc, (ERL_NIF_TERM *)argv);
 }
 
+static ERL_NIF_TERM nif_glGetProgramivValues_command(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+{
+    (void)argc;
+
+    GLuint arg_0;
+    unsigned int arg_0_tmp;
+    if (!enif_get_uint(env, argv[0], &arg_0_tmp)) {
+        return enif_make_badarg(env);
+    }
+    arg_0 = (GLuint)arg_0_tmp;
+    GLenum arg_1;
+    unsigned int arg_1_tmp;
+    if (!enif_get_uint(env, argv[1], &arg_1_tmp)) {
+        return enif_make_badarg(env);
+    }
+    arg_1 = (GLenum)arg_1_tmp;
+    ErlNifUInt64 arg_2_count_tmp;
+    if (!enif_get_uint64(env, argv[2], &arg_2_count_tmp)) {
+        return enif_make_badarg(env);
+    }
+    if (arg_2_count_tmp == 0 || arg_2_count_tmp > (ErlNifUInt64)INT_MAX) {
+        return enif_make_badarg(env);
+    }
+    GLsizei arg_2_count = (GLsizei)arg_2_count_tmp;
+    GLint* arg_2_values = enif_alloc(sizeof(GLint) * (size_t)arg_2_count);
+    if (!arg_2_values) {
+        return enif_make_tuple2(env,
+            enif_make_atom(env, "error"),
+            enif_make_atom(env, "out_of_memory")
+        );
+    }
+
+    glGetProgramiv(arg_0, arg_1, arg_2_values);
+
+    ERL_NIF_TERM arg_2_ret = enif_make_list(env, 0);
+    for (int i = arg_2_count-1; i >= 0; i--) {
+    arg_2_ret = enif_make_list_cell(env, enif_make_int(env, arg_2_values[i]), arg_2_ret);
+    }
+    enif_free(arg_2_values);
+    return enif_make_tuple(env, 1,
+        arg_2_ret
+    );
+}
+
+static ERL_NIF_TERM nif_glGetProgramivValues(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+{
+    return egl_nif_execute_command(nif_glGetProgramivValues_command, env, argc, (ERL_NIF_TERM *)argv);
+}
+
 static ERL_NIF_TERM nif_glDrawElementsIndirect_command(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
     (void)argc;
@@ -13821,12 +13730,9 @@ static ErlNifFunc nif_functions[] = {
     {"glSamplerParameterfv_raw", 3, nif_glSamplerParameterfv, 0},
     {"glSamplerParameteri_raw", 3, nif_glSamplerParameteri, 0},
     {"glSamplerParameteriv_raw", 3, nif_glSamplerParameteriv, 0},
-    {"glGetIntegervInteger_raw", 1, nif_glGetIntegervInteger, 0},
-    {"glGetProgramiv_raw", 2, nif_glGetProgramiv, 0},
     {"glTexSubImage2D_raw", 9, nif_glTexSubImage2D, 0},
     {"glEnableVertexAttribArray_raw", 1, nif_glEnableVertexAttribArray, 0},
     {"glClearStencil_raw", 1, nif_glClearStencil, 0},
-    {"glGetProgramivInteger_raw", 2, nif_glGetProgramivInteger, 0},
     {"glBindAttribLocation_raw", 3, nif_glBindAttribLocation, 0},
     {"glVertexAttribBinding_raw", 2, nif_glVertexAttribBinding, 0},
     {"glTransformFeedbackVaryings_raw", 3, nif_glTransformFeedbackVaryings, 0},
@@ -13853,14 +13759,12 @@ static ErlNifFunc nif_functions[] = {
     {"glBindImageTexture_raw", 7, nif_glBindImageTexture, 0},
     {"glVertexAttribPointer_raw", 6, nif_glVertexAttribPointer, 0},
     {"glGetInteger64vValues_raw", 2, nif_glGetInteger64vValues, 0},
-    {"glGetInteger64vInteger_raw", 1, nif_glGetInteger64vInteger, 0},
     {"glDrawArraysInstanced_raw", 4, nif_glDrawArraysInstanced, 0},
     {"glDrawElements_raw", 4, nif_glDrawElements, 0},
     {"glPolygonOffset_raw", 2, nif_glPolygonOffset, 0},
     {"glEndTransformFeedback_raw", 0, nif_glEndTransformFeedback, 0},
     {"glDrawRangeElements_raw", 6, nif_glDrawRangeElements, 0},
     {"glActiveShaderProgram_raw", 2, nif_glActiveShaderProgram, 0},
-    {"glGetShaderivInteger_raw", 2, nif_glGetShaderivInteger, 0},
     {"glStencilMask_raw", 1, nif_glStencilMask, 0},
     {"glGetProgramInterfaceiv_raw", 4, nif_glGetProgramInterfaceiv, 0},
     {"glGetProgramResourceName_raw", 4, nif_glGetProgramResourceName, 0},
@@ -13901,11 +13805,9 @@ static ErlNifFunc nif_functions[] = {
     {"glTexParameterf_raw", 3, nif_glTexParameterf, 0},
     {"glTexParameterfv_raw", 3, nif_glTexParameterfv, 0},
     {"glTexParameteriv_raw", 3, nif_glTexParameteriv, 0},
-    {"glGetIntegervBoolean_raw", 1, nif_glGetIntegervBoolean, 0},
     {"glDrawBuffers_raw", 2, nif_glDrawBuffers, 0},
     {"glGetFramebufferParameteriv_raw", 3, nif_glGetFramebufferParameteriv, 0},
     {"glBindBufferBase_raw", 3, nif_glBindBufferBase, 0},
-    {"glGetIntegerv_raw", 1, nif_glGetIntegerv, 0},
     {"glCheckFramebufferStatus_raw", 1, nif_glCheckFramebufferStatus, 0},
     {"glGetProgramPipelineivValues_raw", 3, nif_glGetProgramPipelineivValues, 0},
     {"glIsProgram_raw", 1, nif_glIsProgram, 0},
@@ -14002,7 +13904,7 @@ static ErlNifFunc nif_functions[] = {
     {"glGetShaderSource_raw", 2, nif_glGetShaderSource, 0},
     {"glSampleCoverage_raw", 2, nif_glSampleCoverage, 0},
     {"glStencilOpSeparate_raw", 4, nif_glStencilOpSeparate, 0},
-    {"glGetProgramPipelineivInteger_raw", 2, nif_glGetProgramPipelineivInteger, 0},
+    {"glGetShaderivValues_raw", 3, nif_glGetShaderivValues, 0},
     {"glGetProgramResourceLocation_raw", 3, nif_glGetProgramResourceLocation, 0},
     {"glProgramBinary_raw", 4, nif_glProgramBinary, 0},
     {"glClearBufferfi_raw", 4, nif_glClearBufferfi, 0},
@@ -14087,7 +13989,6 @@ static ErlNifFunc nif_functions[] = {
     {"glVertexAttrib4f_raw", 5, nif_glVertexAttrib4f, 0},
     {"glDispatchCompute_raw", 3, nif_glDispatchCompute, 0},
     {"glGetProgramResourceiv_raw", 5, nif_glGetProgramResourceiv, 0},
-    {"glGetProgramPipelineiv_raw", 2, nif_glGetProgramPipelineiv, 0},
     {"glGenBuffers_raw", 1, nif_glGenBuffers, 0},
     {"glGetUniformfv_raw", 3, nif_glGetUniformfv, 0},
     {"glGetUniformiv_raw", 3, nif_glGetUniformiv, 0},
@@ -14096,7 +13997,6 @@ static ErlNifFunc nif_functions[] = {
     {"glGetSamplerParameterfv_raw", 3, nif_glGetSamplerParameterfv, 0},
     {"glGetSamplerParameteriv_raw", 3, nif_glGetSamplerParameteriv, 0},
     {"glActiveTexture_raw", 1, nif_glActiveTexture, 0},
-    {"glGetShaderiv_raw", 2, nif_glGetShaderiv, 0},
     {"glResumeTransformFeedback_raw", 0, nif_glResumeTransformFeedback, 0},
     {"glGetInteger64i_v_raw", 3, nif_glGetInteger64i_v, 0},
     {"glFinish_raw", 0, nif_glFinish, 0},
@@ -14111,6 +14011,7 @@ static ErlNifFunc nif_functions[] = {
     {"glFramebufferTextureLayer_raw", 5, nif_glFramebufferTextureLayer, 0},
     {"glDispatchComputeIndirect_raw", 1, nif_glDispatchComputeIndirect, 0},
     {"glCullFace_raw", 1, nif_glCullFace, 0},
+    {"glGetProgramivValues_raw", 3, nif_glGetProgramivValues, 0},
     {"glDrawElementsIndirect_raw", 3, nif_glDrawElementsIndirect, 0},
     {"glUseProgram_raw", 1, nif_glUseProgram, 0},
     {"glBindSampler_raw", 2, nif_glBindSampler, 0},

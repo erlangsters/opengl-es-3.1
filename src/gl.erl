@@ -123,6 +123,7 @@ outside the `gl` module itself.
 -export_type([buffer_parameter_name/0]).
 -export_type([texture_mag_filter/0]).
 -export_type([blend_equation_mode/0]).
+-export_type([program_parameter_name/0]).
 -export_type([texture_wrap_mode/0]).
 -export_type([internal_format/0]).
 -export_type([transform_feedback_buffer_mode/0]).
@@ -159,6 +160,7 @@ outside the `gl` module itself.
 -export_type([buffer_usage/0]).
 -export_type([blit_framebuffer_filter/0]).
 -export_type([framebuffer_attachment/0]).
+-export_type([shader_parameter_name/0]).
 -export_type([draw_elements_type/0]).
 -export_type([active_uniform_block_parameter_name/0]).
 -export_type([renderbuffer_target/0]).
@@ -191,13 +193,9 @@ outside the `gl` module itself.
 -export([disable/1]).
 -export([memory_barrier_by_region/1]).
 -export([sampler_parameter/4]).
--export([get_max_vertex_image_uniforms/0]).
--export([get_program_link_status/1]).
 -export([tex_sub_image_2d/9]).
--export([get_min_program_texture_gather_offset/0]).
 -export([enable_vertex_attrib_array/1]).
 -export([clear_stencil/1]).
--export([get_program_active_uniforms_count/1]).
 -export([bind_attrib_location/3]).
 -export([vertex_attrib_binding/2]).
 -export([transform_feedback_varyings/3]).
@@ -205,13 +203,9 @@ outside the `gl` module itself.
 -export([tex_storage_2d/5]).
 -export([get_program_pipeline_info_log/2]).
 -export([get_boolean/3]).
--export([get_max_combined_image_uniforms/0]).
 -export([get_shader_precision_format/2]).
--export([get_max_combined_atomic_counter_buffers/0]).
 -export([get_transform_feedback_varying/3]).
--export([get_num_shader_binary_formats/0]).
 -export([delete_renderbuffers/1]).
--export([get_max_shader_storage_buffer_bindings/0]).
 -export([stencil_op/3]).
 -export([vertex_attrib_i/3]).
 -export([is_renderbuffer/1]).
@@ -221,136 +215,88 @@ outside the `gl` module itself.
 -export([is_transform_feedback/1]).
 -export([read_buffer/1]).
 -export([get_internal_format/5]).
--export([get_max_compute_uniform_components/0]).
--export([get_max_compute_image_uniforms/0]).
 -export([create_shader/1]).
 -export([bind_program_pipeline/1]).
--export([get_program_attached_shaders_count/1]).
 -export([draw_elements_instanced/5]).
 -export([bind_image_texture/7]).
 -export([vertex_attrib_pointer/6]).
--export([get_max_fragment_uniform_vectors/0]).
--export([get_pack_skip_rows/0]).
 -export([get_integer64/2]).
--export([get_max_fragment_atomic_counter_buffers/0]).
--export([get_max_combined_fragment_uniform_components/0]).
--export([get_max_vertex_attrib_stride/0]).
 -export([draw_arrays_instanced/4]).
 -export([draw_elements/4]).
 -export([polygon_offset/2]).
 -export([end_transform_feedback/0]).
 -export([draw_range_elements/6]).
 -export([active_shader_program/2]).
--export([get_max_compute_texture_image_units/0]).
--export([get_shader_source_length/1]).
 -export([stencil_mask/1]).
--export([get_max_shader_storage_block_size/0]).
--export([get_minor_version/0]).
 -export([get_program_interface/4]).
 -export([get_program_resource_name/4]).
--export([get_max_depth_texture_samples/0]).
 -export([copy_buffer_sub_data/5]).
 -export([program_uniform/4]).
 -export([disable_vertex_attrib_array/1]).
--export([get_program_validation_status/1]).
 -export([clear_depth/1]).
 -export([link_program/1]).
 -export([compile_shader/1]).
 -export([detach_shader/2]).
 -export([buffer_data/3]).
--export([get_max_uniform_locations/0]).
--export([get_max_uniform_block_size/0]).
--export([get_max_framebuffer_height/0]).
--export([get_shader_info_log_length/1]).
 -export([get_uniform_indices/2]).
 -export([attach_shader/2]).
--export([get_uniform_buffer_offset_alignment/0]).
 -export([generate_mipmap/1]).
 -export([tex_parameter/4]).
--export([get_shader_compiler_supported/0]).
--export([get_program_active_attributes_count/1]).
 -export([draw_buffers/1]).
 -export([get_framebuffer_parameter/3]).
 -export([bind_buffer_base/3]).
--export([get_samples_count/0]).
 -export([check_framebuffer_status/1]).
 -export([get_program_pipeline/3]).
--export([get_program_active_uniform_block_max_name_length/1]).
 -export([is_program/1]).
--export([get_major_version/0]).
--export([get_max_color_attachments/0]).
--export([get_pack_skip_pixels/0]).
 -export([is_shader/1]).
 -export([gen_textures/1]).
 -export([gen_renderbuffers/1]).
--export([get_max_uniform_buffer_bindings/0]).
 -export([shader_binary/3]).
 -export([get_active_attrib/3]).
 -export([validate_program/1]).
--export([get_sample_buffers_count/0]).
 -export([bind_vertex_buffer/4]).
--export([get_max_compute_work_group_invocations/0]).
 -export([get_string/2]).
 -export([tex_sub_image_3d/11]).
 -export([memory_barrier/1]).
 -export([copy_tex_image_2d/8]).
--export([get_max_combined_uniform_blocks/0]).
 -export([bind_vertex_array/1]).
 -export([framebuffer_parameter/3]).
 -export([invalidate_sub_framebuffer/6]).
 -export([get_multisample/3]).
 -export([blit_framebuffer/10]).
--export([get_unpack_image_height/0]).
 -export([stencil_mask_separate/2]).
 -export([vertex_attrib_format/5]).
 -export([scissor/4]).
 -export([tex_image_2d/9]).
 -export([get_attrib_location/2]).
 -export([delete_transform_feedbacks/1]).
--export([get_max_cube_map_texture_size/0]).
 -export([get_vertex_attrib/4]).
 -export([get_error/0]).
 -export([is_vertex_array/1]).
--export([get_program_info_log_length/1]).
--export([get_max_atomic_counter_buffer_bindings/0]).
 -export([bind_texture/2]).
 -export([vertex_attrib_i_pointer/5]).
--export([get_num_extensions/0]).
--export([get_max_compute_atomic_counter_buffers/0]).
 -export([delete_shader/1]).
--export([get_max_combined_vertex_uniform_components/0]).
 -export([get_tex_level_parameter/5]).
--export([get_max_fragment_image_uniforms/0]).
 -export([depth_range/2]).
 -export([uniform/3]).
 -export([get_integer/3]).
 -export([stencil_func/3]).
--export([get_max_vertex_attrib_relative_offset/0]).
 -export([clear_buffer/4]).
 -export([gen_program_pipelines/1]).
 -export([tex_wrap_t/2]).
 -export([draw_arrays/3]).
--export([get_max_color_texture_samples/0]).
--export([get_max_fragment_atomic_counters/0]).
--export([get_max_vertex_texture_image_units/0]).
 -export([framebuffer_texture_2d/5]).
 -export([delete_textures/1]).
--export([get_max_varying_vectors/0]).
 -export([invalidate_framebuffer/2]).
--export([get_unpack_skip_images/0]).
 -export([vertex_attrib_i_format/4]).
--export([get_max_combined_texture_image_units/0]).
 -export([tex_min_filter/2]).
 -export([tex_mag_filter/2]).
--export([get_max_combined_shader_output_resources/0]).
 -export([line_width/1]).
 -export([sample_mask/2]).
 -export([depth_mask/1]).
 -export([blend_equation_separate/2]).
--export([get_program_active_uniform_blocks_count/1]).
 -export([get_program_resource_index/3]).
 -export([copy_tex_sub_image_3d/9]).
--export([get_shader_storage_buffer_offset_alignment/0]).
 -export([viewport/4]).
 -export([tex_image_3d/10]).
 -export([compressed_tex_sub_image_2d/8]).
@@ -360,70 +306,40 @@ outside the `gl` module itself.
 -export([uniform_block_binding/3]).
 -export([uniform_matrix/3]).
 -export([vertex_binding_divisor/2]).
--export([get_program_transform_feedback_varying_max_length/1]).
--export([get_max_fragment_uniform_components/0]).
--export([get_max_fragment_shader_storage_blocks/0]).
--export([get_program_delete_status/1]).
--export([get_max_elements_indices/0]).
 -export([get_shader_source/2]).
--export([get_program_active_uniform_max_length/1]).
--export([get_program_binary_length/1]).
 -export([sample_coverage/2]).
 -export([stencil_op_separate/4]).
--export([get_program_pipeline_info_log_length/1]).
+-export([get_shader/3]).
 -export([get_program_resource_location/3]).
--export([get_subpixel_bits/0]).
--export([get_max_framebuffer_samples/0]).
--export([get_max_vertex_atomic_counter_buffers/0]).
 -export([program_binary/3]).
--export([get_max_framebuffer_width/0]).
 -export([clear_buffer_depth_stencil/3]).
 -export([blend_func/2]).
 -export([use_program_stages/3]).
--export([get_max_vertex_uniform_components/0]).
 -export([delete_framebuffers/1]).
 -export([hint/2]).
--export([get_max_compute_shader_storage_blocks/0]).
 -export([get_boolean/2]).
--export([get_max_transform_feedback_separate_components/0]).
 -export([begin_transform_feedback/1]).
--export([get_max_array_texture_layers/0]).
 -export([blend_color/4]).
 -export([tex_storage_2d_multisample/6]).
 -export([is_program_pipeline/1]).
 -export([delete_buffers/1]).
--export([get_max_compute_shared_memory_size/0]).
--export([get_max_sample_mask_words/0]).
 -export([get_framebuffer_attachment_parameter/4]).
--export([get_max_program_texture_gather_offset/0]).
--export([get_max_varying_components/0]).
 -export([begin_query/2]).
 -export([program_uniform_matrix/4]).
--export([get_program_active_attribute_max_length/1]).
--export([get_max_vertex_uniform_blocks/0]).
--export([get_program_transform_feedback_varyings_count/1]).
 -export([release_shader_compiler/0]).
 -export([pixel_store/2]).
--export([get_max_transform_feedback_separate_attribs/0]).
 -export([end_query/1]).
 -export([get_program_binary/2]).
 -export([get_active_uniforms/3]).
 -export([shader_source/2]).
 -export([clear/1]).
 -export([framebuffer_renderbuffer/4]).
--export([get_max_renderbuffer_size/0]).
 -export([validate_program_pipeline/1]).
--export([get_max_transform_feedback_interleaved_components/0]).
 -export([draw_arrays_indirect/2]).
 -export([get_buffer_parameter/4]).
--export([get_unpack_alignment/0]).
--export([get_max_combined_atomic_counters/0]).
--export([get_max_vertex_output_components/0]).
 -export([copy_tex_sub_image_2d/8]).
 -export([get_active_uniform/3]).
--export([get_program_active_atomic_counter_buffers_count/1]).
 -export([renderbuffer_storage/4]).
--export([get_num_compressed_texture_formats/0]).
 -export([stencil_func_separate/4]).
 -export([get_integer/2]).
 -export([get_active_uniform_block/4]).
@@ -431,36 +347,23 @@ outside the `gl` module itself.
 -export([depth_func/1]).
 -export([gen_framebuffers/1]).
 -export([vertex_attrib_divisor/2]).
--export([get_max_texture_image_units/0]).
--export([get_min_program_texel_offset/0]).
 -export([get_vertex_attrib_i/4]).
 -export([get_float/2]).
 -export([tex_storage_3d/6]).
--export([get_unpack_row_length/0]).
 -export([color_mask/4]).
--export([get_max_fragment_input_components/0]).
--export([get_max_compute_atomic_counters/0]).
--export([get_max_vertex_attrib_bindings/0]).
 -export([get_attached_shaders/2]).
 -export([renderbuffer_storage_multisample/5]).
 -export([is_texture/1]).
--export([get_max_combined_shader_storage_blocks/0]).
 -export([compressed_tex_image_3d/8]).
--export([get_max_integer_samples/0]).
 -export([is_framebuffer/1]).
 -export([gen_samplers/1]).
--export([get_unpack_skip_pixels/0]).
 -export([gen_transform_feedbacks/1]).
--export([get_max_draw_buffers/0]).
 -export([is_sampler/1]).
--export([get_max_elements_vertices/0]).
 -export([front_face/1]).
 -export([blend_equation/1]).
 -export([get_string/1]).
--export([get_program_separable/1]).
 -export([get_shader_info_log/2]).
 -export([delete_queries/1]).
--export([get_max_vertex_atomic_counters/0]).
 -export([gen_queries/1]).
 -export([enable/1]).
 -export([create_shader_program/2]).
@@ -470,59 +373,41 @@ outside the `gl` module itself.
 -export([blend_func_separate/4]).
 -export([bind_framebuffer/2]).
 -export([bind_renderbuffer/2]).
--export([get_max_compute_uniform_blocks/0]).
 -export([clear_color/4]).
--export([get_max_combined_compute_uniform_components/0]).
 -export([get_uniform_block_index/2]).
--export([get_max_program_texel_offset/0]).
--export([get_max_vertex_shader_storage_blocks/0]).
--export([get_max_samples/0]).
--export([get_max_vertex_attribs/0]).
 -export([is_enabled/1]).
 -export([delete_samplers/1]).
 -export([vertex_attrib/3]).
 -export([dispatch_compute/3]).
--export([get_unpack_skip_rows/0]).
 -export([get_program_resource/5]).
--export([get_program_pipeline_validation_status/1]).
 -export([gen_buffers/1]).
 -export([get_uniform/4]).
 -export([buffer_sub_data/3]).
 -export([get_sampler_parameter/4]).
 -export([active_texture/1]).
--export([get_max_texture_size/0]).
--export([get_shader_delete_status/1]).
 -export([resume_transform_feedback/0]).
 -export([get_integer64/3]).
--export([get_max_image_units/0]).
 -export([finish/0]).
 -export([get_renderbuffer_parameter/3]).
 -export([delete_vertex_arrays/1]).
 -export([compressed_tex_sub_image_3d/10]).
--export([get_num_program_binary_formats/0]).
 -export([get_query_object/4]).
 -export([bind_buffer_range/5]).
--export([get_shader_compile_status/1]).
--export([get_max_3d_texture_size/0]).
 -export([create_program/0]).
 -export([get_active_uniform_block_name/3]).
 -export([compressed_tex_image_2d/7]).
 -export([framebuffer_texture_layer/5]).
 -export([dispatch_compute_indirect/1]).
 -export([cull_face/1]).
+-export([get_program/3]).
 -export([draw_elements_indirect/3]).
--export([get_max_vertex_uniform_vectors/0]).
 -export([use_program/1]).
--export([get_max_fragment_uniform_blocks/0]).
 -export([bind_sampler/2]).
 -export([read_pixels/7]).
 -export([delete_program/1]).
--export([get_pack_alignment/0]).
 -export([get_frag_data_location/2]).
 -export([get_uniform_location/2]).
 -export([program_parameter/3]).
--export([get_max_atomic_counter_buffer_size/0]).
--export([get_pack_row_length/0]).
 -export([bind_transform_feedback/2]).
 
 -include("../include/gl.hrl").
@@ -587,7 +472,7 @@ outside the `gl` module itself.
 -doc "The OpenGL `double` type.".
 -type double() :: erlang:float().
 
--doc "to be written.".
+-doc "A scalar value of the given type.".
 -type scalar(Type) :: Type.
 
 -doc "A 1D vector.".
@@ -877,61 +762,32 @@ outside the `gl` module itself.
 .
 -doc "The OpenGL `state_parameter_name` enum.".
 -type state_parameter_name() ::
-    max_varying_vectors |
     compressed_texture_formats |
     polygon_offset_fill |
     shader_storage_buffer_size |
     dither |
-    max_combined_compute_uniform_components |
     stencil_back_func |
     stencil_pass_depth_pass |
-    max_combined_uniform_blocks |
     draw_framebuffer_binding |
-    pack_skip_rows |
     blend_equation_rgb |
-    max_elements_indices |
-    max_compute_uniform_components |
     depth_func |
-    max_vertex_uniform_blocks |
     depth_test |
-    max_combined_shader_storage_blocks |
     shader_storage_buffer_start |
-    min_program_texel_offset |
-    max_framebuffer_samples |
     color_clear_value |
-    major_version |
-    max_compute_work_group_invocations |
-    max_vertex_uniform_components |
-    max_compute_shader_storage_blocks |
-    max_framebuffer_height |
-    max_shader_storage_buffer_bindings |
-    max_draw_buffers |
     current_program |
-    max_vertex_attrib_relative_offset |
-    pack_row_length |
     transform_feedback_buffer_binding |
     shader_binary_formats |
-    max_vertex_atomic_counters |
     stencil_ref |
     front_face |
-    max_vertex_attribs |
     texture_2d |
     program_binary_formats |
     stencil_back_writemask |
-    max_compute_texture_image_units |
     cull_face_mode |
-    max_fragment_atomic_counters |
     scissor_test |
-    max_color_texture_samples |
-    max_fragment_uniform_vectors |
     sampler_binding |
     sample_coverage_invert |
-    samples |
     element_array_buffer_binding |
-    max_sample_mask_words |
     blue_bits |
-    max_vertex_uniform_vectors |
-    max_compute_atomic_counter_buffers |
     green_bits |
     implementation_color_read_type |
     alpha_bits |
@@ -940,117 +796,166 @@ outside the `gl` module itself.
     pixel_unpack_buffer_binding |
     blend_color |
     blend_equation_alpha |
-    max_uniform_block_size |
     stencil_back_pass_depth_fail |
-    num_program_binary_formats |
-    max_framebuffer_width |
     stencil_back_pass_depth_pass |
-    max_combined_atomic_counters |
     vertex_binding_divisor |
-    pack_alignment |
     max_compute_work_group_size |
     renderbuffer_binding |
     read_framebuffer_binding |
     texture_binding_cube_map |
     stencil_pass_depth_fail |
-    unpack_skip_images |
-    max_texture_size |
     red_bits |
-    unpack_image_height |
-    max_compute_atomic_counters |
     cull_face |
     sample_coverage_value |
-    max_vertex_texture_image_units |
     array_buffer_binding |
-    max_3d_texture_size |
     stencil_writemask |
     scissor_box |
-    minor_version |
-    max_compute_uniform_blocks |
     max_server_wait_timeout |
     transform_feedback_buffer_size |
-    max_combined_fragment_uniform_components |
-    shader_storage_buffer_offset_alignment |
-    max_vertex_shader_storage_blocks |
     depth_bits |
-    num_extensions |
     vertex_binding_stride |
     blend_dst_alpha |
-    unpack_skip_rows |
     max_viewport_dims |
-    num_shader_binary_formats |
-    max_depth_texture_samples |
     vertex_array_binding |
-    max_fragment_input_components |
     depth_clear_value |
-    unpack_skip_pixels |
     stencil_back_fail |
     stencil_back_ref |
-    max_renderbuffer_size |
-    max_element_index |
-    max_vertex_output_components |
     stencil_back_value_mask |
-    max_color_attachments |
-    max_combined_texture_image_units |
-    max_texture_image_units |
     uniform_buffer_size |
-    max_vertex_attrib_bindings |
     shader_storage_buffer_binding |
-    blend |
     program_pipeline_binding |
     stencil_value_mask |
     max_texture_lod_bias |
-    unpack_row_length |
-    pack_skip_pixels |
-    max_integer_samples |
     stencil_clear_value |
     color_writemask |
-    shader_compiler |
-    max_fragment_uniform_components |
     stencil_test |
     stencil_bits |
-    max_elements_vertices |
-    unpack_alignment |
     vertex_binding_offset |
-    subpixel_bits |
     transform_feedback_buffer_start |
-    max_combined_vertex_uniform_components |
     depth_range |
-    sample_buffers |
-    max_cube_map_texture_size |
     fragment_shader_derivative_hint |
     polygon_offset_factor |
-    max_fragment_shader_storage_blocks |
     texture_binding_2d_multisample |
-    max_uniform_locations |
     uniform_buffer_binding |
     dispatch_indirect_buffer_binding |
-    depth_writemask |
     blend_src_rgb |
-    max_program_texel_offset |
     max_compute_work_group_count |
     implementation_color_read_format |
     blend_equation |
     stencil_func |
-    max_uniform_buffer_bindings |
     uniform_buffer_start |
     texture_binding_2d |
-    max_array_texture_layers |
     read_buffer |
     blend_src_alpha |
-    max_varying_components |
-    max_fragment_uniform_blocks |
     aliased_point_size_range |
-    uniform_buffer_offset_alignment |
     blend_dst_rgb |
-    line_width |
     active_texture |
     viewport |
     stencil_fail |
     pixel_pack_buffer_binding |
-    num_compressed_texture_formats |
     texture_binding_3d |
-    polygon_offset_units
+    polygon_offset_units |
+    unpack_skip_rows |
+    unpack_skip_pixels |
+    unpack_skip_images |
+    unpack_row_length |
+    unpack_image_height |
+    unpack_alignment |
+    uniform_buffer_offset_alignment |
+    subpixel_bits |
+    shader_storage_buffer_offset_alignment |
+    shader_compiler |
+    samples |
+    sample_buffers |
+    pack_skip_rows |
+    pack_skip_pixels |
+    pack_row_length |
+    pack_alignment |
+    num_shader_binary_formats |
+    num_program_binary_formats |
+    num_extensions |
+    num_compressed_texture_formats |
+    minor_version |
+    min_program_texture_gather_offset |
+    min_program_texel_offset |
+    max_vertex_uniform_vectors |
+    max_vertex_uniform_components |
+    max_vertex_uniform_blocks |
+    max_vertex_texture_image_units |
+    max_vertex_shader_storage_blocks |
+    max_vertex_output_components |
+    max_vertex_image_uniforms |
+    max_vertex_attribs |
+    max_vertex_attrib_stride |
+    max_vertex_attrib_relative_offset |
+    max_vertex_attrib_bindings |
+    max_vertex_atomic_counters |
+    max_vertex_atomic_counter_buffers |
+    max_varying_vectors |
+    max_varying_components |
+    max_uniform_locations |
+    max_uniform_buffer_bindings |
+    max_uniform_block_size |
+    max_transform_feedback_separate_components |
+    max_transform_feedback_separate_attribs |
+    max_transform_feedback_interleaved_components |
+    max_texture_size |
+    max_texture_image_units |
+    max_shader_storage_buffer_bindings |
+    max_shader_storage_block_size |
+    max_samples |
+    max_sample_mask_words |
+    max_renderbuffer_size |
+    max_program_texture_gather_offset |
+    max_program_texel_offset |
+    max_integer_samples |
+    max_image_units |
+    max_framebuffer_width |
+    max_framebuffer_samples |
+    max_framebuffer_height |
+    max_fragment_uniform_vectors |
+    max_fragment_uniform_components |
+    max_fragment_uniform_blocks |
+    max_fragment_shader_storage_blocks |
+    max_fragment_input_components |
+    max_fragment_image_uniforms |
+    max_fragment_atomic_counters |
+    max_fragment_atomic_counter_buffers |
+    max_elements_vertices |
+    max_elements_indices |
+    max_element_index |
+    max_draw_buffers |
+    max_depth_texture_samples |
+    max_cube_map_texture_size |
+    max_compute_work_group_invocations |
+    max_compute_uniform_components |
+    max_compute_uniform_blocks |
+    max_compute_texture_image_units |
+    max_compute_shared_memory_size |
+    max_compute_shader_storage_blocks |
+    max_compute_image_uniforms |
+    max_compute_atomic_counters |
+    max_compute_atomic_counter_buffers |
+    max_combined_vertex_uniform_components |
+    max_combined_uniform_blocks |
+    max_combined_texture_image_units |
+    max_combined_shader_storage_blocks |
+    max_combined_shader_output_resources |
+    max_combined_image_uniforms |
+    max_combined_fragment_uniform_components |
+    max_combined_compute_uniform_components |
+    max_combined_atomic_counters |
+    max_combined_atomic_counter_buffers |
+    max_color_texture_samples |
+    max_color_attachments |
+    max_atomic_counter_buffer_size |
+    max_atomic_counter_buffer_bindings |
+    max_array_texture_layers |
+    max_3d_texture_size |
+    major_version |
+    line_width |
+    depth_writemask |
+    blend
 .
 -doc "The OpenGL `transform_feedback_target` enum.".
 -type transform_feedback_target() ::
@@ -1124,6 +1029,28 @@ outside the `gl` module itself.
     func_subtract |
     func_reverse_subtract |
     min
+.
+-doc "The OpenGL `program_parameter_name` enum.".
+-type program_parameter_name() ::
+    program_binary_retrievable_hint |
+    program_separable |
+    attached_shaders |
+    link_status |
+    info_log_length |
+    validate_status |
+    active_uniforms |
+    active_attribute_max_length |
+    active_attributes |
+    program_binary_length |
+    transform_feedback_varyings |
+    active_uniform_block_max_name_length |
+    delete_status |
+    transform_feedback_varying_max_length |
+    compute_work_group_size |
+    active_atomic_counter_buffers |
+    active_uniform_max_length |
+    active_uniform_blocks |
+    transform_feedback_buffer_mode
 .
 -doc "The OpenGL `texture_wrap_mode` enum.".
 -type texture_wrap_mode() ::
@@ -1645,6 +1572,14 @@ outside the `gl` module itself.
     color_attachment14 |
     stencil_attachment
 .
+-doc "The OpenGL `shader_parameter_name` enum.".
+-type shader_parameter_name() ::
+    info_log_length |
+    shader_source_length |
+    compile_status |
+    delete_status |
+    shader_type
+.
 -doc "The OpenGL `draw_elements_type` enum.".
 -type draw_elements_type() ::
     unsigned_byte |
@@ -1748,7 +1683,8 @@ outside the `gl` module itself.
     info_log_length |
     active_program |
     fragment_shader |
-    vertex_shader
+    vertex_shader |
+    validate_status
 .
 -doc "The OpenGL `texture_parameter_name` enum.".
 -type texture_parameter_name() ::
@@ -1856,12 +1792,9 @@ outside the `gl` module itself.
 -nifs([glSamplerParameterfv_raw/3]).
 -nifs([glSamplerParameteri_raw/3]).
 -nifs([glSamplerParameteriv_raw/3]).
--nifs([glGetIntegervInteger_raw/1]).
--nifs([glGetProgramiv_raw/2]).
 -nifs([glTexSubImage2D_raw/9]).
 -nifs([glEnableVertexAttribArray_raw/1]).
 -nifs([glClearStencil_raw/1]).
--nifs([glGetProgramivInteger_raw/2]).
 -nifs([glBindAttribLocation_raw/3]).
 -nifs([glVertexAttribBinding_raw/2]).
 -nifs([glTransformFeedbackVaryings_raw/3]).
@@ -1888,14 +1821,12 @@ outside the `gl` module itself.
 -nifs([glBindImageTexture_raw/7]).
 -nifs([glVertexAttribPointer_raw/6]).
 -nifs([glGetInteger64vValues_raw/2]).
--nifs([glGetInteger64vInteger_raw/1]).
 -nifs([glDrawArraysInstanced_raw/4]).
 -nifs([glDrawElements_raw/4]).
 -nifs([glPolygonOffset_raw/2]).
 -nifs([glEndTransformFeedback_raw/0]).
 -nifs([glDrawRangeElements_raw/6]).
 -nifs([glActiveShaderProgram_raw/2]).
--nifs([glGetShaderivInteger_raw/2]).
 -nifs([glStencilMask_raw/1]).
 -nifs([glGetProgramInterfaceiv_raw/4]).
 -nifs([glGetProgramResourceName_raw/4]).
@@ -1936,11 +1867,9 @@ outside the `gl` module itself.
 -nifs([glTexParameterf_raw/3]).
 -nifs([glTexParameterfv_raw/3]).
 -nifs([glTexParameteriv_raw/3]).
--nifs([glGetIntegervBoolean_raw/1]).
 -nifs([glDrawBuffers_raw/2]).
 -nifs([glGetFramebufferParameteriv_raw/3]).
 -nifs([glBindBufferBase_raw/3]).
--nifs([glGetIntegerv_raw/1]).
 -nifs([glCheckFramebufferStatus_raw/1]).
 -nifs([glGetProgramPipelineivValues_raw/3]).
 -nifs([glIsProgram_raw/1]).
@@ -2037,7 +1966,7 @@ outside the `gl` module itself.
 -nifs([glGetShaderSource_raw/2]).
 -nifs([glSampleCoverage_raw/2]).
 -nifs([glStencilOpSeparate_raw/4]).
--nifs([glGetProgramPipelineivInteger_raw/2]).
+-nifs([glGetShaderivValues_raw/3]).
 -nifs([glGetProgramResourceLocation_raw/3]).
 -nifs([glProgramBinary_raw/4]).
 -nifs([glClearBufferfi_raw/4]).
@@ -2122,7 +2051,6 @@ outside the `gl` module itself.
 -nifs([glVertexAttrib4f_raw/5]).
 -nifs([glDispatchCompute_raw/3]).
 -nifs([glGetProgramResourceiv_raw/5]).
--nifs([glGetProgramPipelineiv_raw/2]).
 -nifs([glGenBuffers_raw/1]).
 -nifs([glGetUniformfv_raw/3]).
 -nifs([glGetUniformiv_raw/3]).
@@ -2131,7 +2059,6 @@ outside the `gl` module itself.
 -nifs([glGetSamplerParameterfv_raw/3]).
 -nifs([glGetSamplerParameteriv_raw/3]).
 -nifs([glActiveTexture_raw/1]).
--nifs([glGetShaderiv_raw/2]).
 -nifs([glResumeTransformFeedback_raw/0]).
 -nifs([glGetInteger64i_v_raw/3]).
 -nifs([glFinish_raw/0]).
@@ -2146,6 +2073,7 @@ outside the `gl` module itself.
 -nifs([glFramebufferTextureLayer_raw/5]).
 -nifs([glDispatchComputeIndirect_raw/1]).
 -nifs([glCullFace_raw/1]).
+-nifs([glGetProgramivValues_raw/3]).
 -nifs([glDrawElementsIndirect_raw/3]).
 -nifs([glUseProgram_raw/1]).
 -nifs([glBindSampler_raw/2]).
@@ -2167,7 +2095,11 @@ init_nif() ->
         EGLDir ->
             EGLDir
     end,
-    EGLNifLocation = filename:join(EGLPrivDir, "beam-egl") ++ ".so",
+    EGLNifLocation = filename:join(EGLPrivDir, "beam-egl") ++
+        case os:type() of
+            {win32, _} -> ".dll";
+            _ -> ".so"
+        end,
     LibName = "beam-gl",
     SoName = case code:priv_dir(?MODULE) of
         {error, bad_name} ->
@@ -2427,38 +2359,6 @@ sampler_parameter(i, Sampler, ParamName, Param) ->
     ?CALL_RAW_FUNC(glSamplerParameteri_raw(Sampler, NewParamName, Param)).
 
 -doc """
-Return the maximum number of vertex shader image uniforms.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_vertex_image_uniforms().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_vertex_image_uniforms() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_vertex_image_uniforms() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_VERTEX_IMAGE_UNIFORMS)).
-
--doc """
-Return whether a program object's last link succeeded.
-
-It implements the `glGetProgramiv` function
-
-```
-{ok, true} = gl:get_program_link_status(Program).
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetProgramiv) for more information.
-""".
--spec get_program_link_status(Program :: program()) -> {ok, Status :: gl:boolean()} | {error, atom()}.
-get_program_link_status(Program) ->
-
-    ?CALL_RAW_FUNC(glGetProgramiv_raw(Program, ?GL_LINK_STATUS)).
-
--doc """
 Specify a two-dimensional texture subimage.
 
 It implements the `glTexSubImage2D` function
@@ -2538,22 +2438,6 @@ tex_sub_image_2d(Target, Level, OffsetX, OffsetY, Width, Height, Format, Type, P
     ?CALL_RAW_FUNC(glTexSubImage2D_raw(NewTarget, Level, OffsetX, OffsetY, Width, Height, NewFormat, NewType, Pixels0)).
 
 -doc """
-Return the minimum programmable texture gather offset.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Offset} = gl:get_min_program_texture_gather_offset().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_min_program_texture_gather_offset() -> {ok, Offset :: gl:int()} | {error, atom()}.
-get_min_program_texture_gather_offset() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MIN_PROGRAM_TEXTURE_GATHER_OFFSET)).
-
--doc """
 Enable a generic vertex attribute array.
 
 It implements the `glEnableVertexAttribArray` function
@@ -2584,22 +2468,6 @@ Consult the documentation of the underlying [OpenGL function](https://docs.gl/es
 clear_stencil(Value) ->
 
     ?CALL_RAW_FUNC(glClearStencil_raw(Value)).
-
--doc """
-Return the number of active uniform variables in a program.
-
-It implements the `glGetProgramiv` function
-
-```
-{ok, Count} = gl:get_program_active_uniforms_count(Program).
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetProgramiv) for more information.
-""".
--spec get_program_active_uniforms_count(Program :: program()) -> {ok, Count :: gl:int()} | {error, atom()}.
-get_program_active_uniforms_count(Program) ->
-
-    ?CALL_RAW_FUNC(glGetProgramivInteger_raw(Program, ?GL_ACTIVE_UNIFORMS)).
 
 -doc """
 Bind a generic vertex attribute index to a named attribute variable before linking.
@@ -2827,117 +2695,166 @@ Consult the documentation of the underlying [OpenGL function](https://docs.gl/es
 ) -> {ok, Values :: [gl:boolean()]} | {error, atom()}.
 get_boolean(ParamName, Index, Count) ->
     NewParamName = case ParamName of
+        blend -> ?GL_BLEND;
+        depth_writemask -> ?GL_DEPTH_WRITEMASK;
+        line_width -> ?GL_LINE_WIDTH;
+        major_version -> ?GL_MAJOR_VERSION;
+        max_3d_texture_size -> ?GL_MAX_3D_TEXTURE_SIZE;
+        max_array_texture_layers -> ?GL_MAX_ARRAY_TEXTURE_LAYERS;
+        max_atomic_counter_buffer_bindings -> ?GL_MAX_ATOMIC_COUNTER_BUFFER_BINDINGS;
+        max_atomic_counter_buffer_size -> ?GL_MAX_ATOMIC_COUNTER_BUFFER_SIZE;
+        max_color_attachments -> ?GL_MAX_COLOR_ATTACHMENTS;
+        max_color_texture_samples -> ?GL_MAX_COLOR_TEXTURE_SAMPLES;
+        max_combined_atomic_counter_buffers -> ?GL_MAX_COMBINED_ATOMIC_COUNTER_BUFFERS;
+        max_combined_atomic_counters -> ?GL_MAX_COMBINED_ATOMIC_COUNTERS;
+        max_combined_compute_uniform_components -> ?GL_MAX_COMBINED_COMPUTE_UNIFORM_COMPONENTS;
+        max_combined_fragment_uniform_components -> ?GL_MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS;
+        max_combined_image_uniforms -> ?GL_MAX_COMBINED_IMAGE_UNIFORMS;
+        max_combined_shader_output_resources -> ?GL_MAX_COMBINED_SHADER_OUTPUT_RESOURCES;
+        max_combined_shader_storage_blocks -> ?GL_MAX_COMBINED_SHADER_STORAGE_BLOCKS;
+        max_combined_texture_image_units -> ?GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS;
+        max_combined_uniform_blocks -> ?GL_MAX_COMBINED_UNIFORM_BLOCKS;
+        max_combined_vertex_uniform_components -> ?GL_MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS;
+        max_compute_atomic_counter_buffers -> ?GL_MAX_COMPUTE_ATOMIC_COUNTER_BUFFERS;
+        max_compute_atomic_counters -> ?GL_MAX_COMPUTE_ATOMIC_COUNTERS;
+        max_compute_image_uniforms -> ?GL_MAX_COMPUTE_IMAGE_UNIFORMS;
+        max_compute_shader_storage_blocks -> ?GL_MAX_COMPUTE_SHADER_STORAGE_BLOCKS;
+        max_compute_shared_memory_size -> ?GL_MAX_COMPUTE_SHARED_MEMORY_SIZE;
+        max_compute_texture_image_units -> ?GL_MAX_COMPUTE_TEXTURE_IMAGE_UNITS;
+        max_compute_uniform_blocks -> ?GL_MAX_COMPUTE_UNIFORM_BLOCKS;
+        max_compute_uniform_components -> ?GL_MAX_COMPUTE_UNIFORM_COMPONENTS;
+        max_compute_work_group_invocations -> ?GL_MAX_COMPUTE_WORK_GROUP_INVOCATIONS;
+        max_cube_map_texture_size -> ?GL_MAX_CUBE_MAP_TEXTURE_SIZE;
+        max_depth_texture_samples -> ?GL_MAX_DEPTH_TEXTURE_SAMPLES;
+        max_draw_buffers -> ?GL_MAX_DRAW_BUFFERS;
+        max_element_index -> ?GL_MAX_ELEMENT_INDEX;
+        max_elements_indices -> ?GL_MAX_ELEMENTS_INDICES;
+        max_elements_vertices -> ?GL_MAX_ELEMENTS_VERTICES;
+        max_fragment_atomic_counter_buffers -> ?GL_MAX_FRAGMENT_ATOMIC_COUNTER_BUFFERS;
+        max_fragment_atomic_counters -> ?GL_MAX_FRAGMENT_ATOMIC_COUNTERS;
+        max_fragment_image_uniforms -> ?GL_MAX_FRAGMENT_IMAGE_UNIFORMS;
+        max_fragment_input_components -> ?GL_MAX_FRAGMENT_INPUT_COMPONENTS;
+        max_fragment_shader_storage_blocks -> ?GL_MAX_FRAGMENT_SHADER_STORAGE_BLOCKS;
+        max_fragment_uniform_blocks -> ?GL_MAX_FRAGMENT_UNIFORM_BLOCKS;
+        max_fragment_uniform_components -> ?GL_MAX_FRAGMENT_UNIFORM_COMPONENTS;
+        max_fragment_uniform_vectors -> ?GL_MAX_FRAGMENT_UNIFORM_VECTORS;
+        max_framebuffer_height -> ?GL_MAX_FRAMEBUFFER_HEIGHT;
+        max_framebuffer_samples -> ?GL_MAX_FRAMEBUFFER_SAMPLES;
+        max_framebuffer_width -> ?GL_MAX_FRAMEBUFFER_WIDTH;
+        max_image_units -> ?GL_MAX_IMAGE_UNITS;
+        max_integer_samples -> ?GL_MAX_INTEGER_SAMPLES;
+        max_program_texel_offset -> ?GL_MAX_PROGRAM_TEXEL_OFFSET;
+        max_program_texture_gather_offset -> ?GL_MAX_PROGRAM_TEXTURE_GATHER_OFFSET;
+        max_renderbuffer_size -> ?GL_MAX_RENDERBUFFER_SIZE;
+        max_sample_mask_words -> ?GL_MAX_SAMPLE_MASK_WORDS;
+        max_samples -> ?GL_MAX_SAMPLES;
+        max_shader_storage_block_size -> ?GL_MAX_SHADER_STORAGE_BLOCK_SIZE;
+        max_shader_storage_buffer_bindings -> ?GL_MAX_SHADER_STORAGE_BUFFER_BINDINGS;
+        max_texture_image_units -> ?GL_MAX_TEXTURE_IMAGE_UNITS;
+        max_texture_size -> ?GL_MAX_TEXTURE_SIZE;
+        max_transform_feedback_interleaved_components -> ?GL_MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS;
+        max_transform_feedback_separate_attribs -> ?GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS;
+        max_transform_feedback_separate_components -> ?GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS;
+        max_uniform_block_size -> ?GL_MAX_UNIFORM_BLOCK_SIZE;
+        max_uniform_buffer_bindings -> ?GL_MAX_UNIFORM_BUFFER_BINDINGS;
+        max_uniform_locations -> ?GL_MAX_UNIFORM_LOCATIONS;
+        max_varying_components -> ?GL_MAX_VARYING_COMPONENTS;
+        max_varying_vectors -> ?GL_MAX_VARYING_VECTORS;
+        max_vertex_atomic_counter_buffers -> ?GL_MAX_VERTEX_ATOMIC_COUNTER_BUFFERS;
+        max_vertex_atomic_counters -> ?GL_MAX_VERTEX_ATOMIC_COUNTERS;
+        max_vertex_attrib_bindings -> ?GL_MAX_VERTEX_ATTRIB_BINDINGS;
+        max_vertex_attrib_relative_offset -> ?GL_MAX_VERTEX_ATTRIB_RELATIVE_OFFSET;
+        max_vertex_attrib_stride -> ?GL_MAX_VERTEX_ATTRIB_STRIDE;
+        max_vertex_attribs -> ?GL_MAX_VERTEX_ATTRIBS;
+        max_vertex_image_uniforms -> ?GL_MAX_VERTEX_IMAGE_UNIFORMS;
+        max_vertex_output_components -> ?GL_MAX_VERTEX_OUTPUT_COMPONENTS;
+        max_vertex_shader_storage_blocks -> ?GL_MAX_VERTEX_SHADER_STORAGE_BLOCKS;
+        max_vertex_texture_image_units -> ?GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS;
+        max_vertex_uniform_blocks -> ?GL_MAX_VERTEX_UNIFORM_BLOCKS;
+        max_vertex_uniform_components -> ?GL_MAX_VERTEX_UNIFORM_COMPONENTS;
+        max_vertex_uniform_vectors -> ?GL_MAX_VERTEX_UNIFORM_VECTORS;
+        min_program_texel_offset -> ?GL_MIN_PROGRAM_TEXEL_OFFSET;
+        min_program_texture_gather_offset -> ?GL_MIN_PROGRAM_TEXTURE_GATHER_OFFSET;
+        minor_version -> ?GL_MINOR_VERSION;
+        num_compressed_texture_formats -> ?GL_NUM_COMPRESSED_TEXTURE_FORMATS;
+        num_extensions -> ?GL_NUM_EXTENSIONS;
+        num_program_binary_formats -> ?GL_NUM_PROGRAM_BINARY_FORMATS;
+        num_shader_binary_formats -> ?GL_NUM_SHADER_BINARY_FORMATS;
+        pack_alignment -> ?GL_PACK_ALIGNMENT;
+        pack_row_length -> ?GL_PACK_ROW_LENGTH;
+        pack_skip_pixels -> ?GL_PACK_SKIP_PIXELS;
+        pack_skip_rows -> ?GL_PACK_SKIP_ROWS;
+        sample_buffers -> ?GL_SAMPLE_BUFFERS;
+        samples -> ?GL_SAMPLES;
+        shader_compiler -> ?GL_SHADER_COMPILER;
+        shader_storage_buffer_offset_alignment -> ?GL_SHADER_STORAGE_BUFFER_OFFSET_ALIGNMENT;
+        subpixel_bits -> ?GL_SUBPIXEL_BITS;
+        uniform_buffer_offset_alignment -> ?GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT;
+        unpack_alignment -> ?GL_UNPACK_ALIGNMENT;
+        unpack_image_height -> ?GL_UNPACK_IMAGE_HEIGHT;
+        unpack_row_length -> ?GL_UNPACK_ROW_LENGTH;
+        unpack_skip_images -> ?GL_UNPACK_SKIP_IMAGES;
+        unpack_skip_pixels -> ?GL_UNPACK_SKIP_PIXELS;
+        unpack_skip_rows -> ?GL_UNPACK_SKIP_ROWS;
         polygon_offset_units -> ?GL_POLYGON_OFFSET_UNITS;
         texture_binding_3d -> ?GL_TEXTURE_BINDING_3D;
-        num_compressed_texture_formats -> ?GL_NUM_COMPRESSED_TEXTURE_FORMATS;
         pixel_pack_buffer_binding -> ?GL_PIXEL_PACK_BUFFER_BINDING;
         stencil_fail -> ?GL_STENCIL_FAIL;
         viewport -> ?GL_VIEWPORT;
         active_texture -> ?GL_ACTIVE_TEXTURE;
-        line_width -> ?GL_LINE_WIDTH;
         blend_dst_rgb -> ?GL_BLEND_DST_RGB;
-        uniform_buffer_offset_alignment -> ?GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT;
         aliased_point_size_range -> ?GL_ALIASED_POINT_SIZE_RANGE;
-        max_fragment_uniform_blocks -> ?GL_MAX_FRAGMENT_UNIFORM_BLOCKS;
-        max_varying_components -> ?GL_MAX_VARYING_COMPONENTS;
         blend_src_alpha -> ?GL_BLEND_SRC_ALPHA;
         read_buffer -> ?GL_READ_BUFFER;
-        max_array_texture_layers -> ?GL_MAX_ARRAY_TEXTURE_LAYERS;
         texture_binding_2d -> ?GL_TEXTURE_BINDING_2D;
         uniform_buffer_start -> ?GL_UNIFORM_BUFFER_START;
-        max_uniform_buffer_bindings -> ?GL_MAX_UNIFORM_BUFFER_BINDINGS;
         stencil_func -> ?GL_STENCIL_FUNC;
         blend_equation -> ?GL_BLEND_EQUATION;
         implementation_color_read_format -> ?GL_IMPLEMENTATION_COLOR_READ_FORMAT;
         max_compute_work_group_count -> ?GL_MAX_COMPUTE_WORK_GROUP_COUNT;
-        max_program_texel_offset -> ?GL_MAX_PROGRAM_TEXEL_OFFSET;
         blend_src_rgb -> ?GL_BLEND_SRC_RGB;
-        depth_writemask -> ?GL_DEPTH_WRITEMASK;
         dispatch_indirect_buffer_binding -> ?GL_DISPATCH_INDIRECT_BUFFER_BINDING;
         uniform_buffer_binding -> ?GL_UNIFORM_BUFFER_BINDING;
-        max_uniform_locations -> ?GL_MAX_UNIFORM_LOCATIONS;
         texture_binding_2d_multisample -> ?GL_TEXTURE_BINDING_2D_MULTISAMPLE;
-        max_fragment_shader_storage_blocks -> ?GL_MAX_FRAGMENT_SHADER_STORAGE_BLOCKS;
         polygon_offset_factor -> ?GL_POLYGON_OFFSET_FACTOR;
         fragment_shader_derivative_hint -> ?GL_FRAGMENT_SHADER_DERIVATIVE_HINT;
-        max_cube_map_texture_size -> ?GL_MAX_CUBE_MAP_TEXTURE_SIZE;
-        sample_buffers -> ?GL_SAMPLE_BUFFERS;
         depth_range -> ?GL_DEPTH_RANGE;
-        max_combined_vertex_uniform_components -> ?GL_MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS;
         transform_feedback_buffer_start -> ?GL_TRANSFORM_FEEDBACK_BUFFER_START;
-        subpixel_bits -> ?GL_SUBPIXEL_BITS;
         vertex_binding_offset -> ?GL_VERTEX_BINDING_OFFSET;
-        unpack_alignment -> ?GL_UNPACK_ALIGNMENT;
-        max_elements_vertices -> ?GL_MAX_ELEMENTS_VERTICES;
         stencil_bits -> ?GL_STENCIL_BITS;
         stencil_test -> ?GL_STENCIL_TEST;
-        max_fragment_uniform_components -> ?GL_MAX_FRAGMENT_UNIFORM_COMPONENTS;
-        shader_compiler -> ?GL_SHADER_COMPILER;
         color_writemask -> ?GL_COLOR_WRITEMASK;
         stencil_clear_value -> ?GL_STENCIL_CLEAR_VALUE;
-        max_integer_samples -> ?GL_MAX_INTEGER_SAMPLES;
-        pack_skip_pixels -> ?GL_PACK_SKIP_PIXELS;
-        unpack_row_length -> ?GL_UNPACK_ROW_LENGTH;
         max_texture_lod_bias -> ?GL_MAX_TEXTURE_LOD_BIAS;
         stencil_value_mask -> ?GL_STENCIL_VALUE_MASK;
         program_pipeline_binding -> ?GL_PROGRAM_PIPELINE_BINDING;
-        blend -> ?GL_BLEND;
         shader_storage_buffer_binding -> ?GL_SHADER_STORAGE_BUFFER_BINDING;
-        max_vertex_attrib_bindings -> ?GL_MAX_VERTEX_ATTRIB_BINDINGS;
         uniform_buffer_size -> ?GL_UNIFORM_BUFFER_SIZE;
-        max_texture_image_units -> ?GL_MAX_TEXTURE_IMAGE_UNITS;
-        max_combined_texture_image_units -> ?GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS;
-        max_color_attachments -> ?GL_MAX_COLOR_ATTACHMENTS;
         stencil_back_value_mask -> ?GL_STENCIL_BACK_VALUE_MASK;
-        max_vertex_output_components -> ?GL_MAX_VERTEX_OUTPUT_COMPONENTS;
-        max_element_index -> ?GL_MAX_ELEMENT_INDEX;
-        max_renderbuffer_size -> ?GL_MAX_RENDERBUFFER_SIZE;
         stencil_back_ref -> ?GL_STENCIL_BACK_REF;
         stencil_back_fail -> ?GL_STENCIL_BACK_FAIL;
-        unpack_skip_pixels -> ?GL_UNPACK_SKIP_PIXELS;
         depth_clear_value -> ?GL_DEPTH_CLEAR_VALUE;
-        max_fragment_input_components -> ?GL_MAX_FRAGMENT_INPUT_COMPONENTS;
         vertex_array_binding -> ?GL_VERTEX_ARRAY_BINDING;
-        max_depth_texture_samples -> ?GL_MAX_DEPTH_TEXTURE_SAMPLES;
-        num_shader_binary_formats -> ?GL_NUM_SHADER_BINARY_FORMATS;
         max_viewport_dims -> ?GL_MAX_VIEWPORT_DIMS;
-        unpack_skip_rows -> ?GL_UNPACK_SKIP_ROWS;
         blend_dst_alpha -> ?GL_BLEND_DST_ALPHA;
         vertex_binding_stride -> ?GL_VERTEX_BINDING_STRIDE;
-        num_extensions -> ?GL_NUM_EXTENSIONS;
         depth_bits -> ?GL_DEPTH_BITS;
-        max_vertex_shader_storage_blocks -> ?GL_MAX_VERTEX_SHADER_STORAGE_BLOCKS;
-        shader_storage_buffer_offset_alignment -> ?GL_SHADER_STORAGE_BUFFER_OFFSET_ALIGNMENT;
-        max_combined_fragment_uniform_components -> ?GL_MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS;
         transform_feedback_buffer_size -> ?GL_TRANSFORM_FEEDBACK_BUFFER_SIZE;
         max_server_wait_timeout -> ?GL_MAX_SERVER_WAIT_TIMEOUT;
-        max_compute_uniform_blocks -> ?GL_MAX_COMPUTE_UNIFORM_BLOCKS;
-        minor_version -> ?GL_MINOR_VERSION;
         scissor_box -> ?GL_SCISSOR_BOX;
         stencil_writemask -> ?GL_STENCIL_WRITEMASK;
-        max_3d_texture_size -> ?GL_MAX_3D_TEXTURE_SIZE;
         array_buffer_binding -> ?GL_ARRAY_BUFFER_BINDING;
-        max_vertex_texture_image_units -> ?GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS;
         sample_coverage_value -> ?GL_SAMPLE_COVERAGE_VALUE;
         cull_face -> ?GL_CULL_FACE;
-        max_compute_atomic_counters -> ?GL_MAX_COMPUTE_ATOMIC_COUNTERS;
-        unpack_image_height -> ?GL_UNPACK_IMAGE_HEIGHT;
         red_bits -> ?GL_RED_BITS;
-        max_texture_size -> ?GL_MAX_TEXTURE_SIZE;
-        unpack_skip_images -> ?GL_UNPACK_SKIP_IMAGES;
         stencil_pass_depth_fail -> ?GL_STENCIL_PASS_DEPTH_FAIL;
         texture_binding_cube_map -> ?GL_TEXTURE_BINDING_CUBE_MAP;
         read_framebuffer_binding -> ?GL_READ_FRAMEBUFFER_BINDING;
         renderbuffer_binding -> ?GL_RENDERBUFFER_BINDING;
         max_compute_work_group_size -> ?GL_MAX_COMPUTE_WORK_GROUP_SIZE;
-        pack_alignment -> ?GL_PACK_ALIGNMENT;
         vertex_binding_divisor -> ?GL_VERTEX_BINDING_DIVISOR;
-        max_combined_atomic_counters -> ?GL_MAX_COMBINED_ATOMIC_COUNTERS;
         stencil_back_pass_depth_pass -> ?GL_STENCIL_BACK_PASS_DEPTH_PASS;
-        max_framebuffer_width -> ?GL_MAX_FRAMEBUFFER_WIDTH;
-        num_program_binary_formats -> ?GL_NUM_PROGRAM_BINARY_FORMATS;
         stencil_back_pass_depth_fail -> ?GL_STENCIL_BACK_PASS_DEPTH_FAIL;
-        max_uniform_block_size -> ?GL_MAX_UNIFORM_BLOCK_SIZE;
         blend_equation_alpha -> ?GL_BLEND_EQUATION_ALPHA;
         blend_color -> ?GL_BLEND_COLOR;
         pixel_unpack_buffer_binding -> ?GL_PIXEL_UNPACK_BUFFER_BINDING;
@@ -2946,80 +2863,35 @@ get_boolean(ParamName, Index, Count) ->
         alpha_bits -> ?GL_ALPHA_BITS;
         implementation_color_read_type -> ?GL_IMPLEMENTATION_COLOR_READ_TYPE;
         green_bits -> ?GL_GREEN_BITS;
-        max_compute_atomic_counter_buffers -> ?GL_MAX_COMPUTE_ATOMIC_COUNTER_BUFFERS;
-        max_vertex_uniform_vectors -> ?GL_MAX_VERTEX_UNIFORM_VECTORS;
         blue_bits -> ?GL_BLUE_BITS;
-        max_sample_mask_words -> ?GL_MAX_SAMPLE_MASK_WORDS;
         element_array_buffer_binding -> ?GL_ELEMENT_ARRAY_BUFFER_BINDING;
-        samples -> ?GL_SAMPLES;
         sample_coverage_invert -> ?GL_SAMPLE_COVERAGE_INVERT;
         sampler_binding -> ?GL_SAMPLER_BINDING;
-        max_fragment_uniform_vectors -> ?GL_MAX_FRAGMENT_UNIFORM_VECTORS;
-        max_color_texture_samples -> ?GL_MAX_COLOR_TEXTURE_SAMPLES;
         scissor_test -> ?GL_SCISSOR_TEST;
-        max_fragment_atomic_counters -> ?GL_MAX_FRAGMENT_ATOMIC_COUNTERS;
         cull_face_mode -> ?GL_CULL_FACE_MODE;
-        max_compute_texture_image_units -> ?GL_MAX_COMPUTE_TEXTURE_IMAGE_UNITS;
         stencil_back_writemask -> ?GL_STENCIL_BACK_WRITEMASK;
         program_binary_formats -> ?GL_PROGRAM_BINARY_FORMATS;
         texture_2d -> ?GL_TEXTURE_2D;
-        max_vertex_attribs -> ?GL_MAX_VERTEX_ATTRIBS;
         front_face -> ?GL_FRONT_FACE;
         stencil_ref -> ?GL_STENCIL_REF;
-        max_vertex_atomic_counters -> ?GL_MAX_VERTEX_ATOMIC_COUNTERS;
         shader_binary_formats -> ?GL_SHADER_BINARY_FORMATS;
         transform_feedback_buffer_binding -> ?GL_TRANSFORM_FEEDBACK_BUFFER_BINDING;
-        pack_row_length -> ?GL_PACK_ROW_LENGTH;
-        max_vertex_attrib_relative_offset -> ?GL_MAX_VERTEX_ATTRIB_RELATIVE_OFFSET;
         current_program -> ?GL_CURRENT_PROGRAM;
-        max_draw_buffers -> ?GL_MAX_DRAW_BUFFERS;
-        max_shader_storage_buffer_bindings -> ?GL_MAX_SHADER_STORAGE_BUFFER_BINDINGS;
-        max_framebuffer_height -> ?GL_MAX_FRAMEBUFFER_HEIGHT;
-        max_compute_shader_storage_blocks -> ?GL_MAX_COMPUTE_SHADER_STORAGE_BLOCKS;
-        max_vertex_uniform_components -> ?GL_MAX_VERTEX_UNIFORM_COMPONENTS;
-        max_compute_work_group_invocations -> ?GL_MAX_COMPUTE_WORK_GROUP_INVOCATIONS;
-        major_version -> ?GL_MAJOR_VERSION;
         color_clear_value -> ?GL_COLOR_CLEAR_VALUE;
-        max_framebuffer_samples -> ?GL_MAX_FRAMEBUFFER_SAMPLES;
-        min_program_texel_offset -> ?GL_MIN_PROGRAM_TEXEL_OFFSET;
         shader_storage_buffer_start -> ?GL_SHADER_STORAGE_BUFFER_START;
-        max_combined_shader_storage_blocks -> ?GL_MAX_COMBINED_SHADER_STORAGE_BLOCKS;
         depth_test -> ?GL_DEPTH_TEST;
-        max_vertex_uniform_blocks -> ?GL_MAX_VERTEX_UNIFORM_BLOCKS;
         depth_func -> ?GL_DEPTH_FUNC;
-        max_compute_uniform_components -> ?GL_MAX_COMPUTE_UNIFORM_COMPONENTS;
-        max_elements_indices -> ?GL_MAX_ELEMENTS_INDICES;
         blend_equation_rgb -> ?GL_BLEND_EQUATION_RGB;
-        pack_skip_rows -> ?GL_PACK_SKIP_ROWS;
         draw_framebuffer_binding -> ?GL_DRAW_FRAMEBUFFER_BINDING;
-        max_combined_uniform_blocks -> ?GL_MAX_COMBINED_UNIFORM_BLOCKS;
         stencil_pass_depth_pass -> ?GL_STENCIL_PASS_DEPTH_PASS;
         stencil_back_func -> ?GL_STENCIL_BACK_FUNC;
-        max_combined_compute_uniform_components -> ?GL_MAX_COMBINED_COMPUTE_UNIFORM_COMPONENTS;
         dither -> ?GL_DITHER;
         shader_storage_buffer_size -> ?GL_SHADER_STORAGE_BUFFER_SIZE;
         polygon_offset_fill -> ?GL_POLYGON_OFFSET_FILL;
-        compressed_texture_formats -> ?GL_COMPRESSED_TEXTURE_FORMATS;
-        max_varying_vectors -> ?GL_MAX_VARYING_VECTORS
+        compressed_texture_formats -> ?GL_COMPRESSED_TEXTURE_FORMATS
     end,
 
     ?CALL_RAW_FUNC(glGetBooleani_v_raw(NewParamName, Index, Count)).
-
--doc """
-Return the maximum combined number of image uniforms.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_combined_image_uniforms().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_combined_image_uniforms() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_combined_image_uniforms() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_COMBINED_IMAGE_UNIFORMS)).
 
 -doc """
 Return the numeric precision range and precision for a shader precision type.
@@ -3055,22 +2927,6 @@ get_shader_precision_format(ShaderType, PrecisionType) ->
     ?CALL_RAW_FUNC(glGetShaderPrecisionFormat_raw(NewShaderType, NewPrecisionType)).
 
 -doc """
-Return the maximum combined number of atomic counter buffers.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_combined_atomic_counter_buffers().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_combined_atomic_counter_buffers() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_combined_atomic_counter_buffers() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_COMBINED_ATOMIC_COUNTER_BUFFERS)).
-
--doc """
 Returns the size, type, and name of a transform-feedback varying for a program object.
 
 It implements the `glGetTransformFeedbackVarying` function
@@ -3091,22 +2947,6 @@ get_transform_feedback_varying(Program, Index, MaxLength) ->
     ?CALL_RAW_FUNC(glGetTransformFeedbackVarying_raw(Program, Index, MaxLength)).
 
 -doc """
-Return the number of supported shader binary formats.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_num_shader_binary_formats().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_num_shader_binary_formats() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_num_shader_binary_formats() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_NUM_SHADER_BINARY_FORMATS)).
-
--doc """
 Delete renderbuffer objects.
 
 It implements the `glDeleteRenderbuffers` function
@@ -3122,22 +2962,6 @@ delete_renderbuffers(Renderbuffers) ->
     N = length(Renderbuffers),
     NewRenderbuffers = << <<ID:32/native>> || ID <- Renderbuffers >>,
     ?CALL_RAW_FUNC(glDeleteRenderbuffers_raw(N, NewRenderbuffers)).
-
--doc """
-Return the maximum number of shader storage buffer bindings.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_shader_storage_buffer_bindings().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_shader_storage_buffer_bindings() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_shader_storage_buffer_bindings() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_SHADER_STORAGE_BUFFER_BINDINGS)).
 
 -doc """
 Set front and back stencil test actions.
@@ -3466,38 +3290,6 @@ get_internal_format(i, Target, InternalFormat, ParamName, Count) ->
     ?CALL_RAW_FUNC(glGetInternalformativ_raw(NewTarget, NewInternalFormat, NewParamName, Count)).
 
 -doc """
-Return the maximum number of compute shader uniform components.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_compute_uniform_components().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_compute_uniform_components() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_compute_uniform_components() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_COMPUTE_UNIFORM_COMPONENTS)).
-
--doc """
-Return the maximum number of compute shader image uniforms.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_compute_image_uniforms().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_compute_image_uniforms() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_compute_image_uniforms() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_COMPUTE_IMAGE_UNIFORMS)).
-
--doc """
 Creates a shader object.
 
 It implements the `glCreateShader` function
@@ -3533,22 +3325,6 @@ Consult the documentation of the underlying [OpenGL function](https://docs.gl/es
 bind_program_pipeline(Pipeline) ->
 
     ?CALL_RAW_FUNC(glBindProgramPipeline_raw(Pipeline)).
-
--doc """
-Return the number of shader objects attached to a program.
-
-It implements the `glGetProgramiv` function
-
-```
-{ok, Count} = gl:get_program_attached_shaders_count(Program).
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetProgramiv) for more information.
-""".
--spec get_program_attached_shaders_count(Program :: program()) -> {ok, Count :: gl:int()} | {error, atom()}.
-get_program_attached_shaders_count(Program) ->
-
-    ?CALL_RAW_FUNC(glGetProgramivInteger_raw(Program, ?GL_ATTACHED_SHADERS)).
 
 -doc """
 Render multiple instances using indices from the bound element array buffer.
@@ -3728,38 +3504,6 @@ vertex_attrib_pointer(Index, Size, Type, Normalized, Stride, Offset) ->
     ?CALL_RAW_FUNC(glVertexAttribPointer_raw(Index, Size, NewType, Normalized, Stride, Offset)).
 
 -doc """
-Return the maximum number of fragment uniform vectors.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_fragment_uniform_vectors().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_fragment_uniform_vectors() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_fragment_uniform_vectors() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_FRAGMENT_UNIFORM_VECTORS)).
-
--doc """
-Return the current pack skipped row count.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Rows} = gl:get_pack_skip_rows().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_pack_skip_rows() -> {ok, Rows :: gl:int()} | {error, atom()}.
-get_pack_skip_rows() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_PACK_SKIP_ROWS)).
-
--doc """
 Read 64-bit integer OpenGL state parameter values.
 
 It implements the `glGetInteger64v` function
@@ -3776,117 +3520,166 @@ Consult the documentation of the underlying [OpenGL function](https://docs.gl/es
 ) -> {ok, Values :: [gl:int64()]} | {error, atom()}.
 get_integer64(ParamName, Count) ->
     NewParamName = case ParamName of
+        blend -> ?GL_BLEND;
+        depth_writemask -> ?GL_DEPTH_WRITEMASK;
+        line_width -> ?GL_LINE_WIDTH;
+        major_version -> ?GL_MAJOR_VERSION;
+        max_3d_texture_size -> ?GL_MAX_3D_TEXTURE_SIZE;
+        max_array_texture_layers -> ?GL_MAX_ARRAY_TEXTURE_LAYERS;
+        max_atomic_counter_buffer_bindings -> ?GL_MAX_ATOMIC_COUNTER_BUFFER_BINDINGS;
+        max_atomic_counter_buffer_size -> ?GL_MAX_ATOMIC_COUNTER_BUFFER_SIZE;
+        max_color_attachments -> ?GL_MAX_COLOR_ATTACHMENTS;
+        max_color_texture_samples -> ?GL_MAX_COLOR_TEXTURE_SAMPLES;
+        max_combined_atomic_counter_buffers -> ?GL_MAX_COMBINED_ATOMIC_COUNTER_BUFFERS;
+        max_combined_atomic_counters -> ?GL_MAX_COMBINED_ATOMIC_COUNTERS;
+        max_combined_compute_uniform_components -> ?GL_MAX_COMBINED_COMPUTE_UNIFORM_COMPONENTS;
+        max_combined_fragment_uniform_components -> ?GL_MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS;
+        max_combined_image_uniforms -> ?GL_MAX_COMBINED_IMAGE_UNIFORMS;
+        max_combined_shader_output_resources -> ?GL_MAX_COMBINED_SHADER_OUTPUT_RESOURCES;
+        max_combined_shader_storage_blocks -> ?GL_MAX_COMBINED_SHADER_STORAGE_BLOCKS;
+        max_combined_texture_image_units -> ?GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS;
+        max_combined_uniform_blocks -> ?GL_MAX_COMBINED_UNIFORM_BLOCKS;
+        max_combined_vertex_uniform_components -> ?GL_MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS;
+        max_compute_atomic_counter_buffers -> ?GL_MAX_COMPUTE_ATOMIC_COUNTER_BUFFERS;
+        max_compute_atomic_counters -> ?GL_MAX_COMPUTE_ATOMIC_COUNTERS;
+        max_compute_image_uniforms -> ?GL_MAX_COMPUTE_IMAGE_UNIFORMS;
+        max_compute_shader_storage_blocks -> ?GL_MAX_COMPUTE_SHADER_STORAGE_BLOCKS;
+        max_compute_shared_memory_size -> ?GL_MAX_COMPUTE_SHARED_MEMORY_SIZE;
+        max_compute_texture_image_units -> ?GL_MAX_COMPUTE_TEXTURE_IMAGE_UNITS;
+        max_compute_uniform_blocks -> ?GL_MAX_COMPUTE_UNIFORM_BLOCKS;
+        max_compute_uniform_components -> ?GL_MAX_COMPUTE_UNIFORM_COMPONENTS;
+        max_compute_work_group_invocations -> ?GL_MAX_COMPUTE_WORK_GROUP_INVOCATIONS;
+        max_cube_map_texture_size -> ?GL_MAX_CUBE_MAP_TEXTURE_SIZE;
+        max_depth_texture_samples -> ?GL_MAX_DEPTH_TEXTURE_SAMPLES;
+        max_draw_buffers -> ?GL_MAX_DRAW_BUFFERS;
+        max_element_index -> ?GL_MAX_ELEMENT_INDEX;
+        max_elements_indices -> ?GL_MAX_ELEMENTS_INDICES;
+        max_elements_vertices -> ?GL_MAX_ELEMENTS_VERTICES;
+        max_fragment_atomic_counter_buffers -> ?GL_MAX_FRAGMENT_ATOMIC_COUNTER_BUFFERS;
+        max_fragment_atomic_counters -> ?GL_MAX_FRAGMENT_ATOMIC_COUNTERS;
+        max_fragment_image_uniforms -> ?GL_MAX_FRAGMENT_IMAGE_UNIFORMS;
+        max_fragment_input_components -> ?GL_MAX_FRAGMENT_INPUT_COMPONENTS;
+        max_fragment_shader_storage_blocks -> ?GL_MAX_FRAGMENT_SHADER_STORAGE_BLOCKS;
+        max_fragment_uniform_blocks -> ?GL_MAX_FRAGMENT_UNIFORM_BLOCKS;
+        max_fragment_uniform_components -> ?GL_MAX_FRAGMENT_UNIFORM_COMPONENTS;
+        max_fragment_uniform_vectors -> ?GL_MAX_FRAGMENT_UNIFORM_VECTORS;
+        max_framebuffer_height -> ?GL_MAX_FRAMEBUFFER_HEIGHT;
+        max_framebuffer_samples -> ?GL_MAX_FRAMEBUFFER_SAMPLES;
+        max_framebuffer_width -> ?GL_MAX_FRAMEBUFFER_WIDTH;
+        max_image_units -> ?GL_MAX_IMAGE_UNITS;
+        max_integer_samples -> ?GL_MAX_INTEGER_SAMPLES;
+        max_program_texel_offset -> ?GL_MAX_PROGRAM_TEXEL_OFFSET;
+        max_program_texture_gather_offset -> ?GL_MAX_PROGRAM_TEXTURE_GATHER_OFFSET;
+        max_renderbuffer_size -> ?GL_MAX_RENDERBUFFER_SIZE;
+        max_sample_mask_words -> ?GL_MAX_SAMPLE_MASK_WORDS;
+        max_samples -> ?GL_MAX_SAMPLES;
+        max_shader_storage_block_size -> ?GL_MAX_SHADER_STORAGE_BLOCK_SIZE;
+        max_shader_storage_buffer_bindings -> ?GL_MAX_SHADER_STORAGE_BUFFER_BINDINGS;
+        max_texture_image_units -> ?GL_MAX_TEXTURE_IMAGE_UNITS;
+        max_texture_size -> ?GL_MAX_TEXTURE_SIZE;
+        max_transform_feedback_interleaved_components -> ?GL_MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS;
+        max_transform_feedback_separate_attribs -> ?GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS;
+        max_transform_feedback_separate_components -> ?GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS;
+        max_uniform_block_size -> ?GL_MAX_UNIFORM_BLOCK_SIZE;
+        max_uniform_buffer_bindings -> ?GL_MAX_UNIFORM_BUFFER_BINDINGS;
+        max_uniform_locations -> ?GL_MAX_UNIFORM_LOCATIONS;
+        max_varying_components -> ?GL_MAX_VARYING_COMPONENTS;
+        max_varying_vectors -> ?GL_MAX_VARYING_VECTORS;
+        max_vertex_atomic_counter_buffers -> ?GL_MAX_VERTEX_ATOMIC_COUNTER_BUFFERS;
+        max_vertex_atomic_counters -> ?GL_MAX_VERTEX_ATOMIC_COUNTERS;
+        max_vertex_attrib_bindings -> ?GL_MAX_VERTEX_ATTRIB_BINDINGS;
+        max_vertex_attrib_relative_offset -> ?GL_MAX_VERTEX_ATTRIB_RELATIVE_OFFSET;
+        max_vertex_attrib_stride -> ?GL_MAX_VERTEX_ATTRIB_STRIDE;
+        max_vertex_attribs -> ?GL_MAX_VERTEX_ATTRIBS;
+        max_vertex_image_uniforms -> ?GL_MAX_VERTEX_IMAGE_UNIFORMS;
+        max_vertex_output_components -> ?GL_MAX_VERTEX_OUTPUT_COMPONENTS;
+        max_vertex_shader_storage_blocks -> ?GL_MAX_VERTEX_SHADER_STORAGE_BLOCKS;
+        max_vertex_texture_image_units -> ?GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS;
+        max_vertex_uniform_blocks -> ?GL_MAX_VERTEX_UNIFORM_BLOCKS;
+        max_vertex_uniform_components -> ?GL_MAX_VERTEX_UNIFORM_COMPONENTS;
+        max_vertex_uniform_vectors -> ?GL_MAX_VERTEX_UNIFORM_VECTORS;
+        min_program_texel_offset -> ?GL_MIN_PROGRAM_TEXEL_OFFSET;
+        min_program_texture_gather_offset -> ?GL_MIN_PROGRAM_TEXTURE_GATHER_OFFSET;
+        minor_version -> ?GL_MINOR_VERSION;
+        num_compressed_texture_formats -> ?GL_NUM_COMPRESSED_TEXTURE_FORMATS;
+        num_extensions -> ?GL_NUM_EXTENSIONS;
+        num_program_binary_formats -> ?GL_NUM_PROGRAM_BINARY_FORMATS;
+        num_shader_binary_formats -> ?GL_NUM_SHADER_BINARY_FORMATS;
+        pack_alignment -> ?GL_PACK_ALIGNMENT;
+        pack_row_length -> ?GL_PACK_ROW_LENGTH;
+        pack_skip_pixels -> ?GL_PACK_SKIP_PIXELS;
+        pack_skip_rows -> ?GL_PACK_SKIP_ROWS;
+        sample_buffers -> ?GL_SAMPLE_BUFFERS;
+        samples -> ?GL_SAMPLES;
+        shader_compiler -> ?GL_SHADER_COMPILER;
+        shader_storage_buffer_offset_alignment -> ?GL_SHADER_STORAGE_BUFFER_OFFSET_ALIGNMENT;
+        subpixel_bits -> ?GL_SUBPIXEL_BITS;
+        uniform_buffer_offset_alignment -> ?GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT;
+        unpack_alignment -> ?GL_UNPACK_ALIGNMENT;
+        unpack_image_height -> ?GL_UNPACK_IMAGE_HEIGHT;
+        unpack_row_length -> ?GL_UNPACK_ROW_LENGTH;
+        unpack_skip_images -> ?GL_UNPACK_SKIP_IMAGES;
+        unpack_skip_pixels -> ?GL_UNPACK_SKIP_PIXELS;
+        unpack_skip_rows -> ?GL_UNPACK_SKIP_ROWS;
         polygon_offset_units -> ?GL_POLYGON_OFFSET_UNITS;
         texture_binding_3d -> ?GL_TEXTURE_BINDING_3D;
-        num_compressed_texture_formats -> ?GL_NUM_COMPRESSED_TEXTURE_FORMATS;
         pixel_pack_buffer_binding -> ?GL_PIXEL_PACK_BUFFER_BINDING;
         stencil_fail -> ?GL_STENCIL_FAIL;
         viewport -> ?GL_VIEWPORT;
         active_texture -> ?GL_ACTIVE_TEXTURE;
-        line_width -> ?GL_LINE_WIDTH;
         blend_dst_rgb -> ?GL_BLEND_DST_RGB;
-        uniform_buffer_offset_alignment -> ?GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT;
         aliased_point_size_range -> ?GL_ALIASED_POINT_SIZE_RANGE;
-        max_fragment_uniform_blocks -> ?GL_MAX_FRAGMENT_UNIFORM_BLOCKS;
-        max_varying_components -> ?GL_MAX_VARYING_COMPONENTS;
         blend_src_alpha -> ?GL_BLEND_SRC_ALPHA;
         read_buffer -> ?GL_READ_BUFFER;
-        max_array_texture_layers -> ?GL_MAX_ARRAY_TEXTURE_LAYERS;
         texture_binding_2d -> ?GL_TEXTURE_BINDING_2D;
         uniform_buffer_start -> ?GL_UNIFORM_BUFFER_START;
-        max_uniform_buffer_bindings -> ?GL_MAX_UNIFORM_BUFFER_BINDINGS;
         stencil_func -> ?GL_STENCIL_FUNC;
         blend_equation -> ?GL_BLEND_EQUATION;
         implementation_color_read_format -> ?GL_IMPLEMENTATION_COLOR_READ_FORMAT;
         max_compute_work_group_count -> ?GL_MAX_COMPUTE_WORK_GROUP_COUNT;
-        max_program_texel_offset -> ?GL_MAX_PROGRAM_TEXEL_OFFSET;
         blend_src_rgb -> ?GL_BLEND_SRC_RGB;
-        depth_writemask -> ?GL_DEPTH_WRITEMASK;
         dispatch_indirect_buffer_binding -> ?GL_DISPATCH_INDIRECT_BUFFER_BINDING;
         uniform_buffer_binding -> ?GL_UNIFORM_BUFFER_BINDING;
-        max_uniform_locations -> ?GL_MAX_UNIFORM_LOCATIONS;
         texture_binding_2d_multisample -> ?GL_TEXTURE_BINDING_2D_MULTISAMPLE;
-        max_fragment_shader_storage_blocks -> ?GL_MAX_FRAGMENT_SHADER_STORAGE_BLOCKS;
         polygon_offset_factor -> ?GL_POLYGON_OFFSET_FACTOR;
         fragment_shader_derivative_hint -> ?GL_FRAGMENT_SHADER_DERIVATIVE_HINT;
-        max_cube_map_texture_size -> ?GL_MAX_CUBE_MAP_TEXTURE_SIZE;
-        sample_buffers -> ?GL_SAMPLE_BUFFERS;
         depth_range -> ?GL_DEPTH_RANGE;
-        max_combined_vertex_uniform_components -> ?GL_MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS;
         transform_feedback_buffer_start -> ?GL_TRANSFORM_FEEDBACK_BUFFER_START;
-        subpixel_bits -> ?GL_SUBPIXEL_BITS;
         vertex_binding_offset -> ?GL_VERTEX_BINDING_OFFSET;
-        unpack_alignment -> ?GL_UNPACK_ALIGNMENT;
-        max_elements_vertices -> ?GL_MAX_ELEMENTS_VERTICES;
         stencil_bits -> ?GL_STENCIL_BITS;
         stencil_test -> ?GL_STENCIL_TEST;
-        max_fragment_uniform_components -> ?GL_MAX_FRAGMENT_UNIFORM_COMPONENTS;
-        shader_compiler -> ?GL_SHADER_COMPILER;
         color_writemask -> ?GL_COLOR_WRITEMASK;
         stencil_clear_value -> ?GL_STENCIL_CLEAR_VALUE;
-        max_integer_samples -> ?GL_MAX_INTEGER_SAMPLES;
-        pack_skip_pixels -> ?GL_PACK_SKIP_PIXELS;
-        unpack_row_length -> ?GL_UNPACK_ROW_LENGTH;
         max_texture_lod_bias -> ?GL_MAX_TEXTURE_LOD_BIAS;
         stencil_value_mask -> ?GL_STENCIL_VALUE_MASK;
         program_pipeline_binding -> ?GL_PROGRAM_PIPELINE_BINDING;
-        blend -> ?GL_BLEND;
         shader_storage_buffer_binding -> ?GL_SHADER_STORAGE_BUFFER_BINDING;
-        max_vertex_attrib_bindings -> ?GL_MAX_VERTEX_ATTRIB_BINDINGS;
         uniform_buffer_size -> ?GL_UNIFORM_BUFFER_SIZE;
-        max_texture_image_units -> ?GL_MAX_TEXTURE_IMAGE_UNITS;
-        max_combined_texture_image_units -> ?GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS;
-        max_color_attachments -> ?GL_MAX_COLOR_ATTACHMENTS;
         stencil_back_value_mask -> ?GL_STENCIL_BACK_VALUE_MASK;
-        max_vertex_output_components -> ?GL_MAX_VERTEX_OUTPUT_COMPONENTS;
-        max_element_index -> ?GL_MAX_ELEMENT_INDEX;
-        max_renderbuffer_size -> ?GL_MAX_RENDERBUFFER_SIZE;
         stencil_back_ref -> ?GL_STENCIL_BACK_REF;
         stencil_back_fail -> ?GL_STENCIL_BACK_FAIL;
-        unpack_skip_pixels -> ?GL_UNPACK_SKIP_PIXELS;
         depth_clear_value -> ?GL_DEPTH_CLEAR_VALUE;
-        max_fragment_input_components -> ?GL_MAX_FRAGMENT_INPUT_COMPONENTS;
         vertex_array_binding -> ?GL_VERTEX_ARRAY_BINDING;
-        max_depth_texture_samples -> ?GL_MAX_DEPTH_TEXTURE_SAMPLES;
-        num_shader_binary_formats -> ?GL_NUM_SHADER_BINARY_FORMATS;
         max_viewport_dims -> ?GL_MAX_VIEWPORT_DIMS;
-        unpack_skip_rows -> ?GL_UNPACK_SKIP_ROWS;
         blend_dst_alpha -> ?GL_BLEND_DST_ALPHA;
         vertex_binding_stride -> ?GL_VERTEX_BINDING_STRIDE;
-        num_extensions -> ?GL_NUM_EXTENSIONS;
         depth_bits -> ?GL_DEPTH_BITS;
-        max_vertex_shader_storage_blocks -> ?GL_MAX_VERTEX_SHADER_STORAGE_BLOCKS;
-        shader_storage_buffer_offset_alignment -> ?GL_SHADER_STORAGE_BUFFER_OFFSET_ALIGNMENT;
-        max_combined_fragment_uniform_components -> ?GL_MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS;
         transform_feedback_buffer_size -> ?GL_TRANSFORM_FEEDBACK_BUFFER_SIZE;
         max_server_wait_timeout -> ?GL_MAX_SERVER_WAIT_TIMEOUT;
-        max_compute_uniform_blocks -> ?GL_MAX_COMPUTE_UNIFORM_BLOCKS;
-        minor_version -> ?GL_MINOR_VERSION;
         scissor_box -> ?GL_SCISSOR_BOX;
         stencil_writemask -> ?GL_STENCIL_WRITEMASK;
-        max_3d_texture_size -> ?GL_MAX_3D_TEXTURE_SIZE;
         array_buffer_binding -> ?GL_ARRAY_BUFFER_BINDING;
-        max_vertex_texture_image_units -> ?GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS;
         sample_coverage_value -> ?GL_SAMPLE_COVERAGE_VALUE;
         cull_face -> ?GL_CULL_FACE;
-        max_compute_atomic_counters -> ?GL_MAX_COMPUTE_ATOMIC_COUNTERS;
-        unpack_image_height -> ?GL_UNPACK_IMAGE_HEIGHT;
         red_bits -> ?GL_RED_BITS;
-        max_texture_size -> ?GL_MAX_TEXTURE_SIZE;
-        unpack_skip_images -> ?GL_UNPACK_SKIP_IMAGES;
         stencil_pass_depth_fail -> ?GL_STENCIL_PASS_DEPTH_FAIL;
         texture_binding_cube_map -> ?GL_TEXTURE_BINDING_CUBE_MAP;
         read_framebuffer_binding -> ?GL_READ_FRAMEBUFFER_BINDING;
         renderbuffer_binding -> ?GL_RENDERBUFFER_BINDING;
         max_compute_work_group_size -> ?GL_MAX_COMPUTE_WORK_GROUP_SIZE;
-        pack_alignment -> ?GL_PACK_ALIGNMENT;
         vertex_binding_divisor -> ?GL_VERTEX_BINDING_DIVISOR;
-        max_combined_atomic_counters -> ?GL_MAX_COMBINED_ATOMIC_COUNTERS;
         stencil_back_pass_depth_pass -> ?GL_STENCIL_BACK_PASS_DEPTH_PASS;
-        max_framebuffer_width -> ?GL_MAX_FRAMEBUFFER_WIDTH;
-        num_program_binary_formats -> ?GL_NUM_PROGRAM_BINARY_FORMATS;
         stencil_back_pass_depth_fail -> ?GL_STENCIL_BACK_PASS_DEPTH_FAIL;
-        max_uniform_block_size -> ?GL_MAX_UNIFORM_BLOCK_SIZE;
         blend_equation_alpha -> ?GL_BLEND_EQUATION_ALPHA;
         blend_color -> ?GL_BLEND_COLOR;
         pixel_unpack_buffer_binding -> ?GL_PIXEL_UNPACK_BUFFER_BINDING;
@@ -3895,112 +3688,35 @@ get_integer64(ParamName, Count) ->
         alpha_bits -> ?GL_ALPHA_BITS;
         implementation_color_read_type -> ?GL_IMPLEMENTATION_COLOR_READ_TYPE;
         green_bits -> ?GL_GREEN_BITS;
-        max_compute_atomic_counter_buffers -> ?GL_MAX_COMPUTE_ATOMIC_COUNTER_BUFFERS;
-        max_vertex_uniform_vectors -> ?GL_MAX_VERTEX_UNIFORM_VECTORS;
         blue_bits -> ?GL_BLUE_BITS;
-        max_sample_mask_words -> ?GL_MAX_SAMPLE_MASK_WORDS;
         element_array_buffer_binding -> ?GL_ELEMENT_ARRAY_BUFFER_BINDING;
-        samples -> ?GL_SAMPLES;
         sample_coverage_invert -> ?GL_SAMPLE_COVERAGE_INVERT;
         sampler_binding -> ?GL_SAMPLER_BINDING;
-        max_fragment_uniform_vectors -> ?GL_MAX_FRAGMENT_UNIFORM_VECTORS;
-        max_color_texture_samples -> ?GL_MAX_COLOR_TEXTURE_SAMPLES;
         scissor_test -> ?GL_SCISSOR_TEST;
-        max_fragment_atomic_counters -> ?GL_MAX_FRAGMENT_ATOMIC_COUNTERS;
         cull_face_mode -> ?GL_CULL_FACE_MODE;
-        max_compute_texture_image_units -> ?GL_MAX_COMPUTE_TEXTURE_IMAGE_UNITS;
         stencil_back_writemask -> ?GL_STENCIL_BACK_WRITEMASK;
         program_binary_formats -> ?GL_PROGRAM_BINARY_FORMATS;
         texture_2d -> ?GL_TEXTURE_2D;
-        max_vertex_attribs -> ?GL_MAX_VERTEX_ATTRIBS;
         front_face -> ?GL_FRONT_FACE;
         stencil_ref -> ?GL_STENCIL_REF;
-        max_vertex_atomic_counters -> ?GL_MAX_VERTEX_ATOMIC_COUNTERS;
         shader_binary_formats -> ?GL_SHADER_BINARY_FORMATS;
         transform_feedback_buffer_binding -> ?GL_TRANSFORM_FEEDBACK_BUFFER_BINDING;
-        pack_row_length -> ?GL_PACK_ROW_LENGTH;
-        max_vertex_attrib_relative_offset -> ?GL_MAX_VERTEX_ATTRIB_RELATIVE_OFFSET;
         current_program -> ?GL_CURRENT_PROGRAM;
-        max_draw_buffers -> ?GL_MAX_DRAW_BUFFERS;
-        max_shader_storage_buffer_bindings -> ?GL_MAX_SHADER_STORAGE_BUFFER_BINDINGS;
-        max_framebuffer_height -> ?GL_MAX_FRAMEBUFFER_HEIGHT;
-        max_compute_shader_storage_blocks -> ?GL_MAX_COMPUTE_SHADER_STORAGE_BLOCKS;
-        max_vertex_uniform_components -> ?GL_MAX_VERTEX_UNIFORM_COMPONENTS;
-        max_compute_work_group_invocations -> ?GL_MAX_COMPUTE_WORK_GROUP_INVOCATIONS;
-        major_version -> ?GL_MAJOR_VERSION;
         color_clear_value -> ?GL_COLOR_CLEAR_VALUE;
-        max_framebuffer_samples -> ?GL_MAX_FRAMEBUFFER_SAMPLES;
-        min_program_texel_offset -> ?GL_MIN_PROGRAM_TEXEL_OFFSET;
         shader_storage_buffer_start -> ?GL_SHADER_STORAGE_BUFFER_START;
-        max_combined_shader_storage_blocks -> ?GL_MAX_COMBINED_SHADER_STORAGE_BLOCKS;
         depth_test -> ?GL_DEPTH_TEST;
-        max_vertex_uniform_blocks -> ?GL_MAX_VERTEX_UNIFORM_BLOCKS;
         depth_func -> ?GL_DEPTH_FUNC;
-        max_compute_uniform_components -> ?GL_MAX_COMPUTE_UNIFORM_COMPONENTS;
-        max_elements_indices -> ?GL_MAX_ELEMENTS_INDICES;
         blend_equation_rgb -> ?GL_BLEND_EQUATION_RGB;
-        pack_skip_rows -> ?GL_PACK_SKIP_ROWS;
         draw_framebuffer_binding -> ?GL_DRAW_FRAMEBUFFER_BINDING;
-        max_combined_uniform_blocks -> ?GL_MAX_COMBINED_UNIFORM_BLOCKS;
         stencil_pass_depth_pass -> ?GL_STENCIL_PASS_DEPTH_PASS;
         stencil_back_func -> ?GL_STENCIL_BACK_FUNC;
-        max_combined_compute_uniform_components -> ?GL_MAX_COMBINED_COMPUTE_UNIFORM_COMPONENTS;
         dither -> ?GL_DITHER;
         shader_storage_buffer_size -> ?GL_SHADER_STORAGE_BUFFER_SIZE;
         polygon_offset_fill -> ?GL_POLYGON_OFFSET_FILL;
-        compressed_texture_formats -> ?GL_COMPRESSED_TEXTURE_FORMATS;
-        max_varying_vectors -> ?GL_MAX_VARYING_VECTORS
+        compressed_texture_formats -> ?GL_COMPRESSED_TEXTURE_FORMATS
     end,
 
     ?CALL_RAW_FUNC(glGetInteger64vValues_raw(NewParamName, Count)).
-
--doc """
-Return the maximum number of fragment shader atomic counter buffers.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_fragment_atomic_counter_buffers().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_fragment_atomic_counter_buffers() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_fragment_atomic_counter_buffers() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_FRAGMENT_ATOMIC_COUNTER_BUFFERS)).
-
--doc """
-Return the maximum combined fragment uniform components.
-
-It implements the `glGetInteger64v` function
-
-```
-{ok, Count} = gl:get_max_combined_fragment_uniform_components().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetInteger64v) for more information.
-""".
--spec get_max_combined_fragment_uniform_components() -> {ok, Count :: gl:int64()} | {error, atom()}.
-get_max_combined_fragment_uniform_components() ->
-
-    ?CALL_RAW_FUNC(glGetInteger64vInteger_raw(?GL_MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS)).
-
--doc """
-Return the maximum vertex-attrib binding stride.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Stride} = gl:get_max_vertex_attrib_stride().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_vertex_attrib_stride() -> {ok, Stride :: gl:int()} | {error, atom()}.
-get_max_vertex_attrib_stride() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_VERTEX_ATTRIB_STRIDE)).
 
 -doc """
 Draw multiple instances of a range of arrays.
@@ -4159,38 +3875,6 @@ active_shader_program(Pipeline, Program) ->
     ?CALL_RAW_FUNC(glActiveShaderProgram_raw(Pipeline, Program)).
 
 -doc """
-Return the maximum number of compute shader texture image units.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_compute_texture_image_units().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_compute_texture_image_units() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_compute_texture_image_units() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_COMPUTE_TEXTURE_IMAGE_UNITS)).
-
--doc """
-Return the shader source length.
-
-It implements the `glGetShaderiv` function
-
-```
-{ok, Length} = gl:get_shader_source_length(Shader).
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetShaderiv) for more information.
-""".
--spec get_shader_source_length(Shader :: shader()) -> {ok, Length :: gl:int()} | {error, atom()}.
-get_shader_source_length(Shader) ->
-
-    ?CALL_RAW_FUNC(glGetShaderivInteger_raw(Shader, ?GL_SHADER_SOURCE_LENGTH)).
-
--doc """
 Control the front and back writing of individual bits in the stencil planes.
 
 It implements the `glStencilMask` function
@@ -4205,38 +3889,6 @@ Consult the documentation of the underlying [OpenGL function](https://docs.gl/es
 stencil_mask(Mask) ->
 
     ?CALL_RAW_FUNC(glStencilMask_raw(Mask)).
-
--doc """
-Return the maximum shader-storage block size in bytes.
-
-It implements the `glGetInteger64v` function
-
-```
-{ok, Size} = gl:get_max_shader_storage_block_size().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetInteger64v) for more information.
-""".
--spec get_max_shader_storage_block_size() -> {ok, Size :: gl:int64()} | {error, atom()}.
-get_max_shader_storage_block_size() ->
-
-    ?CALL_RAW_FUNC(glGetInteger64vInteger_raw(?GL_MAX_SHADER_STORAGE_BLOCK_SIZE)).
-
--doc """
-Return the current context minor version.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Version} = gl:get_minor_version().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_minor_version() -> {ok, Version :: gl:int()} | {error, atom()}.
-get_minor_version() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MINOR_VERSION)).
 
 -doc """
 Return integer properties for a program resource interface.
@@ -4304,22 +3956,6 @@ get_program_resource_name(Program, ProgramInterface, Index, MaxLength) ->
     end,
 
     ?CALL_RAW_FUNC(glGetProgramResourceName_raw(Program, NewProgramInterface, Index, MaxLength)).
-
--doc """
-Return the maximum number of depth texture samples.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_depth_texture_samples().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_depth_texture_samples() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_depth_texture_samples() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_DEPTH_TEXTURE_SAMPLES)).
 
 -doc """
 Copy a range of data from one buffer object's data store to another.
@@ -4626,22 +4262,6 @@ disable_vertex_attrib_array(Index) ->
     ?CALL_RAW_FUNC(glDisableVertexAttribArray_raw(Index)).
 
 -doc """
-Return whether a program object's last validation succeeded.
-
-It implements the `glGetProgramiv` function
-
-```
-{ok, true} = gl:get_program_validation_status(Program).
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetProgramiv) for more information.
-""".
--spec get_program_validation_status(Program :: program()) -> {ok, Status :: gl:boolean()} | {error, atom()}.
-get_program_validation_status(Program) ->
-
-    ?CALL_RAW_FUNC(glGetProgramiv_raw(Program, ?GL_VALIDATE_STATUS)).
-
--doc """
 Specify the clear value for the depth buffer.
 
 It implements the `glClearDepthf` function
@@ -4760,70 +4380,6 @@ buffer_data(Target, DataOrSize, Usage) ->
     ?CALL_RAW_FUNC(glBufferData_raw(NewTarget, Size, Data, NewUsage)).
 
 -doc """
-Return the maximum number of explicit uniform locations.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_uniform_locations().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_uniform_locations() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_uniform_locations() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_UNIFORM_LOCATIONS)).
-
--doc """
-Return the maximum uniform block size in bytes.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Size} = gl:get_max_uniform_block_size().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_uniform_block_size() -> {ok, Size :: gl:int()} | {error, atom()}.
-get_max_uniform_block_size() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_UNIFORM_BLOCK_SIZE)).
-
--doc """
-Return the maximum framebuffer height.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Height} = gl:get_max_framebuffer_height().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_framebuffer_height() -> {ok, Height :: gl:int()} | {error, atom()}.
-get_max_framebuffer_height() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_FRAMEBUFFER_HEIGHT)).
-
--doc """
-Return the shader info-log length.
-
-It implements the `glGetShaderiv` function
-
-```
-{ok, Length} = gl:get_shader_info_log_length(Shader).
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetShaderiv) for more information.
-""".
--spec get_shader_info_log_length(Shader :: shader()) -> {ok, Length :: gl:int()} | {error, atom()}.
-get_shader_info_log_length(Shader) ->
-
-    ?CALL_RAW_FUNC(glGetShaderivInteger_raw(Shader, ?GL_INFO_LOG_LENGTH)).
-
--doc """
 Return the active-uniform indices for a list of uniform names.
 
 It implements the `glGetUniformIndices` function
@@ -4863,22 +4419,6 @@ Consult the documentation of the underlying [OpenGL function](https://docs.gl/es
 attach_shader(Program, Shader) ->
 
     ?CALL_RAW_FUNC(glAttachShader_raw(Program, Shader)).
-
--doc """
-Return the required uniform buffer offset alignment.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Alignment} = gl:get_uniform_buffer_offset_alignment().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_uniform_buffer_offset_alignment() -> {ok, Alignment :: gl:int()} | {error, atom()}.
-get_uniform_buffer_offset_alignment() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT)).
 
 -doc """
 Generate mipmaps for the texture bound to a texture target.
@@ -5067,38 +4607,6 @@ tex_parameter(f, Target, ParamName, Param) ->
     ?CALL_RAW_FUNC(glTexParameterf_raw(NewTarget, NewParamName, Param)).
 
 -doc """
-Return whether a shader compiler is supported.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Supported} = gl:get_shader_compiler_supported().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_shader_compiler_supported() -> {ok, Supported :: gl:boolean()} | {error, atom()}.
-get_shader_compiler_supported() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervBoolean_raw(?GL_SHADER_COMPILER)).
-
--doc """
-Return the number of active attribute variables in a program.
-
-It implements the `glGetProgramiv` function
-
-```
-{ok, Count} = gl:get_program_active_attributes_count(Program).
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetProgramiv) for more information.
-""".
--spec get_program_active_attributes_count(Program :: program()) -> {ok, Count :: gl:int()} | {error, atom()}.
-get_program_active_attributes_count(Program) ->
-
-    ?CALL_RAW_FUNC(glGetProgramivInteger_raw(Program, ?GL_ACTIVE_ATTRIBUTES)).
-
--doc """
 Specify the list of color buffers to draw into.
 
 It implements the `glDrawBuffers` function
@@ -5222,22 +4730,6 @@ bind_buffer_base(Target, Index, Buffer) ->
     ?CALL_RAW_FUNC(glBindBufferBase_raw(NewTarget, Index, Buffer)).
 
 -doc """
-Return the sample count for the current framebuffer.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_samples_count().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_samples_count() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_samples_count() ->
-
-    ?CALL_RAW_FUNC(glGetIntegerv_raw(?GL_SAMPLES)).
-
--doc """
 Check the completeness status of a framebuffer.
 
 It implements the `glCheckFramebufferStatus` function
@@ -5276,6 +4768,7 @@ Consult the documentation of the underlying [OpenGL function](https://docs.gl/es
 ) -> {ok, Values :: [gl:int()]} | {error, atom()}.
 get_program_pipeline(Pipeline, ParamName, Count) ->
     NewParamName = case ParamName of
+        validate_status -> ?GL_VALIDATE_STATUS;
         vertex_shader -> ?GL_VERTEX_SHADER;
         fragment_shader -> ?GL_FRAGMENT_SHADER;
         active_program -> ?GL_ACTIVE_PROGRAM;
@@ -5283,22 +4776,6 @@ get_program_pipeline(Pipeline, ParamName, Count) ->
     end,
 
     ?CALL_RAW_FUNC(glGetProgramPipelineivValues_raw(Pipeline, NewParamName, Count)).
-
--doc """
-Return the maximum active uniform-block name length for a program.
-
-It implements the `glGetProgramiv` function
-
-```
-{ok, Length} = gl:get_program_active_uniform_block_max_name_length(Program).
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetProgramiv) for more information.
-""".
--spec get_program_active_uniform_block_max_name_length(Program :: program()) -> {ok, Length :: gl:int()} | {error, atom()}.
-get_program_active_uniform_block_max_name_length(Program) ->
-
-    ?CALL_RAW_FUNC(glGetProgramivInteger_raw(Program, ?GL_ACTIVE_UNIFORM_BLOCK_MAX_NAME_LENGTH)).
 
 -doc """
 Determines if a name corresponds to a program object.
@@ -5315,54 +4792,6 @@ Consult the documentation of the underlying [OpenGL function](https://docs.gl/es
 is_program(Program) ->
 
     ?CALL_RAW_FUNC(glIsProgram_raw(Program)).
-
--doc """
-Return the current context major version.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Version} = gl:get_major_version().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_major_version() -> {ok, Version :: gl:int()} | {error, atom()}.
-get_major_version() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAJOR_VERSION)).
-
--doc """
-Return the maximum number of framebuffer color attachments.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_color_attachments().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_color_attachments() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_color_attachments() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_COLOR_ATTACHMENTS)).
-
--doc """
-Return the current pack skipped pixel count.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Pixels} = gl:get_pack_skip_pixels().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_pack_skip_pixels() -> {ok, Pixels :: gl:int()} | {error, atom()}.
-get_pack_skip_pixels() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_PACK_SKIP_PIXELS)).
 
 -doc """
 Determines if a name corresponds to a shader object.
@@ -5411,22 +4840,6 @@ Consult the documentation of the underlying [OpenGL function](https://docs.gl/es
 gen_renderbuffers(N) ->
 
     ?CALL_RAW_FUNC(glGenRenderbuffers_raw(N)).
-
--doc """
-Return the maximum number of uniform buffer bindings.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_uniform_buffer_bindings().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_uniform_buffer_bindings() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_uniform_buffer_bindings() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_UNIFORM_BUFFER_BINDINGS)).
 
 -doc """
 Load a runtime-format shader binary into one or more shader objects.
@@ -5487,22 +4900,6 @@ validate_program(Program) ->
     ?CALL_RAW_FUNC(glValidateProgram_raw(Program)).
 
 -doc """
-Return the number of sample buffers for the current framebuffer.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_sample_buffers_count().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_sample_buffers_count() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_sample_buffers_count() ->
-
-    ?CALL_RAW_FUNC(glGetIntegerv_raw(?GL_SAMPLE_BUFFERS)).
-
--doc """
 Bind a buffer to a vertex buffer bind point.
 
 It implements the `glBindVertexBuffer` function
@@ -5522,22 +4919,6 @@ Consult the documentation of the underlying [OpenGL function](https://docs.gl/es
 bind_vertex_buffer(BindingIndex, Buffer, Offset, Stride) ->
 
     ?CALL_RAW_FUNC(glBindVertexBuffer_raw(BindingIndex, Buffer, Offset, Stride)).
-
--doc """
-Return the maximum number of invocations in one compute work group.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_compute_work_group_invocations().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_compute_work_group_invocations() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_compute_work_group_invocations() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_COMPUTE_WORK_GROUP_INVOCATIONS)).
 
 -doc """
 Return an indexed string describing the current GL connection.
@@ -5795,22 +5176,6 @@ copy_tex_image_2d(Target, Level, InternalFormat, X, Y, Width, Height, Border) ->
     ?CALL_RAW_FUNC(glCopyTexImage2D_raw(NewTarget, Level, NewInternalFormat, X, Y, Width, Height, Border)).
 
 -doc """
-Return the maximum combined number of uniform blocks.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_combined_uniform_blocks().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_combined_uniform_blocks() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_combined_uniform_blocks() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_COMBINED_UNIFORM_BLOCKS)).
-
--doc """
 Bind a vertex array object.
 
 It implements the `glBindVertexArray` function
@@ -5986,22 +5351,6 @@ blit_framebuffer(SrcX0, SrcY0, SrcX1, SrcY1, DstX0, DstY0, DstX1, DstY1, Mask, F
         L bor R
     end, 16#00, Mask),
     ?CALL_RAW_FUNC(glBlitFramebuffer_raw(SrcX0, SrcY0, SrcX1, SrcY1, DstX0, DstY0, DstX1, DstY1, NewMask, NewFilter)).
-
--doc """
-Return the current unpack image height.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Height} = gl:get_unpack_image_height().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_unpack_image_height() -> {ok, Height :: gl:int()} | {error, atom()}.
-get_unpack_image_height() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_UNPACK_IMAGE_HEIGHT)).
 
 -doc """
 Control the front and/or back writing of individual bits in the stencil planes.
@@ -6279,22 +5628,6 @@ delete_transform_feedbacks(Feedbacks) ->
     NewFeedbacks = << <<ID:32/native>> || ID <- Feedbacks >>,
     ?CALL_RAW_FUNC(glDeleteTransformFeedbacks_raw(N, NewFeedbacks)).
 
--doc """
-Return the maximum cube-map texture size.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Size} = gl:get_max_cube_map_texture_size().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_cube_map_texture_size() -> {ok, Size :: gl:int()} | {error, atom()}.
-get_max_cube_map_texture_size() ->
-
-    ?CALL_RAW_FUNC(glGetIntegerv_raw(?GL_MAX_CUBE_MAP_TEXTURE_SIZE)).
-
 -type get_vertex_attrib_value() ::
     gl:float() |
     gl:int()
@@ -6386,38 +5719,6 @@ is_vertex_array(Array) ->
     ?CALL_RAW_FUNC(glIsVertexArray_raw(Array)).
 
 -doc """
-Return the program info-log length.
-
-It implements the `glGetProgramiv` function
-
-```
-{ok, Length} = gl:get_program_info_log_length(Program).
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetProgramiv) for more information.
-""".
--spec get_program_info_log_length(Program :: program()) -> {ok, Length :: gl:int()} | {error, atom()}.
-get_program_info_log_length(Program) ->
-
-    ?CALL_RAW_FUNC(glGetProgramivInteger_raw(Program, ?GL_INFO_LOG_LENGTH)).
-
--doc """
-Return the maximum number of atomic counter buffer bindings.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_atomic_counter_buffer_bindings().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_atomic_counter_buffer_bindings() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_atomic_counter_buffer_bindings() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_ATOMIC_COUNTER_BUFFER_BINDINGS)).
-
--doc """
 Bind a named texture to a texturing target.
 
 It implements the `glBindTexture` function
@@ -6485,38 +5786,6 @@ vertex_attrib_i_pointer(Index, Size, Type, Stride, Offset) ->
     ?CALL_RAW_FUNC(glVertexAttribIPointer_raw(Index, Size, NewType, Stride, Offset)).
 
 -doc """
-Return the number of indexed extension strings.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_num_extensions().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_num_extensions() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_num_extensions() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_NUM_EXTENSIONS)).
-
--doc """
-Return the maximum number of compute shader atomic counter buffers.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_compute_atomic_counter_buffers().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_compute_atomic_counter_buffers() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_compute_atomic_counter_buffers() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_COMPUTE_ATOMIC_COUNTER_BUFFERS)).
-
--doc """
 Deletes a shader object.
 
 It implements the `glDeleteShader` function
@@ -6531,22 +5800,6 @@ Consult the documentation of the underlying [OpenGL function](https://docs.gl/es
 delete_shader(Shader) ->
 
     ?CALL_RAW_FUNC(glDeleteShader_raw(Shader)).
-
--doc """
-Return the maximum combined vertex uniform components.
-
-It implements the `glGetInteger64v` function
-
-```
-{ok, Count} = gl:get_max_combined_vertex_uniform_components().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetInteger64v) for more information.
-""".
--spec get_max_combined_vertex_uniform_components() -> {ok, Count :: gl:int64()} | {error, atom()}.
-get_max_combined_vertex_uniform_components() ->
-
-    ?CALL_RAW_FUNC(glGetInteger64vInteger_raw(?GL_MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS)).
 
 -type get_tex_level_parameter_value() ::
     gl:int() |
@@ -6634,22 +5887,6 @@ get_tex_level_parameter(i, Target, Level, ParamName, Count) ->
     end,
 
     ?CALL_RAW_FUNC(glGetTexLevelParameteriv_raw(NewTarget, Level, NewParamName, Count)).
-
--doc """
-Return the maximum number of fragment shader image uniforms.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_fragment_image_uniforms().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_fragment_image_uniforms() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_fragment_image_uniforms() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_FRAGMENT_IMAGE_UNIFORMS)).
 
 -doc """
 Specify mapping of depth values from normalized device coordinates to window coordinates.
@@ -6925,117 +6162,166 @@ Consult the documentation of the underlying [OpenGL function](https://docs.gl/es
 ) -> {ok, Values :: [gl:int()]} | {error, atom()}.
 get_integer(ParamName, Index, Count) ->
     NewParamName = case ParamName of
+        blend -> ?GL_BLEND;
+        depth_writemask -> ?GL_DEPTH_WRITEMASK;
+        line_width -> ?GL_LINE_WIDTH;
+        major_version -> ?GL_MAJOR_VERSION;
+        max_3d_texture_size -> ?GL_MAX_3D_TEXTURE_SIZE;
+        max_array_texture_layers -> ?GL_MAX_ARRAY_TEXTURE_LAYERS;
+        max_atomic_counter_buffer_bindings -> ?GL_MAX_ATOMIC_COUNTER_BUFFER_BINDINGS;
+        max_atomic_counter_buffer_size -> ?GL_MAX_ATOMIC_COUNTER_BUFFER_SIZE;
+        max_color_attachments -> ?GL_MAX_COLOR_ATTACHMENTS;
+        max_color_texture_samples -> ?GL_MAX_COLOR_TEXTURE_SAMPLES;
+        max_combined_atomic_counter_buffers -> ?GL_MAX_COMBINED_ATOMIC_COUNTER_BUFFERS;
+        max_combined_atomic_counters -> ?GL_MAX_COMBINED_ATOMIC_COUNTERS;
+        max_combined_compute_uniform_components -> ?GL_MAX_COMBINED_COMPUTE_UNIFORM_COMPONENTS;
+        max_combined_fragment_uniform_components -> ?GL_MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS;
+        max_combined_image_uniforms -> ?GL_MAX_COMBINED_IMAGE_UNIFORMS;
+        max_combined_shader_output_resources -> ?GL_MAX_COMBINED_SHADER_OUTPUT_RESOURCES;
+        max_combined_shader_storage_blocks -> ?GL_MAX_COMBINED_SHADER_STORAGE_BLOCKS;
+        max_combined_texture_image_units -> ?GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS;
+        max_combined_uniform_blocks -> ?GL_MAX_COMBINED_UNIFORM_BLOCKS;
+        max_combined_vertex_uniform_components -> ?GL_MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS;
+        max_compute_atomic_counter_buffers -> ?GL_MAX_COMPUTE_ATOMIC_COUNTER_BUFFERS;
+        max_compute_atomic_counters -> ?GL_MAX_COMPUTE_ATOMIC_COUNTERS;
+        max_compute_image_uniforms -> ?GL_MAX_COMPUTE_IMAGE_UNIFORMS;
+        max_compute_shader_storage_blocks -> ?GL_MAX_COMPUTE_SHADER_STORAGE_BLOCKS;
+        max_compute_shared_memory_size -> ?GL_MAX_COMPUTE_SHARED_MEMORY_SIZE;
+        max_compute_texture_image_units -> ?GL_MAX_COMPUTE_TEXTURE_IMAGE_UNITS;
+        max_compute_uniform_blocks -> ?GL_MAX_COMPUTE_UNIFORM_BLOCKS;
+        max_compute_uniform_components -> ?GL_MAX_COMPUTE_UNIFORM_COMPONENTS;
+        max_compute_work_group_invocations -> ?GL_MAX_COMPUTE_WORK_GROUP_INVOCATIONS;
+        max_cube_map_texture_size -> ?GL_MAX_CUBE_MAP_TEXTURE_SIZE;
+        max_depth_texture_samples -> ?GL_MAX_DEPTH_TEXTURE_SAMPLES;
+        max_draw_buffers -> ?GL_MAX_DRAW_BUFFERS;
+        max_element_index -> ?GL_MAX_ELEMENT_INDEX;
+        max_elements_indices -> ?GL_MAX_ELEMENTS_INDICES;
+        max_elements_vertices -> ?GL_MAX_ELEMENTS_VERTICES;
+        max_fragment_atomic_counter_buffers -> ?GL_MAX_FRAGMENT_ATOMIC_COUNTER_BUFFERS;
+        max_fragment_atomic_counters -> ?GL_MAX_FRAGMENT_ATOMIC_COUNTERS;
+        max_fragment_image_uniforms -> ?GL_MAX_FRAGMENT_IMAGE_UNIFORMS;
+        max_fragment_input_components -> ?GL_MAX_FRAGMENT_INPUT_COMPONENTS;
+        max_fragment_shader_storage_blocks -> ?GL_MAX_FRAGMENT_SHADER_STORAGE_BLOCKS;
+        max_fragment_uniform_blocks -> ?GL_MAX_FRAGMENT_UNIFORM_BLOCKS;
+        max_fragment_uniform_components -> ?GL_MAX_FRAGMENT_UNIFORM_COMPONENTS;
+        max_fragment_uniform_vectors -> ?GL_MAX_FRAGMENT_UNIFORM_VECTORS;
+        max_framebuffer_height -> ?GL_MAX_FRAMEBUFFER_HEIGHT;
+        max_framebuffer_samples -> ?GL_MAX_FRAMEBUFFER_SAMPLES;
+        max_framebuffer_width -> ?GL_MAX_FRAMEBUFFER_WIDTH;
+        max_image_units -> ?GL_MAX_IMAGE_UNITS;
+        max_integer_samples -> ?GL_MAX_INTEGER_SAMPLES;
+        max_program_texel_offset -> ?GL_MAX_PROGRAM_TEXEL_OFFSET;
+        max_program_texture_gather_offset -> ?GL_MAX_PROGRAM_TEXTURE_GATHER_OFFSET;
+        max_renderbuffer_size -> ?GL_MAX_RENDERBUFFER_SIZE;
+        max_sample_mask_words -> ?GL_MAX_SAMPLE_MASK_WORDS;
+        max_samples -> ?GL_MAX_SAMPLES;
+        max_shader_storage_block_size -> ?GL_MAX_SHADER_STORAGE_BLOCK_SIZE;
+        max_shader_storage_buffer_bindings -> ?GL_MAX_SHADER_STORAGE_BUFFER_BINDINGS;
+        max_texture_image_units -> ?GL_MAX_TEXTURE_IMAGE_UNITS;
+        max_texture_size -> ?GL_MAX_TEXTURE_SIZE;
+        max_transform_feedback_interleaved_components -> ?GL_MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS;
+        max_transform_feedback_separate_attribs -> ?GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS;
+        max_transform_feedback_separate_components -> ?GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS;
+        max_uniform_block_size -> ?GL_MAX_UNIFORM_BLOCK_SIZE;
+        max_uniform_buffer_bindings -> ?GL_MAX_UNIFORM_BUFFER_BINDINGS;
+        max_uniform_locations -> ?GL_MAX_UNIFORM_LOCATIONS;
+        max_varying_components -> ?GL_MAX_VARYING_COMPONENTS;
+        max_varying_vectors -> ?GL_MAX_VARYING_VECTORS;
+        max_vertex_atomic_counter_buffers -> ?GL_MAX_VERTEX_ATOMIC_COUNTER_BUFFERS;
+        max_vertex_atomic_counters -> ?GL_MAX_VERTEX_ATOMIC_COUNTERS;
+        max_vertex_attrib_bindings -> ?GL_MAX_VERTEX_ATTRIB_BINDINGS;
+        max_vertex_attrib_relative_offset -> ?GL_MAX_VERTEX_ATTRIB_RELATIVE_OFFSET;
+        max_vertex_attrib_stride -> ?GL_MAX_VERTEX_ATTRIB_STRIDE;
+        max_vertex_attribs -> ?GL_MAX_VERTEX_ATTRIBS;
+        max_vertex_image_uniforms -> ?GL_MAX_VERTEX_IMAGE_UNIFORMS;
+        max_vertex_output_components -> ?GL_MAX_VERTEX_OUTPUT_COMPONENTS;
+        max_vertex_shader_storage_blocks -> ?GL_MAX_VERTEX_SHADER_STORAGE_BLOCKS;
+        max_vertex_texture_image_units -> ?GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS;
+        max_vertex_uniform_blocks -> ?GL_MAX_VERTEX_UNIFORM_BLOCKS;
+        max_vertex_uniform_components -> ?GL_MAX_VERTEX_UNIFORM_COMPONENTS;
+        max_vertex_uniform_vectors -> ?GL_MAX_VERTEX_UNIFORM_VECTORS;
+        min_program_texel_offset -> ?GL_MIN_PROGRAM_TEXEL_OFFSET;
+        min_program_texture_gather_offset -> ?GL_MIN_PROGRAM_TEXTURE_GATHER_OFFSET;
+        minor_version -> ?GL_MINOR_VERSION;
+        num_compressed_texture_formats -> ?GL_NUM_COMPRESSED_TEXTURE_FORMATS;
+        num_extensions -> ?GL_NUM_EXTENSIONS;
+        num_program_binary_formats -> ?GL_NUM_PROGRAM_BINARY_FORMATS;
+        num_shader_binary_formats -> ?GL_NUM_SHADER_BINARY_FORMATS;
+        pack_alignment -> ?GL_PACK_ALIGNMENT;
+        pack_row_length -> ?GL_PACK_ROW_LENGTH;
+        pack_skip_pixels -> ?GL_PACK_SKIP_PIXELS;
+        pack_skip_rows -> ?GL_PACK_SKIP_ROWS;
+        sample_buffers -> ?GL_SAMPLE_BUFFERS;
+        samples -> ?GL_SAMPLES;
+        shader_compiler -> ?GL_SHADER_COMPILER;
+        shader_storage_buffer_offset_alignment -> ?GL_SHADER_STORAGE_BUFFER_OFFSET_ALIGNMENT;
+        subpixel_bits -> ?GL_SUBPIXEL_BITS;
+        uniform_buffer_offset_alignment -> ?GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT;
+        unpack_alignment -> ?GL_UNPACK_ALIGNMENT;
+        unpack_image_height -> ?GL_UNPACK_IMAGE_HEIGHT;
+        unpack_row_length -> ?GL_UNPACK_ROW_LENGTH;
+        unpack_skip_images -> ?GL_UNPACK_SKIP_IMAGES;
+        unpack_skip_pixels -> ?GL_UNPACK_SKIP_PIXELS;
+        unpack_skip_rows -> ?GL_UNPACK_SKIP_ROWS;
         polygon_offset_units -> ?GL_POLYGON_OFFSET_UNITS;
         texture_binding_3d -> ?GL_TEXTURE_BINDING_3D;
-        num_compressed_texture_formats -> ?GL_NUM_COMPRESSED_TEXTURE_FORMATS;
         pixel_pack_buffer_binding -> ?GL_PIXEL_PACK_BUFFER_BINDING;
         stencil_fail -> ?GL_STENCIL_FAIL;
         viewport -> ?GL_VIEWPORT;
         active_texture -> ?GL_ACTIVE_TEXTURE;
-        line_width -> ?GL_LINE_WIDTH;
         blend_dst_rgb -> ?GL_BLEND_DST_RGB;
-        uniform_buffer_offset_alignment -> ?GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT;
         aliased_point_size_range -> ?GL_ALIASED_POINT_SIZE_RANGE;
-        max_fragment_uniform_blocks -> ?GL_MAX_FRAGMENT_UNIFORM_BLOCKS;
-        max_varying_components -> ?GL_MAX_VARYING_COMPONENTS;
         blend_src_alpha -> ?GL_BLEND_SRC_ALPHA;
         read_buffer -> ?GL_READ_BUFFER;
-        max_array_texture_layers -> ?GL_MAX_ARRAY_TEXTURE_LAYERS;
         texture_binding_2d -> ?GL_TEXTURE_BINDING_2D;
         uniform_buffer_start -> ?GL_UNIFORM_BUFFER_START;
-        max_uniform_buffer_bindings -> ?GL_MAX_UNIFORM_BUFFER_BINDINGS;
         stencil_func -> ?GL_STENCIL_FUNC;
         blend_equation -> ?GL_BLEND_EQUATION;
         implementation_color_read_format -> ?GL_IMPLEMENTATION_COLOR_READ_FORMAT;
         max_compute_work_group_count -> ?GL_MAX_COMPUTE_WORK_GROUP_COUNT;
-        max_program_texel_offset -> ?GL_MAX_PROGRAM_TEXEL_OFFSET;
         blend_src_rgb -> ?GL_BLEND_SRC_RGB;
-        depth_writemask -> ?GL_DEPTH_WRITEMASK;
         dispatch_indirect_buffer_binding -> ?GL_DISPATCH_INDIRECT_BUFFER_BINDING;
         uniform_buffer_binding -> ?GL_UNIFORM_BUFFER_BINDING;
-        max_uniform_locations -> ?GL_MAX_UNIFORM_LOCATIONS;
         texture_binding_2d_multisample -> ?GL_TEXTURE_BINDING_2D_MULTISAMPLE;
-        max_fragment_shader_storage_blocks -> ?GL_MAX_FRAGMENT_SHADER_STORAGE_BLOCKS;
         polygon_offset_factor -> ?GL_POLYGON_OFFSET_FACTOR;
         fragment_shader_derivative_hint -> ?GL_FRAGMENT_SHADER_DERIVATIVE_HINT;
-        max_cube_map_texture_size -> ?GL_MAX_CUBE_MAP_TEXTURE_SIZE;
-        sample_buffers -> ?GL_SAMPLE_BUFFERS;
         depth_range -> ?GL_DEPTH_RANGE;
-        max_combined_vertex_uniform_components -> ?GL_MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS;
         transform_feedback_buffer_start -> ?GL_TRANSFORM_FEEDBACK_BUFFER_START;
-        subpixel_bits -> ?GL_SUBPIXEL_BITS;
         vertex_binding_offset -> ?GL_VERTEX_BINDING_OFFSET;
-        unpack_alignment -> ?GL_UNPACK_ALIGNMENT;
-        max_elements_vertices -> ?GL_MAX_ELEMENTS_VERTICES;
         stencil_bits -> ?GL_STENCIL_BITS;
         stencil_test -> ?GL_STENCIL_TEST;
-        max_fragment_uniform_components -> ?GL_MAX_FRAGMENT_UNIFORM_COMPONENTS;
-        shader_compiler -> ?GL_SHADER_COMPILER;
         color_writemask -> ?GL_COLOR_WRITEMASK;
         stencil_clear_value -> ?GL_STENCIL_CLEAR_VALUE;
-        max_integer_samples -> ?GL_MAX_INTEGER_SAMPLES;
-        pack_skip_pixels -> ?GL_PACK_SKIP_PIXELS;
-        unpack_row_length -> ?GL_UNPACK_ROW_LENGTH;
         max_texture_lod_bias -> ?GL_MAX_TEXTURE_LOD_BIAS;
         stencil_value_mask -> ?GL_STENCIL_VALUE_MASK;
         program_pipeline_binding -> ?GL_PROGRAM_PIPELINE_BINDING;
-        blend -> ?GL_BLEND;
         shader_storage_buffer_binding -> ?GL_SHADER_STORAGE_BUFFER_BINDING;
-        max_vertex_attrib_bindings -> ?GL_MAX_VERTEX_ATTRIB_BINDINGS;
         uniform_buffer_size -> ?GL_UNIFORM_BUFFER_SIZE;
-        max_texture_image_units -> ?GL_MAX_TEXTURE_IMAGE_UNITS;
-        max_combined_texture_image_units -> ?GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS;
-        max_color_attachments -> ?GL_MAX_COLOR_ATTACHMENTS;
         stencil_back_value_mask -> ?GL_STENCIL_BACK_VALUE_MASK;
-        max_vertex_output_components -> ?GL_MAX_VERTEX_OUTPUT_COMPONENTS;
-        max_element_index -> ?GL_MAX_ELEMENT_INDEX;
-        max_renderbuffer_size -> ?GL_MAX_RENDERBUFFER_SIZE;
         stencil_back_ref -> ?GL_STENCIL_BACK_REF;
         stencil_back_fail -> ?GL_STENCIL_BACK_FAIL;
-        unpack_skip_pixels -> ?GL_UNPACK_SKIP_PIXELS;
         depth_clear_value -> ?GL_DEPTH_CLEAR_VALUE;
-        max_fragment_input_components -> ?GL_MAX_FRAGMENT_INPUT_COMPONENTS;
         vertex_array_binding -> ?GL_VERTEX_ARRAY_BINDING;
-        max_depth_texture_samples -> ?GL_MAX_DEPTH_TEXTURE_SAMPLES;
-        num_shader_binary_formats -> ?GL_NUM_SHADER_BINARY_FORMATS;
         max_viewport_dims -> ?GL_MAX_VIEWPORT_DIMS;
-        unpack_skip_rows -> ?GL_UNPACK_SKIP_ROWS;
         blend_dst_alpha -> ?GL_BLEND_DST_ALPHA;
         vertex_binding_stride -> ?GL_VERTEX_BINDING_STRIDE;
-        num_extensions -> ?GL_NUM_EXTENSIONS;
         depth_bits -> ?GL_DEPTH_BITS;
-        max_vertex_shader_storage_blocks -> ?GL_MAX_VERTEX_SHADER_STORAGE_BLOCKS;
-        shader_storage_buffer_offset_alignment -> ?GL_SHADER_STORAGE_BUFFER_OFFSET_ALIGNMENT;
-        max_combined_fragment_uniform_components -> ?GL_MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS;
         transform_feedback_buffer_size -> ?GL_TRANSFORM_FEEDBACK_BUFFER_SIZE;
         max_server_wait_timeout -> ?GL_MAX_SERVER_WAIT_TIMEOUT;
-        max_compute_uniform_blocks -> ?GL_MAX_COMPUTE_UNIFORM_BLOCKS;
-        minor_version -> ?GL_MINOR_VERSION;
         scissor_box -> ?GL_SCISSOR_BOX;
         stencil_writemask -> ?GL_STENCIL_WRITEMASK;
-        max_3d_texture_size -> ?GL_MAX_3D_TEXTURE_SIZE;
         array_buffer_binding -> ?GL_ARRAY_BUFFER_BINDING;
-        max_vertex_texture_image_units -> ?GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS;
         sample_coverage_value -> ?GL_SAMPLE_COVERAGE_VALUE;
         cull_face -> ?GL_CULL_FACE;
-        max_compute_atomic_counters -> ?GL_MAX_COMPUTE_ATOMIC_COUNTERS;
-        unpack_image_height -> ?GL_UNPACK_IMAGE_HEIGHT;
         red_bits -> ?GL_RED_BITS;
-        max_texture_size -> ?GL_MAX_TEXTURE_SIZE;
-        unpack_skip_images -> ?GL_UNPACK_SKIP_IMAGES;
         stencil_pass_depth_fail -> ?GL_STENCIL_PASS_DEPTH_FAIL;
         texture_binding_cube_map -> ?GL_TEXTURE_BINDING_CUBE_MAP;
         read_framebuffer_binding -> ?GL_READ_FRAMEBUFFER_BINDING;
         renderbuffer_binding -> ?GL_RENDERBUFFER_BINDING;
         max_compute_work_group_size -> ?GL_MAX_COMPUTE_WORK_GROUP_SIZE;
-        pack_alignment -> ?GL_PACK_ALIGNMENT;
         vertex_binding_divisor -> ?GL_VERTEX_BINDING_DIVISOR;
-        max_combined_atomic_counters -> ?GL_MAX_COMBINED_ATOMIC_COUNTERS;
         stencil_back_pass_depth_pass -> ?GL_STENCIL_BACK_PASS_DEPTH_PASS;
-        max_framebuffer_width -> ?GL_MAX_FRAMEBUFFER_WIDTH;
-        num_program_binary_formats -> ?GL_NUM_PROGRAM_BINARY_FORMATS;
         stencil_back_pass_depth_fail -> ?GL_STENCIL_BACK_PASS_DEPTH_FAIL;
-        max_uniform_block_size -> ?GL_MAX_UNIFORM_BLOCK_SIZE;
         blend_equation_alpha -> ?GL_BLEND_EQUATION_ALPHA;
         blend_color -> ?GL_BLEND_COLOR;
         pixel_unpack_buffer_binding -> ?GL_PIXEL_UNPACK_BUFFER_BINDING;
@@ -7044,61 +6330,32 @@ get_integer(ParamName, Index, Count) ->
         alpha_bits -> ?GL_ALPHA_BITS;
         implementation_color_read_type -> ?GL_IMPLEMENTATION_COLOR_READ_TYPE;
         green_bits -> ?GL_GREEN_BITS;
-        max_compute_atomic_counter_buffers -> ?GL_MAX_COMPUTE_ATOMIC_COUNTER_BUFFERS;
-        max_vertex_uniform_vectors -> ?GL_MAX_VERTEX_UNIFORM_VECTORS;
         blue_bits -> ?GL_BLUE_BITS;
-        max_sample_mask_words -> ?GL_MAX_SAMPLE_MASK_WORDS;
         element_array_buffer_binding -> ?GL_ELEMENT_ARRAY_BUFFER_BINDING;
-        samples -> ?GL_SAMPLES;
         sample_coverage_invert -> ?GL_SAMPLE_COVERAGE_INVERT;
         sampler_binding -> ?GL_SAMPLER_BINDING;
-        max_fragment_uniform_vectors -> ?GL_MAX_FRAGMENT_UNIFORM_VECTORS;
-        max_color_texture_samples -> ?GL_MAX_COLOR_TEXTURE_SAMPLES;
         scissor_test -> ?GL_SCISSOR_TEST;
-        max_fragment_atomic_counters -> ?GL_MAX_FRAGMENT_ATOMIC_COUNTERS;
         cull_face_mode -> ?GL_CULL_FACE_MODE;
-        max_compute_texture_image_units -> ?GL_MAX_COMPUTE_TEXTURE_IMAGE_UNITS;
         stencil_back_writemask -> ?GL_STENCIL_BACK_WRITEMASK;
         program_binary_formats -> ?GL_PROGRAM_BINARY_FORMATS;
         texture_2d -> ?GL_TEXTURE_2D;
-        max_vertex_attribs -> ?GL_MAX_VERTEX_ATTRIBS;
         front_face -> ?GL_FRONT_FACE;
         stencil_ref -> ?GL_STENCIL_REF;
-        max_vertex_atomic_counters -> ?GL_MAX_VERTEX_ATOMIC_COUNTERS;
         shader_binary_formats -> ?GL_SHADER_BINARY_FORMATS;
         transform_feedback_buffer_binding -> ?GL_TRANSFORM_FEEDBACK_BUFFER_BINDING;
-        pack_row_length -> ?GL_PACK_ROW_LENGTH;
-        max_vertex_attrib_relative_offset -> ?GL_MAX_VERTEX_ATTRIB_RELATIVE_OFFSET;
         current_program -> ?GL_CURRENT_PROGRAM;
-        max_draw_buffers -> ?GL_MAX_DRAW_BUFFERS;
-        max_shader_storage_buffer_bindings -> ?GL_MAX_SHADER_STORAGE_BUFFER_BINDINGS;
-        max_framebuffer_height -> ?GL_MAX_FRAMEBUFFER_HEIGHT;
-        max_compute_shader_storage_blocks -> ?GL_MAX_COMPUTE_SHADER_STORAGE_BLOCKS;
-        max_vertex_uniform_components -> ?GL_MAX_VERTEX_UNIFORM_COMPONENTS;
-        max_compute_work_group_invocations -> ?GL_MAX_COMPUTE_WORK_GROUP_INVOCATIONS;
-        major_version -> ?GL_MAJOR_VERSION;
         color_clear_value -> ?GL_COLOR_CLEAR_VALUE;
-        max_framebuffer_samples -> ?GL_MAX_FRAMEBUFFER_SAMPLES;
-        min_program_texel_offset -> ?GL_MIN_PROGRAM_TEXEL_OFFSET;
         shader_storage_buffer_start -> ?GL_SHADER_STORAGE_BUFFER_START;
-        max_combined_shader_storage_blocks -> ?GL_MAX_COMBINED_SHADER_STORAGE_BLOCKS;
         depth_test -> ?GL_DEPTH_TEST;
-        max_vertex_uniform_blocks -> ?GL_MAX_VERTEX_UNIFORM_BLOCKS;
         depth_func -> ?GL_DEPTH_FUNC;
-        max_compute_uniform_components -> ?GL_MAX_COMPUTE_UNIFORM_COMPONENTS;
-        max_elements_indices -> ?GL_MAX_ELEMENTS_INDICES;
         blend_equation_rgb -> ?GL_BLEND_EQUATION_RGB;
-        pack_skip_rows -> ?GL_PACK_SKIP_ROWS;
         draw_framebuffer_binding -> ?GL_DRAW_FRAMEBUFFER_BINDING;
-        max_combined_uniform_blocks -> ?GL_MAX_COMBINED_UNIFORM_BLOCKS;
         stencil_pass_depth_pass -> ?GL_STENCIL_PASS_DEPTH_PASS;
         stencil_back_func -> ?GL_STENCIL_BACK_FUNC;
-        max_combined_compute_uniform_components -> ?GL_MAX_COMBINED_COMPUTE_UNIFORM_COMPONENTS;
         dither -> ?GL_DITHER;
         shader_storage_buffer_size -> ?GL_SHADER_STORAGE_BUFFER_SIZE;
         polygon_offset_fill -> ?GL_POLYGON_OFFSET_FILL;
-        compressed_texture_formats -> ?GL_COMPRESSED_TEXTURE_FORMATS;
-        max_varying_vectors -> ?GL_MAX_VARYING_VECTORS
+        compressed_texture_formats -> ?GL_COMPRESSED_TEXTURE_FORMATS
     end,
 
     ?CALL_RAW_FUNC(glGetIntegeri_v_raw(NewParamName, Index, Count)).
@@ -7132,22 +6389,6 @@ stencil_func(Function, Ref, Mask) ->
     end,
 
     ?CALL_RAW_FUNC(glStencilFunc_raw(NewFunction, Ref, Mask)).
-
--doc """
-Return the maximum vertex-attrib relative offset.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Offset} = gl:get_max_vertex_attrib_relative_offset().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_vertex_attrib_relative_offset() -> {ok, Offset :: gl:int()} | {error, atom()}.
-get_max_vertex_attrib_relative_offset() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_VERTEX_ATTRIB_RELATIVE_OFFSET)).
 
 -type clear_buffer_value() ::
     [gl:int()] |
@@ -7287,54 +6528,6 @@ draw_arrays(Mode, First, Count) ->
     ?CALL_RAW_FUNC(glDrawArrays_raw(NewMode, First, Count)).
 
 -doc """
-Return the maximum number of color texture samples.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_color_texture_samples().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_color_texture_samples() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_color_texture_samples() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_COLOR_TEXTURE_SAMPLES)).
-
--doc """
-Return the maximum number of fragment shader atomic counters.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_fragment_atomic_counters().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_fragment_atomic_counters() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_fragment_atomic_counters() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_FRAGMENT_ATOMIC_COUNTERS)).
-
--doc """
-Return the maximum number of vertex texture image units.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_vertex_texture_image_units().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_vertex_texture_image_units() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_vertex_texture_image_units() ->
-
-    ?CALL_RAW_FUNC(glGetIntegerv_raw(?GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS)).
-
--doc """
 Attach a two-dimensional texture image as a logical buffer of a framebuffer object.
 
 It implements the `glFramebufferTexture2D` function
@@ -7430,22 +6623,6 @@ delete_textures(Textures) ->
     ?CALL_RAW_FUNC(glDeleteTextures_raw(N, NewTextures)).
 
 -doc """
-Return the maximum number of varying vectors.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_varying_vectors().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_varying_vectors() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_varying_vectors() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_VARYING_VECTORS)).
-
--doc """
 Invalidate selected attachments of the currently bound framebuffer.
 
 It implements the `glInvalidateFramebuffer` function
@@ -7507,22 +6684,6 @@ invalidate_framebuffer(Target, Attachments) ->
     ?CALL_RAW_FUNC(glInvalidateFramebuffer_raw(NewTarget, NumAttachments, NewAttachments)).
 
 -doc """
-Return the current unpack skipped image count.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Images} = gl:get_unpack_skip_images().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_unpack_skip_images() -> {ok, Images :: gl:int()} | {error, atom()}.
-get_unpack_skip_images() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_UNPACK_SKIP_IMAGES)).
-
--doc """
 Specify the organization of integer vertex attributes.
 
 It implements the `glVertexAttribIFormat` function
@@ -7550,22 +6711,6 @@ vertex_attrib_i_format(AttribIndex, Size, Type, RelativeOffset) ->
     end,
 
     ?CALL_RAW_FUNC(glVertexAttribIFormat_raw(AttribIndex, Size, NewType, RelativeOffset)).
-
--doc """
-Return the maximum combined number of texture image units.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_combined_texture_image_units().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_combined_texture_image_units() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_combined_texture_image_units() ->
-
-    ?CALL_RAW_FUNC(glGetIntegerv_raw(?GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS)).
 
 -doc """
 Set the texture minification filter.
@@ -7644,22 +6789,6 @@ tex_mag_filter(Target, Filter) ->
     end,
 
     ?CALL_RAW_FUNC(glTexParameteri_raw(NewTarget, ?GL_TEXTURE_MAG_FILTER, NewFilter)).
-
--doc """
-Return the maximum combined number of shader output resources.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_combined_shader_output_resources().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_combined_shader_output_resources() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_combined_shader_output_resources() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_COMBINED_SHADER_OUTPUT_RESOURCES)).
 
 -doc """
 Specify the width of rasterized lines.
@@ -7746,22 +6875,6 @@ blend_equation_separate(ModeRGB, ModeAlpha) ->
     ?CALL_RAW_FUNC(glBlendEquationSeparate_raw(NewModeRGB, NewModeAlpha)).
 
 -doc """
-Return the number of active uniform blocks in a program.
-
-It implements the `glGetProgramiv` function
-
-```
-{ok, Count} = gl:get_program_active_uniform_blocks_count(Program).
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetProgramiv) for more information.
-""".
--spec get_program_active_uniform_blocks_count(Program :: program()) -> {ok, Count :: gl:int()} | {error, atom()}.
-get_program_active_uniform_blocks_count(Program) ->
-
-    ?CALL_RAW_FUNC(glGetProgramivInteger_raw(Program, ?GL_ACTIVE_UNIFORM_BLOCKS)).
-
--doc """
 Return the index of a named resource within a program interface.
 
 It implements the `glGetProgramResourceIndex` function
@@ -7831,22 +6944,6 @@ copy_tex_sub_image_3d(Target, Level, OffsetX, OffsetY, OffsetZ, X, Y, Width, Hei
     end,
 
     ?CALL_RAW_FUNC(glCopyTexSubImage3D_raw(NewTarget, Level, OffsetX, OffsetY, OffsetZ, X, Y, Width, Height)).
-
--doc """
-Return the shader storage buffer offset alignment.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Alignment} = gl:get_shader_storage_buffer_offset_alignment().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_shader_storage_buffer_offset_alignment() -> {ok, Alignment :: gl:int()} | {error, atom()}.
-get_shader_storage_buffer_offset_alignment() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_SHADER_STORAGE_BUFFER_OFFSET_ALIGNMENT)).
 
 -doc """
 Set the viewport.
@@ -8524,86 +7621,6 @@ vertex_binding_divisor(Index, Divisor) ->
     ?CALL_RAW_FUNC(glVertexBindingDivisor_raw(Index, Divisor)).
 
 -doc """
-Return the maximum transform-feedback varying name length for a program.
-
-It implements the `glGetProgramiv` function
-
-```
-{ok, Length} = gl:get_program_transform_feedback_varying_max_length(Program).
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetProgramiv) for more information.
-""".
--spec get_program_transform_feedback_varying_max_length(Program :: program()) -> {ok, Length :: gl:int()} | {error, atom()}.
-get_program_transform_feedback_varying_max_length(Program) ->
-
-    ?CALL_RAW_FUNC(glGetProgramivInteger_raw(Program, ?GL_TRANSFORM_FEEDBACK_VARYING_MAX_LENGTH)).
-
--doc """
-Return the maximum number of fragment uniform components.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_fragment_uniform_components().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_fragment_uniform_components() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_fragment_uniform_components() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_FRAGMENT_UNIFORM_COMPONENTS)).
-
--doc """
-Return the maximum number of fragment shader storage blocks.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_fragment_shader_storage_blocks().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_fragment_shader_storage_blocks() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_fragment_shader_storage_blocks() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_FRAGMENT_SHADER_STORAGE_BLOCKS)).
-
--doc """
-Return whether a program object has been flagged for deletion.
-
-It implements the `glGetProgramiv` function
-
-```
-{ok, false} = gl:get_program_delete_status(Program).
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetProgramiv) for more information.
-""".
--spec get_program_delete_status(Program :: program()) -> {ok, Status :: gl:boolean()} | {error, atom()}.
-get_program_delete_status(Program) ->
-
-    ?CALL_RAW_FUNC(glGetProgramiv_raw(Program, ?GL_DELETE_STATUS)).
-
--doc """
-Return the recommended maximum index count for draw-range commands.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_elements_indices().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_elements_indices() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_elements_indices() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_ELEMENTS_INDICES)).
-
--doc """
 Returns the source code string from a shader object.
 
 It implements the `glGetShaderSource` function
@@ -8621,38 +7638,6 @@ Consult the documentation of the underlying [OpenGL function](https://docs.gl/es
 get_shader_source(Shader, MaxLength) ->
 
     ?CALL_RAW_FUNC(glGetShaderSource_raw(Shader, MaxLength)).
-
--doc """
-Return the maximum active uniform name length for a program.
-
-It implements the `glGetProgramiv` function
-
-```
-{ok, Length} = gl:get_program_active_uniform_max_length(Program).
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetProgramiv) for more information.
-""".
--spec get_program_active_uniform_max_length(Program :: program()) -> {ok, Length :: gl:int()} | {error, atom()}.
-get_program_active_uniform_max_length(Program) ->
-
-    ?CALL_RAW_FUNC(glGetProgramivInteger_raw(Program, ?GL_ACTIVE_UNIFORM_MAX_LENGTH)).
-
--doc """
-Return the program binary length.
-
-It implements the `glGetProgramiv` function
-
-```
-{ok, Length} = gl:get_program_binary_length(Program).
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetProgramiv) for more information.
-""".
--spec get_program_binary_length(Program :: program()) -> {ok, Length :: gl:int()} | {error, atom()}.
-get_program_binary_length(Program) ->
-
-    ?CALL_RAW_FUNC(glGetProgramivInteger_raw(Program, ?GL_PROGRAM_BINARY_LENGTH)).
 
 -doc """
 Specify multisample coverage parameters.
@@ -8730,20 +7715,31 @@ stencil_op_separate(Face, StencilFail, DepthPassFail, DepthPassPass) ->
     ?CALL_RAW_FUNC(glStencilOpSeparate_raw(NewFace, NewStencilFail, NewDepthPassFail, NewDepthPassPass)).
 
 -doc """
-Return the program pipeline info-log length.
+Return integer parameter values for a shader object.
 
-It implements the `glGetProgramPipelineiv` function
+It implements the `glGetShaderiv` function
 
 ```
-{ok, Length} = gl:get_program_pipeline_info_log_length(Pipeline).
+{ok, [Status]} = gl:get_shader(Shader, compile_status, 1).
 ```
 
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetProgramPipelineiv) for more information.
+Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetShaderiv) for more information.
 """.
--spec get_program_pipeline_info_log_length(Pipeline :: program_pipeline()) -> {ok, Length :: gl:int()} | {error, atom()}.
-get_program_pipeline_info_log_length(Pipeline) ->
+-spec get_shader(
+    Shader :: shader(),
+    ParamName :: shader_parameter_name(),
+    Count :: pos_integer()
+) -> {ok, Values :: [gl:int()]} | {error, atom()}.
+get_shader(Shader, ParamName, Count) ->
+    NewParamName = case ParamName of
+        shader_type -> ?GL_SHADER_TYPE;
+        delete_status -> ?GL_DELETE_STATUS;
+        compile_status -> ?GL_COMPILE_STATUS;
+        shader_source_length -> ?GL_SHADER_SOURCE_LENGTH;
+        info_log_length -> ?GL_INFO_LOG_LENGTH
+    end,
 
-    ?CALL_RAW_FUNC(glGetProgramPipelineivInteger_raw(Pipeline, ?GL_INFO_LOG_LENGTH)).
+    ?CALL_RAW_FUNC(glGetShaderivValues_raw(Shader, NewParamName, Count)).
 
 -doc """
 Return the location of a named resource within a program interface.
@@ -8777,54 +7773,6 @@ get_program_resource_location(Program, ProgramInterface, Name) ->
     ?CALL_RAW_FUNC(glGetProgramResourceLocation_raw(Program, NewProgramInterface, Name0)).
 
 -doc """
-Return the number of subpixel precision bits.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Bits} = gl:get_subpixel_bits().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_subpixel_bits() -> {ok, Bits :: gl:int()} | {error, atom()}.
-get_subpixel_bits() ->
-
-    ?CALL_RAW_FUNC(glGetIntegerv_raw(?GL_SUBPIXEL_BITS)).
-
--doc """
-Return the maximum framebuffer sample count.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_framebuffer_samples().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_framebuffer_samples() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_framebuffer_samples() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_FRAMEBUFFER_SAMPLES)).
-
--doc """
-Return the maximum number of vertex shader atomic counter buffers.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_vertex_atomic_counter_buffers().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_vertex_atomic_counter_buffers() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_vertex_atomic_counter_buffers() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_VERTEX_ATOMIC_COUNTER_BUFFERS)).
-
--doc """
 Load a program object from a driver-provided program binary.
 
 It implements the `glProgramBinary` function
@@ -8845,22 +7793,6 @@ program_binary(Program, BinaryFormat, Binary) ->
     Length = byte_size(Binary0),
 
     ?CALL_RAW_FUNC(glProgramBinary_raw(Program, BinaryFormat, Binary0, Length)).
-
--doc """
-Return the maximum framebuffer width.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Width} = gl:get_max_framebuffer_width().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_framebuffer_width() -> {ok, Width :: gl:int()} | {error, atom()}.
-get_max_framebuffer_width() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_FRAMEBUFFER_WIDTH)).
 
 -doc """
 Clear the depth and stencil buffers of the current framebuffer.
@@ -8964,22 +7896,6 @@ use_program_stages(Pipeline, Stages, Program) ->
     ?CALL_RAW_FUNC(glUseProgramStages_raw(Pipeline, NewStages, Program)).
 
 -doc """
-Return the maximum number of vertex uniform components.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_vertex_uniform_components().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_vertex_uniform_components() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_vertex_uniform_components() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_VERTEX_UNIFORM_COMPONENTS)).
-
--doc """
 Delete framebuffer objects.
 
 It implements the `glDeleteFramebuffers` function
@@ -9027,22 +7943,6 @@ hint(Target, Mode) ->
     ?CALL_RAW_FUNC(glHint_raw(NewTarget, NewMode)).
 
 -doc """
-Return the maximum number of compute shader storage blocks.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_compute_shader_storage_blocks().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_compute_shader_storage_blocks() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_compute_shader_storage_blocks() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_COMPUTE_SHADER_STORAGE_BLOCKS)).
-
--doc """
 Read boolean OpenGL state parameter values.
 
 It implements the `glGetBooleanv` function
@@ -9059,117 +7959,166 @@ Consult the documentation of the underlying [OpenGL function](https://docs.gl/es
 ) -> {ok, Values :: [gl:boolean()]} | {error, atom()}.
 get_boolean(ParamName, Count) ->
     NewParamName = case ParamName of
+        blend -> ?GL_BLEND;
+        depth_writemask -> ?GL_DEPTH_WRITEMASK;
+        line_width -> ?GL_LINE_WIDTH;
+        major_version -> ?GL_MAJOR_VERSION;
+        max_3d_texture_size -> ?GL_MAX_3D_TEXTURE_SIZE;
+        max_array_texture_layers -> ?GL_MAX_ARRAY_TEXTURE_LAYERS;
+        max_atomic_counter_buffer_bindings -> ?GL_MAX_ATOMIC_COUNTER_BUFFER_BINDINGS;
+        max_atomic_counter_buffer_size -> ?GL_MAX_ATOMIC_COUNTER_BUFFER_SIZE;
+        max_color_attachments -> ?GL_MAX_COLOR_ATTACHMENTS;
+        max_color_texture_samples -> ?GL_MAX_COLOR_TEXTURE_SAMPLES;
+        max_combined_atomic_counter_buffers -> ?GL_MAX_COMBINED_ATOMIC_COUNTER_BUFFERS;
+        max_combined_atomic_counters -> ?GL_MAX_COMBINED_ATOMIC_COUNTERS;
+        max_combined_compute_uniform_components -> ?GL_MAX_COMBINED_COMPUTE_UNIFORM_COMPONENTS;
+        max_combined_fragment_uniform_components -> ?GL_MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS;
+        max_combined_image_uniforms -> ?GL_MAX_COMBINED_IMAGE_UNIFORMS;
+        max_combined_shader_output_resources -> ?GL_MAX_COMBINED_SHADER_OUTPUT_RESOURCES;
+        max_combined_shader_storage_blocks -> ?GL_MAX_COMBINED_SHADER_STORAGE_BLOCKS;
+        max_combined_texture_image_units -> ?GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS;
+        max_combined_uniform_blocks -> ?GL_MAX_COMBINED_UNIFORM_BLOCKS;
+        max_combined_vertex_uniform_components -> ?GL_MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS;
+        max_compute_atomic_counter_buffers -> ?GL_MAX_COMPUTE_ATOMIC_COUNTER_BUFFERS;
+        max_compute_atomic_counters -> ?GL_MAX_COMPUTE_ATOMIC_COUNTERS;
+        max_compute_image_uniforms -> ?GL_MAX_COMPUTE_IMAGE_UNIFORMS;
+        max_compute_shader_storage_blocks -> ?GL_MAX_COMPUTE_SHADER_STORAGE_BLOCKS;
+        max_compute_shared_memory_size -> ?GL_MAX_COMPUTE_SHARED_MEMORY_SIZE;
+        max_compute_texture_image_units -> ?GL_MAX_COMPUTE_TEXTURE_IMAGE_UNITS;
+        max_compute_uniform_blocks -> ?GL_MAX_COMPUTE_UNIFORM_BLOCKS;
+        max_compute_uniform_components -> ?GL_MAX_COMPUTE_UNIFORM_COMPONENTS;
+        max_compute_work_group_invocations -> ?GL_MAX_COMPUTE_WORK_GROUP_INVOCATIONS;
+        max_cube_map_texture_size -> ?GL_MAX_CUBE_MAP_TEXTURE_SIZE;
+        max_depth_texture_samples -> ?GL_MAX_DEPTH_TEXTURE_SAMPLES;
+        max_draw_buffers -> ?GL_MAX_DRAW_BUFFERS;
+        max_element_index -> ?GL_MAX_ELEMENT_INDEX;
+        max_elements_indices -> ?GL_MAX_ELEMENTS_INDICES;
+        max_elements_vertices -> ?GL_MAX_ELEMENTS_VERTICES;
+        max_fragment_atomic_counter_buffers -> ?GL_MAX_FRAGMENT_ATOMIC_COUNTER_BUFFERS;
+        max_fragment_atomic_counters -> ?GL_MAX_FRAGMENT_ATOMIC_COUNTERS;
+        max_fragment_image_uniforms -> ?GL_MAX_FRAGMENT_IMAGE_UNIFORMS;
+        max_fragment_input_components -> ?GL_MAX_FRAGMENT_INPUT_COMPONENTS;
+        max_fragment_shader_storage_blocks -> ?GL_MAX_FRAGMENT_SHADER_STORAGE_BLOCKS;
+        max_fragment_uniform_blocks -> ?GL_MAX_FRAGMENT_UNIFORM_BLOCKS;
+        max_fragment_uniform_components -> ?GL_MAX_FRAGMENT_UNIFORM_COMPONENTS;
+        max_fragment_uniform_vectors -> ?GL_MAX_FRAGMENT_UNIFORM_VECTORS;
+        max_framebuffer_height -> ?GL_MAX_FRAMEBUFFER_HEIGHT;
+        max_framebuffer_samples -> ?GL_MAX_FRAMEBUFFER_SAMPLES;
+        max_framebuffer_width -> ?GL_MAX_FRAMEBUFFER_WIDTH;
+        max_image_units -> ?GL_MAX_IMAGE_UNITS;
+        max_integer_samples -> ?GL_MAX_INTEGER_SAMPLES;
+        max_program_texel_offset -> ?GL_MAX_PROGRAM_TEXEL_OFFSET;
+        max_program_texture_gather_offset -> ?GL_MAX_PROGRAM_TEXTURE_GATHER_OFFSET;
+        max_renderbuffer_size -> ?GL_MAX_RENDERBUFFER_SIZE;
+        max_sample_mask_words -> ?GL_MAX_SAMPLE_MASK_WORDS;
+        max_samples -> ?GL_MAX_SAMPLES;
+        max_shader_storage_block_size -> ?GL_MAX_SHADER_STORAGE_BLOCK_SIZE;
+        max_shader_storage_buffer_bindings -> ?GL_MAX_SHADER_STORAGE_BUFFER_BINDINGS;
+        max_texture_image_units -> ?GL_MAX_TEXTURE_IMAGE_UNITS;
+        max_texture_size -> ?GL_MAX_TEXTURE_SIZE;
+        max_transform_feedback_interleaved_components -> ?GL_MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS;
+        max_transform_feedback_separate_attribs -> ?GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS;
+        max_transform_feedback_separate_components -> ?GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS;
+        max_uniform_block_size -> ?GL_MAX_UNIFORM_BLOCK_SIZE;
+        max_uniform_buffer_bindings -> ?GL_MAX_UNIFORM_BUFFER_BINDINGS;
+        max_uniform_locations -> ?GL_MAX_UNIFORM_LOCATIONS;
+        max_varying_components -> ?GL_MAX_VARYING_COMPONENTS;
+        max_varying_vectors -> ?GL_MAX_VARYING_VECTORS;
+        max_vertex_atomic_counter_buffers -> ?GL_MAX_VERTEX_ATOMIC_COUNTER_BUFFERS;
+        max_vertex_atomic_counters -> ?GL_MAX_VERTEX_ATOMIC_COUNTERS;
+        max_vertex_attrib_bindings -> ?GL_MAX_VERTEX_ATTRIB_BINDINGS;
+        max_vertex_attrib_relative_offset -> ?GL_MAX_VERTEX_ATTRIB_RELATIVE_OFFSET;
+        max_vertex_attrib_stride -> ?GL_MAX_VERTEX_ATTRIB_STRIDE;
+        max_vertex_attribs -> ?GL_MAX_VERTEX_ATTRIBS;
+        max_vertex_image_uniforms -> ?GL_MAX_VERTEX_IMAGE_UNIFORMS;
+        max_vertex_output_components -> ?GL_MAX_VERTEX_OUTPUT_COMPONENTS;
+        max_vertex_shader_storage_blocks -> ?GL_MAX_VERTEX_SHADER_STORAGE_BLOCKS;
+        max_vertex_texture_image_units -> ?GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS;
+        max_vertex_uniform_blocks -> ?GL_MAX_VERTEX_UNIFORM_BLOCKS;
+        max_vertex_uniform_components -> ?GL_MAX_VERTEX_UNIFORM_COMPONENTS;
+        max_vertex_uniform_vectors -> ?GL_MAX_VERTEX_UNIFORM_VECTORS;
+        min_program_texel_offset -> ?GL_MIN_PROGRAM_TEXEL_OFFSET;
+        min_program_texture_gather_offset -> ?GL_MIN_PROGRAM_TEXTURE_GATHER_OFFSET;
+        minor_version -> ?GL_MINOR_VERSION;
+        num_compressed_texture_formats -> ?GL_NUM_COMPRESSED_TEXTURE_FORMATS;
+        num_extensions -> ?GL_NUM_EXTENSIONS;
+        num_program_binary_formats -> ?GL_NUM_PROGRAM_BINARY_FORMATS;
+        num_shader_binary_formats -> ?GL_NUM_SHADER_BINARY_FORMATS;
+        pack_alignment -> ?GL_PACK_ALIGNMENT;
+        pack_row_length -> ?GL_PACK_ROW_LENGTH;
+        pack_skip_pixels -> ?GL_PACK_SKIP_PIXELS;
+        pack_skip_rows -> ?GL_PACK_SKIP_ROWS;
+        sample_buffers -> ?GL_SAMPLE_BUFFERS;
+        samples -> ?GL_SAMPLES;
+        shader_compiler -> ?GL_SHADER_COMPILER;
+        shader_storage_buffer_offset_alignment -> ?GL_SHADER_STORAGE_BUFFER_OFFSET_ALIGNMENT;
+        subpixel_bits -> ?GL_SUBPIXEL_BITS;
+        uniform_buffer_offset_alignment -> ?GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT;
+        unpack_alignment -> ?GL_UNPACK_ALIGNMENT;
+        unpack_image_height -> ?GL_UNPACK_IMAGE_HEIGHT;
+        unpack_row_length -> ?GL_UNPACK_ROW_LENGTH;
+        unpack_skip_images -> ?GL_UNPACK_SKIP_IMAGES;
+        unpack_skip_pixels -> ?GL_UNPACK_SKIP_PIXELS;
+        unpack_skip_rows -> ?GL_UNPACK_SKIP_ROWS;
         polygon_offset_units -> ?GL_POLYGON_OFFSET_UNITS;
         texture_binding_3d -> ?GL_TEXTURE_BINDING_3D;
-        num_compressed_texture_formats -> ?GL_NUM_COMPRESSED_TEXTURE_FORMATS;
         pixel_pack_buffer_binding -> ?GL_PIXEL_PACK_BUFFER_BINDING;
         stencil_fail -> ?GL_STENCIL_FAIL;
         viewport -> ?GL_VIEWPORT;
         active_texture -> ?GL_ACTIVE_TEXTURE;
-        line_width -> ?GL_LINE_WIDTH;
         blend_dst_rgb -> ?GL_BLEND_DST_RGB;
-        uniform_buffer_offset_alignment -> ?GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT;
         aliased_point_size_range -> ?GL_ALIASED_POINT_SIZE_RANGE;
-        max_fragment_uniform_blocks -> ?GL_MAX_FRAGMENT_UNIFORM_BLOCKS;
-        max_varying_components -> ?GL_MAX_VARYING_COMPONENTS;
         blend_src_alpha -> ?GL_BLEND_SRC_ALPHA;
         read_buffer -> ?GL_READ_BUFFER;
-        max_array_texture_layers -> ?GL_MAX_ARRAY_TEXTURE_LAYERS;
         texture_binding_2d -> ?GL_TEXTURE_BINDING_2D;
         uniform_buffer_start -> ?GL_UNIFORM_BUFFER_START;
-        max_uniform_buffer_bindings -> ?GL_MAX_UNIFORM_BUFFER_BINDINGS;
         stencil_func -> ?GL_STENCIL_FUNC;
         blend_equation -> ?GL_BLEND_EQUATION;
         implementation_color_read_format -> ?GL_IMPLEMENTATION_COLOR_READ_FORMAT;
         max_compute_work_group_count -> ?GL_MAX_COMPUTE_WORK_GROUP_COUNT;
-        max_program_texel_offset -> ?GL_MAX_PROGRAM_TEXEL_OFFSET;
         blend_src_rgb -> ?GL_BLEND_SRC_RGB;
-        depth_writemask -> ?GL_DEPTH_WRITEMASK;
         dispatch_indirect_buffer_binding -> ?GL_DISPATCH_INDIRECT_BUFFER_BINDING;
         uniform_buffer_binding -> ?GL_UNIFORM_BUFFER_BINDING;
-        max_uniform_locations -> ?GL_MAX_UNIFORM_LOCATIONS;
         texture_binding_2d_multisample -> ?GL_TEXTURE_BINDING_2D_MULTISAMPLE;
-        max_fragment_shader_storage_blocks -> ?GL_MAX_FRAGMENT_SHADER_STORAGE_BLOCKS;
         polygon_offset_factor -> ?GL_POLYGON_OFFSET_FACTOR;
         fragment_shader_derivative_hint -> ?GL_FRAGMENT_SHADER_DERIVATIVE_HINT;
-        max_cube_map_texture_size -> ?GL_MAX_CUBE_MAP_TEXTURE_SIZE;
-        sample_buffers -> ?GL_SAMPLE_BUFFERS;
         depth_range -> ?GL_DEPTH_RANGE;
-        max_combined_vertex_uniform_components -> ?GL_MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS;
         transform_feedback_buffer_start -> ?GL_TRANSFORM_FEEDBACK_BUFFER_START;
-        subpixel_bits -> ?GL_SUBPIXEL_BITS;
         vertex_binding_offset -> ?GL_VERTEX_BINDING_OFFSET;
-        unpack_alignment -> ?GL_UNPACK_ALIGNMENT;
-        max_elements_vertices -> ?GL_MAX_ELEMENTS_VERTICES;
         stencil_bits -> ?GL_STENCIL_BITS;
         stencil_test -> ?GL_STENCIL_TEST;
-        max_fragment_uniform_components -> ?GL_MAX_FRAGMENT_UNIFORM_COMPONENTS;
-        shader_compiler -> ?GL_SHADER_COMPILER;
         color_writemask -> ?GL_COLOR_WRITEMASK;
         stencil_clear_value -> ?GL_STENCIL_CLEAR_VALUE;
-        max_integer_samples -> ?GL_MAX_INTEGER_SAMPLES;
-        pack_skip_pixels -> ?GL_PACK_SKIP_PIXELS;
-        unpack_row_length -> ?GL_UNPACK_ROW_LENGTH;
         max_texture_lod_bias -> ?GL_MAX_TEXTURE_LOD_BIAS;
         stencil_value_mask -> ?GL_STENCIL_VALUE_MASK;
         program_pipeline_binding -> ?GL_PROGRAM_PIPELINE_BINDING;
-        blend -> ?GL_BLEND;
         shader_storage_buffer_binding -> ?GL_SHADER_STORAGE_BUFFER_BINDING;
-        max_vertex_attrib_bindings -> ?GL_MAX_VERTEX_ATTRIB_BINDINGS;
         uniform_buffer_size -> ?GL_UNIFORM_BUFFER_SIZE;
-        max_texture_image_units -> ?GL_MAX_TEXTURE_IMAGE_UNITS;
-        max_combined_texture_image_units -> ?GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS;
-        max_color_attachments -> ?GL_MAX_COLOR_ATTACHMENTS;
         stencil_back_value_mask -> ?GL_STENCIL_BACK_VALUE_MASK;
-        max_vertex_output_components -> ?GL_MAX_VERTEX_OUTPUT_COMPONENTS;
-        max_element_index -> ?GL_MAX_ELEMENT_INDEX;
-        max_renderbuffer_size -> ?GL_MAX_RENDERBUFFER_SIZE;
         stencil_back_ref -> ?GL_STENCIL_BACK_REF;
         stencil_back_fail -> ?GL_STENCIL_BACK_FAIL;
-        unpack_skip_pixels -> ?GL_UNPACK_SKIP_PIXELS;
         depth_clear_value -> ?GL_DEPTH_CLEAR_VALUE;
-        max_fragment_input_components -> ?GL_MAX_FRAGMENT_INPUT_COMPONENTS;
         vertex_array_binding -> ?GL_VERTEX_ARRAY_BINDING;
-        max_depth_texture_samples -> ?GL_MAX_DEPTH_TEXTURE_SAMPLES;
-        num_shader_binary_formats -> ?GL_NUM_SHADER_BINARY_FORMATS;
         max_viewport_dims -> ?GL_MAX_VIEWPORT_DIMS;
-        unpack_skip_rows -> ?GL_UNPACK_SKIP_ROWS;
         blend_dst_alpha -> ?GL_BLEND_DST_ALPHA;
         vertex_binding_stride -> ?GL_VERTEX_BINDING_STRIDE;
-        num_extensions -> ?GL_NUM_EXTENSIONS;
         depth_bits -> ?GL_DEPTH_BITS;
-        max_vertex_shader_storage_blocks -> ?GL_MAX_VERTEX_SHADER_STORAGE_BLOCKS;
-        shader_storage_buffer_offset_alignment -> ?GL_SHADER_STORAGE_BUFFER_OFFSET_ALIGNMENT;
-        max_combined_fragment_uniform_components -> ?GL_MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS;
         transform_feedback_buffer_size -> ?GL_TRANSFORM_FEEDBACK_BUFFER_SIZE;
         max_server_wait_timeout -> ?GL_MAX_SERVER_WAIT_TIMEOUT;
-        max_compute_uniform_blocks -> ?GL_MAX_COMPUTE_UNIFORM_BLOCKS;
-        minor_version -> ?GL_MINOR_VERSION;
         scissor_box -> ?GL_SCISSOR_BOX;
         stencil_writemask -> ?GL_STENCIL_WRITEMASK;
-        max_3d_texture_size -> ?GL_MAX_3D_TEXTURE_SIZE;
         array_buffer_binding -> ?GL_ARRAY_BUFFER_BINDING;
-        max_vertex_texture_image_units -> ?GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS;
         sample_coverage_value -> ?GL_SAMPLE_COVERAGE_VALUE;
         cull_face -> ?GL_CULL_FACE;
-        max_compute_atomic_counters -> ?GL_MAX_COMPUTE_ATOMIC_COUNTERS;
-        unpack_image_height -> ?GL_UNPACK_IMAGE_HEIGHT;
         red_bits -> ?GL_RED_BITS;
-        max_texture_size -> ?GL_MAX_TEXTURE_SIZE;
-        unpack_skip_images -> ?GL_UNPACK_SKIP_IMAGES;
         stencil_pass_depth_fail -> ?GL_STENCIL_PASS_DEPTH_FAIL;
         texture_binding_cube_map -> ?GL_TEXTURE_BINDING_CUBE_MAP;
         read_framebuffer_binding -> ?GL_READ_FRAMEBUFFER_BINDING;
         renderbuffer_binding -> ?GL_RENDERBUFFER_BINDING;
         max_compute_work_group_size -> ?GL_MAX_COMPUTE_WORK_GROUP_SIZE;
-        pack_alignment -> ?GL_PACK_ALIGNMENT;
         vertex_binding_divisor -> ?GL_VERTEX_BINDING_DIVISOR;
-        max_combined_atomic_counters -> ?GL_MAX_COMBINED_ATOMIC_COUNTERS;
         stencil_back_pass_depth_pass -> ?GL_STENCIL_BACK_PASS_DEPTH_PASS;
-        max_framebuffer_width -> ?GL_MAX_FRAMEBUFFER_WIDTH;
-        num_program_binary_formats -> ?GL_NUM_PROGRAM_BINARY_FORMATS;
         stencil_back_pass_depth_fail -> ?GL_STENCIL_BACK_PASS_DEPTH_FAIL;
-        max_uniform_block_size -> ?GL_MAX_UNIFORM_BLOCK_SIZE;
         blend_equation_alpha -> ?GL_BLEND_EQUATION_ALPHA;
         blend_color -> ?GL_BLEND_COLOR;
         pixel_unpack_buffer_binding -> ?GL_PIXEL_UNPACK_BUFFER_BINDING;
@@ -9178,80 +8127,35 @@ get_boolean(ParamName, Count) ->
         alpha_bits -> ?GL_ALPHA_BITS;
         implementation_color_read_type -> ?GL_IMPLEMENTATION_COLOR_READ_TYPE;
         green_bits -> ?GL_GREEN_BITS;
-        max_compute_atomic_counter_buffers -> ?GL_MAX_COMPUTE_ATOMIC_COUNTER_BUFFERS;
-        max_vertex_uniform_vectors -> ?GL_MAX_VERTEX_UNIFORM_VECTORS;
         blue_bits -> ?GL_BLUE_BITS;
-        max_sample_mask_words -> ?GL_MAX_SAMPLE_MASK_WORDS;
         element_array_buffer_binding -> ?GL_ELEMENT_ARRAY_BUFFER_BINDING;
-        samples -> ?GL_SAMPLES;
         sample_coverage_invert -> ?GL_SAMPLE_COVERAGE_INVERT;
         sampler_binding -> ?GL_SAMPLER_BINDING;
-        max_fragment_uniform_vectors -> ?GL_MAX_FRAGMENT_UNIFORM_VECTORS;
-        max_color_texture_samples -> ?GL_MAX_COLOR_TEXTURE_SAMPLES;
         scissor_test -> ?GL_SCISSOR_TEST;
-        max_fragment_atomic_counters -> ?GL_MAX_FRAGMENT_ATOMIC_COUNTERS;
         cull_face_mode -> ?GL_CULL_FACE_MODE;
-        max_compute_texture_image_units -> ?GL_MAX_COMPUTE_TEXTURE_IMAGE_UNITS;
         stencil_back_writemask -> ?GL_STENCIL_BACK_WRITEMASK;
         program_binary_formats -> ?GL_PROGRAM_BINARY_FORMATS;
         texture_2d -> ?GL_TEXTURE_2D;
-        max_vertex_attribs -> ?GL_MAX_VERTEX_ATTRIBS;
         front_face -> ?GL_FRONT_FACE;
         stencil_ref -> ?GL_STENCIL_REF;
-        max_vertex_atomic_counters -> ?GL_MAX_VERTEX_ATOMIC_COUNTERS;
         shader_binary_formats -> ?GL_SHADER_BINARY_FORMATS;
         transform_feedback_buffer_binding -> ?GL_TRANSFORM_FEEDBACK_BUFFER_BINDING;
-        pack_row_length -> ?GL_PACK_ROW_LENGTH;
-        max_vertex_attrib_relative_offset -> ?GL_MAX_VERTEX_ATTRIB_RELATIVE_OFFSET;
         current_program -> ?GL_CURRENT_PROGRAM;
-        max_draw_buffers -> ?GL_MAX_DRAW_BUFFERS;
-        max_shader_storage_buffer_bindings -> ?GL_MAX_SHADER_STORAGE_BUFFER_BINDINGS;
-        max_framebuffer_height -> ?GL_MAX_FRAMEBUFFER_HEIGHT;
-        max_compute_shader_storage_blocks -> ?GL_MAX_COMPUTE_SHADER_STORAGE_BLOCKS;
-        max_vertex_uniform_components -> ?GL_MAX_VERTEX_UNIFORM_COMPONENTS;
-        max_compute_work_group_invocations -> ?GL_MAX_COMPUTE_WORK_GROUP_INVOCATIONS;
-        major_version -> ?GL_MAJOR_VERSION;
         color_clear_value -> ?GL_COLOR_CLEAR_VALUE;
-        max_framebuffer_samples -> ?GL_MAX_FRAMEBUFFER_SAMPLES;
-        min_program_texel_offset -> ?GL_MIN_PROGRAM_TEXEL_OFFSET;
         shader_storage_buffer_start -> ?GL_SHADER_STORAGE_BUFFER_START;
-        max_combined_shader_storage_blocks -> ?GL_MAX_COMBINED_SHADER_STORAGE_BLOCKS;
         depth_test -> ?GL_DEPTH_TEST;
-        max_vertex_uniform_blocks -> ?GL_MAX_VERTEX_UNIFORM_BLOCKS;
         depth_func -> ?GL_DEPTH_FUNC;
-        max_compute_uniform_components -> ?GL_MAX_COMPUTE_UNIFORM_COMPONENTS;
-        max_elements_indices -> ?GL_MAX_ELEMENTS_INDICES;
         blend_equation_rgb -> ?GL_BLEND_EQUATION_RGB;
-        pack_skip_rows -> ?GL_PACK_SKIP_ROWS;
         draw_framebuffer_binding -> ?GL_DRAW_FRAMEBUFFER_BINDING;
-        max_combined_uniform_blocks -> ?GL_MAX_COMBINED_UNIFORM_BLOCKS;
         stencil_pass_depth_pass -> ?GL_STENCIL_PASS_DEPTH_PASS;
         stencil_back_func -> ?GL_STENCIL_BACK_FUNC;
-        max_combined_compute_uniform_components -> ?GL_MAX_COMBINED_COMPUTE_UNIFORM_COMPONENTS;
         dither -> ?GL_DITHER;
         shader_storage_buffer_size -> ?GL_SHADER_STORAGE_BUFFER_SIZE;
         polygon_offset_fill -> ?GL_POLYGON_OFFSET_FILL;
-        compressed_texture_formats -> ?GL_COMPRESSED_TEXTURE_FORMATS;
-        max_varying_vectors -> ?GL_MAX_VARYING_VECTORS
+        compressed_texture_formats -> ?GL_COMPRESSED_TEXTURE_FORMATS
     end,
 
     ?CALL_RAW_FUNC(glGetBooleanv_raw(NewParamName, Count)).
-
--doc """
-Return the maximum number of transform feedback components that can be written separately.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_transform_feedback_separate_components().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_transform_feedback_separate_components() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_transform_feedback_separate_components() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS)).
 
 -doc """
 Start transform feedback operation.
@@ -9277,22 +8181,6 @@ begin_transform_feedback(PrimitiveMode) ->
     end,
 
     ?CALL_RAW_FUNC(glBeginTransformFeedback_raw(NewPrimitiveMode)).
-
--doc """
-Return the maximum number of array texture layers.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_array_texture_layers().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_array_texture_layers() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_array_texture_layers() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_ARRAY_TEXTURE_LAYERS)).
 
 -doc """
 Set the constant blend color.
@@ -9453,38 +8341,6 @@ delete_buffers(Buffers) ->
     ?CALL_RAW_FUNC(glDeleteBuffers_raw(N, NewBuffers)).
 
 -doc """
-Return the maximum compute shader shared memory size in bytes.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Size} = gl:get_max_compute_shared_memory_size().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_compute_shared_memory_size() -> {ok, Size :: gl:int()} | {error, atom()}.
-get_max_compute_shared_memory_size() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_COMPUTE_SHARED_MEMORY_SIZE)).
-
--doc """
-Return the maximum number of sample-mask words.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_sample_mask_words().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_sample_mask_words() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_sample_mask_words() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_SAMPLE_MASK_WORDS)).
-
--doc """
 Read attachment parameter values for the framebuffer bound to a target.
 
 It implements the `glGetFramebufferAttachmentParameteriv` function
@@ -9561,38 +8417,6 @@ get_framebuffer_attachment_parameter(Target, Attachment, ParamName, Count) ->
     end,
 
     ?CALL_RAW_FUNC(glGetFramebufferAttachmentParameteriv_raw(NewTarget, NewAttachment, NewParamName, Count)).
-
--doc """
-Return the maximum programmable texture gather offset.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Offset} = gl:get_max_program_texture_gather_offset().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_program_texture_gather_offset() -> {ok, Offset :: gl:int()} | {error, atom()}.
-get_max_program_texture_gather_offset() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_PROGRAM_TEXTURE_GATHER_OFFSET)).
-
--doc """
-Return the maximum number of varying components.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_varying_components().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_varying_components() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_varying_components() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_VARYING_COMPONENTS)).
 
 -doc """
 Begin a query object on a target.
@@ -9857,54 +8681,6 @@ program_uniform_matrix(f, Program, Location, Value) when
     ?CALL_RAW_FUNC(glProgramUniformMatrix2fv_raw(Program, Location, 1, false, NewValue)).
 
 -doc """
-Return the maximum active attribute name length for a program.
-
-It implements the `glGetProgramiv` function
-
-```
-{ok, Length} = gl:get_program_active_attribute_max_length(Program).
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetProgramiv) for more information.
-""".
--spec get_program_active_attribute_max_length(Program :: program()) -> {ok, Length :: gl:int()} | {error, atom()}.
-get_program_active_attribute_max_length(Program) ->
-
-    ?CALL_RAW_FUNC(glGetProgramivInteger_raw(Program, ?GL_ACTIVE_ATTRIBUTE_MAX_LENGTH)).
-
--doc """
-Return the maximum number of vertex uniform blocks.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_vertex_uniform_blocks().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_vertex_uniform_blocks() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_vertex_uniform_blocks() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_VERTEX_UNIFORM_BLOCKS)).
-
--doc """
-Return the number of transform-feedback varyings in a program.
-
-It implements the `glGetProgramiv` function
-
-```
-{ok, Count} = gl:get_program_transform_feedback_varyings_count(Program).
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetProgramiv) for more information.
-""".
--spec get_program_transform_feedback_varyings_count(Program :: program()) -> {ok, Count :: gl:int()} | {error, atom()}.
-get_program_transform_feedback_varyings_count(Program) ->
-
-    ?CALL_RAW_FUNC(glGetProgramivInteger_raw(Program, ?GL_TRANSFORM_FEEDBACK_VARYINGS)).
-
--doc """
 Release resources consumed by the implementation's shader compiler.
 
 It implements the `glReleaseShaderCompiler` function
@@ -9951,22 +8727,6 @@ pixel_store(Name, Param) ->
     end,
 
     ?CALL_RAW_FUNC(glPixelStorei_raw(NewName, Param)).
-
--doc """
-Return the maximum number of separate transform feedback attributes.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_transform_feedback_separate_attribs().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_transform_feedback_separate_attribs() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_transform_feedback_separate_attribs() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS)).
 
 -doc """
 End the active query object for a target.
@@ -10153,22 +8913,6 @@ framebuffer_renderbuffer(Target, Attachment, RenderbufferTarget, Renderbuffer) -
     ?CALL_RAW_FUNC(glFramebufferRenderbuffer_raw(NewTarget, NewAttachment, NewRenderbufferTarget, Renderbuffer)).
 
 -doc """
-Return the maximum renderbuffer size.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Size} = gl:get_max_renderbuffer_size().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_renderbuffer_size() -> {ok, Size :: gl:int()} | {error, atom()}.
-get_max_renderbuffer_size() ->
-
-    ?CALL_RAW_FUNC(glGetIntegerv_raw(?GL_MAX_RENDERBUFFER_SIZE)).
-
--doc """
 Validate a program pipeline object against current GL state.
 
 It implements the `glValidateProgramPipeline` function
@@ -10183,22 +8927,6 @@ Consult the documentation of the underlying [OpenGL function](https://docs.gl/es
 validate_program_pipeline(Pipeline) ->
 
     ?CALL_RAW_FUNC(glValidateProgramPipeline_raw(Pipeline)).
-
--doc """
-Return the maximum number of interleaved transform feedback components.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_transform_feedback_interleaved_components().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_transform_feedback_interleaved_components() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_transform_feedback_interleaved_components() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS)).
 
 -doc """
 Render primitives using command parameters from the bound draw indirect buffer.
@@ -10305,54 +9033,6 @@ get_buffer_parameter(i, Target, ParamName, Count) ->
     ?CALL_RAW_FUNC(glGetBufferParameteriv_raw(NewTarget, NewParamName, Count)).
 
 -doc """
-Return the current unpack alignment.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Alignment} = gl:get_unpack_alignment().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_unpack_alignment() -> {ok, Alignment :: gl:int()} | {error, atom()}.
-get_unpack_alignment() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_UNPACK_ALIGNMENT)).
-
--doc """
-Return the maximum combined number of atomic counters.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_combined_atomic_counters().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_combined_atomic_counters() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_combined_atomic_counters() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_COMBINED_ATOMIC_COUNTERS)).
-
--doc """
-Return the maximum number of vertex shader output components.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_vertex_output_components().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_vertex_output_components() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_vertex_output_components() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_VERTEX_OUTPUT_COMPONENTS)).
-
--doc """
 Copy a two-dimensional texture subimage from the read framebuffer.
 
 It implements the `glCopyTexSubImage2D` function
@@ -10410,22 +9090,6 @@ Consult the documentation of the underlying [OpenGL function](https://docs.gl/es
 get_active_uniform(Program, Index, MaxLength) ->
 
     ?CALL_RAW_FUNC(glGetActiveUniform_raw(Program, Index, MaxLength)).
-
--doc """
-Return the number of active atomic counter buffers in a program.
-
-It implements the `glGetProgramiv` function
-
-```
-{ok, Count} = gl:get_program_active_atomic_counter_buffers_count(Program).
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetProgramiv) for more information.
-""".
--spec get_program_active_atomic_counter_buffers_count(Program :: program()) -> {ok, Count :: gl:int()} | {error, atom()}.
-get_program_active_atomic_counter_buffers_count(Program) ->
-
-    ?CALL_RAW_FUNC(glGetProgramivInteger_raw(Program, ?GL_ACTIVE_ATOMIC_COUNTER_BUFFERS)).
 
 -doc """
 Establish data storage, format, and dimensions for a renderbuffer object's image.
@@ -10527,22 +9191,6 @@ renderbuffer_storage(Target, InternalFormat, Width, Height) ->
     ?CALL_RAW_FUNC(glRenderbufferStorage_raw(NewTarget, NewInternalFormat, Width, Height)).
 
 -doc """
-Return the number of compressed texture formats supported.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_num_compressed_texture_formats().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_num_compressed_texture_formats() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_num_compressed_texture_formats() ->
-
-    ?CALL_RAW_FUNC(glGetIntegerv_raw(?GL_NUM_COMPRESSED_TEXTURE_FORMATS)).
-
--doc """
 Set front and/or back function and reference value for stencil testing.
 
 It implements the `glStencilFuncSeparate` function
@@ -10595,117 +9243,166 @@ Consult the documentation of the underlying [OpenGL function](https://docs.gl/es
 ) -> {ok, Values :: [gl:int()]} | {error, atom()}.
 get_integer(ParamName, Count) ->
     NewParamName = case ParamName of
+        blend -> ?GL_BLEND;
+        depth_writemask -> ?GL_DEPTH_WRITEMASK;
+        line_width -> ?GL_LINE_WIDTH;
+        major_version -> ?GL_MAJOR_VERSION;
+        max_3d_texture_size -> ?GL_MAX_3D_TEXTURE_SIZE;
+        max_array_texture_layers -> ?GL_MAX_ARRAY_TEXTURE_LAYERS;
+        max_atomic_counter_buffer_bindings -> ?GL_MAX_ATOMIC_COUNTER_BUFFER_BINDINGS;
+        max_atomic_counter_buffer_size -> ?GL_MAX_ATOMIC_COUNTER_BUFFER_SIZE;
+        max_color_attachments -> ?GL_MAX_COLOR_ATTACHMENTS;
+        max_color_texture_samples -> ?GL_MAX_COLOR_TEXTURE_SAMPLES;
+        max_combined_atomic_counter_buffers -> ?GL_MAX_COMBINED_ATOMIC_COUNTER_BUFFERS;
+        max_combined_atomic_counters -> ?GL_MAX_COMBINED_ATOMIC_COUNTERS;
+        max_combined_compute_uniform_components -> ?GL_MAX_COMBINED_COMPUTE_UNIFORM_COMPONENTS;
+        max_combined_fragment_uniform_components -> ?GL_MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS;
+        max_combined_image_uniforms -> ?GL_MAX_COMBINED_IMAGE_UNIFORMS;
+        max_combined_shader_output_resources -> ?GL_MAX_COMBINED_SHADER_OUTPUT_RESOURCES;
+        max_combined_shader_storage_blocks -> ?GL_MAX_COMBINED_SHADER_STORAGE_BLOCKS;
+        max_combined_texture_image_units -> ?GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS;
+        max_combined_uniform_blocks -> ?GL_MAX_COMBINED_UNIFORM_BLOCKS;
+        max_combined_vertex_uniform_components -> ?GL_MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS;
+        max_compute_atomic_counter_buffers -> ?GL_MAX_COMPUTE_ATOMIC_COUNTER_BUFFERS;
+        max_compute_atomic_counters -> ?GL_MAX_COMPUTE_ATOMIC_COUNTERS;
+        max_compute_image_uniforms -> ?GL_MAX_COMPUTE_IMAGE_UNIFORMS;
+        max_compute_shader_storage_blocks -> ?GL_MAX_COMPUTE_SHADER_STORAGE_BLOCKS;
+        max_compute_shared_memory_size -> ?GL_MAX_COMPUTE_SHARED_MEMORY_SIZE;
+        max_compute_texture_image_units -> ?GL_MAX_COMPUTE_TEXTURE_IMAGE_UNITS;
+        max_compute_uniform_blocks -> ?GL_MAX_COMPUTE_UNIFORM_BLOCKS;
+        max_compute_uniform_components -> ?GL_MAX_COMPUTE_UNIFORM_COMPONENTS;
+        max_compute_work_group_invocations -> ?GL_MAX_COMPUTE_WORK_GROUP_INVOCATIONS;
+        max_cube_map_texture_size -> ?GL_MAX_CUBE_MAP_TEXTURE_SIZE;
+        max_depth_texture_samples -> ?GL_MAX_DEPTH_TEXTURE_SAMPLES;
+        max_draw_buffers -> ?GL_MAX_DRAW_BUFFERS;
+        max_element_index -> ?GL_MAX_ELEMENT_INDEX;
+        max_elements_indices -> ?GL_MAX_ELEMENTS_INDICES;
+        max_elements_vertices -> ?GL_MAX_ELEMENTS_VERTICES;
+        max_fragment_atomic_counter_buffers -> ?GL_MAX_FRAGMENT_ATOMIC_COUNTER_BUFFERS;
+        max_fragment_atomic_counters -> ?GL_MAX_FRAGMENT_ATOMIC_COUNTERS;
+        max_fragment_image_uniforms -> ?GL_MAX_FRAGMENT_IMAGE_UNIFORMS;
+        max_fragment_input_components -> ?GL_MAX_FRAGMENT_INPUT_COMPONENTS;
+        max_fragment_shader_storage_blocks -> ?GL_MAX_FRAGMENT_SHADER_STORAGE_BLOCKS;
+        max_fragment_uniform_blocks -> ?GL_MAX_FRAGMENT_UNIFORM_BLOCKS;
+        max_fragment_uniform_components -> ?GL_MAX_FRAGMENT_UNIFORM_COMPONENTS;
+        max_fragment_uniform_vectors -> ?GL_MAX_FRAGMENT_UNIFORM_VECTORS;
+        max_framebuffer_height -> ?GL_MAX_FRAMEBUFFER_HEIGHT;
+        max_framebuffer_samples -> ?GL_MAX_FRAMEBUFFER_SAMPLES;
+        max_framebuffer_width -> ?GL_MAX_FRAMEBUFFER_WIDTH;
+        max_image_units -> ?GL_MAX_IMAGE_UNITS;
+        max_integer_samples -> ?GL_MAX_INTEGER_SAMPLES;
+        max_program_texel_offset -> ?GL_MAX_PROGRAM_TEXEL_OFFSET;
+        max_program_texture_gather_offset -> ?GL_MAX_PROGRAM_TEXTURE_GATHER_OFFSET;
+        max_renderbuffer_size -> ?GL_MAX_RENDERBUFFER_SIZE;
+        max_sample_mask_words -> ?GL_MAX_SAMPLE_MASK_WORDS;
+        max_samples -> ?GL_MAX_SAMPLES;
+        max_shader_storage_block_size -> ?GL_MAX_SHADER_STORAGE_BLOCK_SIZE;
+        max_shader_storage_buffer_bindings -> ?GL_MAX_SHADER_STORAGE_BUFFER_BINDINGS;
+        max_texture_image_units -> ?GL_MAX_TEXTURE_IMAGE_UNITS;
+        max_texture_size -> ?GL_MAX_TEXTURE_SIZE;
+        max_transform_feedback_interleaved_components -> ?GL_MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS;
+        max_transform_feedback_separate_attribs -> ?GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS;
+        max_transform_feedback_separate_components -> ?GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS;
+        max_uniform_block_size -> ?GL_MAX_UNIFORM_BLOCK_SIZE;
+        max_uniform_buffer_bindings -> ?GL_MAX_UNIFORM_BUFFER_BINDINGS;
+        max_uniform_locations -> ?GL_MAX_UNIFORM_LOCATIONS;
+        max_varying_components -> ?GL_MAX_VARYING_COMPONENTS;
+        max_varying_vectors -> ?GL_MAX_VARYING_VECTORS;
+        max_vertex_atomic_counter_buffers -> ?GL_MAX_VERTEX_ATOMIC_COUNTER_BUFFERS;
+        max_vertex_atomic_counters -> ?GL_MAX_VERTEX_ATOMIC_COUNTERS;
+        max_vertex_attrib_bindings -> ?GL_MAX_VERTEX_ATTRIB_BINDINGS;
+        max_vertex_attrib_relative_offset -> ?GL_MAX_VERTEX_ATTRIB_RELATIVE_OFFSET;
+        max_vertex_attrib_stride -> ?GL_MAX_VERTEX_ATTRIB_STRIDE;
+        max_vertex_attribs -> ?GL_MAX_VERTEX_ATTRIBS;
+        max_vertex_image_uniforms -> ?GL_MAX_VERTEX_IMAGE_UNIFORMS;
+        max_vertex_output_components -> ?GL_MAX_VERTEX_OUTPUT_COMPONENTS;
+        max_vertex_shader_storage_blocks -> ?GL_MAX_VERTEX_SHADER_STORAGE_BLOCKS;
+        max_vertex_texture_image_units -> ?GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS;
+        max_vertex_uniform_blocks -> ?GL_MAX_VERTEX_UNIFORM_BLOCKS;
+        max_vertex_uniform_components -> ?GL_MAX_VERTEX_UNIFORM_COMPONENTS;
+        max_vertex_uniform_vectors -> ?GL_MAX_VERTEX_UNIFORM_VECTORS;
+        min_program_texel_offset -> ?GL_MIN_PROGRAM_TEXEL_OFFSET;
+        min_program_texture_gather_offset -> ?GL_MIN_PROGRAM_TEXTURE_GATHER_OFFSET;
+        minor_version -> ?GL_MINOR_VERSION;
+        num_compressed_texture_formats -> ?GL_NUM_COMPRESSED_TEXTURE_FORMATS;
+        num_extensions -> ?GL_NUM_EXTENSIONS;
+        num_program_binary_formats -> ?GL_NUM_PROGRAM_BINARY_FORMATS;
+        num_shader_binary_formats -> ?GL_NUM_SHADER_BINARY_FORMATS;
+        pack_alignment -> ?GL_PACK_ALIGNMENT;
+        pack_row_length -> ?GL_PACK_ROW_LENGTH;
+        pack_skip_pixels -> ?GL_PACK_SKIP_PIXELS;
+        pack_skip_rows -> ?GL_PACK_SKIP_ROWS;
+        sample_buffers -> ?GL_SAMPLE_BUFFERS;
+        samples -> ?GL_SAMPLES;
+        shader_compiler -> ?GL_SHADER_COMPILER;
+        shader_storage_buffer_offset_alignment -> ?GL_SHADER_STORAGE_BUFFER_OFFSET_ALIGNMENT;
+        subpixel_bits -> ?GL_SUBPIXEL_BITS;
+        uniform_buffer_offset_alignment -> ?GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT;
+        unpack_alignment -> ?GL_UNPACK_ALIGNMENT;
+        unpack_image_height -> ?GL_UNPACK_IMAGE_HEIGHT;
+        unpack_row_length -> ?GL_UNPACK_ROW_LENGTH;
+        unpack_skip_images -> ?GL_UNPACK_SKIP_IMAGES;
+        unpack_skip_pixels -> ?GL_UNPACK_SKIP_PIXELS;
+        unpack_skip_rows -> ?GL_UNPACK_SKIP_ROWS;
         polygon_offset_units -> ?GL_POLYGON_OFFSET_UNITS;
         texture_binding_3d -> ?GL_TEXTURE_BINDING_3D;
-        num_compressed_texture_formats -> ?GL_NUM_COMPRESSED_TEXTURE_FORMATS;
         pixel_pack_buffer_binding -> ?GL_PIXEL_PACK_BUFFER_BINDING;
         stencil_fail -> ?GL_STENCIL_FAIL;
         viewport -> ?GL_VIEWPORT;
         active_texture -> ?GL_ACTIVE_TEXTURE;
-        line_width -> ?GL_LINE_WIDTH;
         blend_dst_rgb -> ?GL_BLEND_DST_RGB;
-        uniform_buffer_offset_alignment -> ?GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT;
         aliased_point_size_range -> ?GL_ALIASED_POINT_SIZE_RANGE;
-        max_fragment_uniform_blocks -> ?GL_MAX_FRAGMENT_UNIFORM_BLOCKS;
-        max_varying_components -> ?GL_MAX_VARYING_COMPONENTS;
         blend_src_alpha -> ?GL_BLEND_SRC_ALPHA;
         read_buffer -> ?GL_READ_BUFFER;
-        max_array_texture_layers -> ?GL_MAX_ARRAY_TEXTURE_LAYERS;
         texture_binding_2d -> ?GL_TEXTURE_BINDING_2D;
         uniform_buffer_start -> ?GL_UNIFORM_BUFFER_START;
-        max_uniform_buffer_bindings -> ?GL_MAX_UNIFORM_BUFFER_BINDINGS;
         stencil_func -> ?GL_STENCIL_FUNC;
         blend_equation -> ?GL_BLEND_EQUATION;
         implementation_color_read_format -> ?GL_IMPLEMENTATION_COLOR_READ_FORMAT;
         max_compute_work_group_count -> ?GL_MAX_COMPUTE_WORK_GROUP_COUNT;
-        max_program_texel_offset -> ?GL_MAX_PROGRAM_TEXEL_OFFSET;
         blend_src_rgb -> ?GL_BLEND_SRC_RGB;
-        depth_writemask -> ?GL_DEPTH_WRITEMASK;
         dispatch_indirect_buffer_binding -> ?GL_DISPATCH_INDIRECT_BUFFER_BINDING;
         uniform_buffer_binding -> ?GL_UNIFORM_BUFFER_BINDING;
-        max_uniform_locations -> ?GL_MAX_UNIFORM_LOCATIONS;
         texture_binding_2d_multisample -> ?GL_TEXTURE_BINDING_2D_MULTISAMPLE;
-        max_fragment_shader_storage_blocks -> ?GL_MAX_FRAGMENT_SHADER_STORAGE_BLOCKS;
         polygon_offset_factor -> ?GL_POLYGON_OFFSET_FACTOR;
         fragment_shader_derivative_hint -> ?GL_FRAGMENT_SHADER_DERIVATIVE_HINT;
-        max_cube_map_texture_size -> ?GL_MAX_CUBE_MAP_TEXTURE_SIZE;
-        sample_buffers -> ?GL_SAMPLE_BUFFERS;
         depth_range -> ?GL_DEPTH_RANGE;
-        max_combined_vertex_uniform_components -> ?GL_MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS;
         transform_feedback_buffer_start -> ?GL_TRANSFORM_FEEDBACK_BUFFER_START;
-        subpixel_bits -> ?GL_SUBPIXEL_BITS;
         vertex_binding_offset -> ?GL_VERTEX_BINDING_OFFSET;
-        unpack_alignment -> ?GL_UNPACK_ALIGNMENT;
-        max_elements_vertices -> ?GL_MAX_ELEMENTS_VERTICES;
         stencil_bits -> ?GL_STENCIL_BITS;
         stencil_test -> ?GL_STENCIL_TEST;
-        max_fragment_uniform_components -> ?GL_MAX_FRAGMENT_UNIFORM_COMPONENTS;
-        shader_compiler -> ?GL_SHADER_COMPILER;
         color_writemask -> ?GL_COLOR_WRITEMASK;
         stencil_clear_value -> ?GL_STENCIL_CLEAR_VALUE;
-        max_integer_samples -> ?GL_MAX_INTEGER_SAMPLES;
-        pack_skip_pixels -> ?GL_PACK_SKIP_PIXELS;
-        unpack_row_length -> ?GL_UNPACK_ROW_LENGTH;
         max_texture_lod_bias -> ?GL_MAX_TEXTURE_LOD_BIAS;
         stencil_value_mask -> ?GL_STENCIL_VALUE_MASK;
         program_pipeline_binding -> ?GL_PROGRAM_PIPELINE_BINDING;
-        blend -> ?GL_BLEND;
         shader_storage_buffer_binding -> ?GL_SHADER_STORAGE_BUFFER_BINDING;
-        max_vertex_attrib_bindings -> ?GL_MAX_VERTEX_ATTRIB_BINDINGS;
         uniform_buffer_size -> ?GL_UNIFORM_BUFFER_SIZE;
-        max_texture_image_units -> ?GL_MAX_TEXTURE_IMAGE_UNITS;
-        max_combined_texture_image_units -> ?GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS;
-        max_color_attachments -> ?GL_MAX_COLOR_ATTACHMENTS;
         stencil_back_value_mask -> ?GL_STENCIL_BACK_VALUE_MASK;
-        max_vertex_output_components -> ?GL_MAX_VERTEX_OUTPUT_COMPONENTS;
-        max_element_index -> ?GL_MAX_ELEMENT_INDEX;
-        max_renderbuffer_size -> ?GL_MAX_RENDERBUFFER_SIZE;
         stencil_back_ref -> ?GL_STENCIL_BACK_REF;
         stencil_back_fail -> ?GL_STENCIL_BACK_FAIL;
-        unpack_skip_pixels -> ?GL_UNPACK_SKIP_PIXELS;
         depth_clear_value -> ?GL_DEPTH_CLEAR_VALUE;
-        max_fragment_input_components -> ?GL_MAX_FRAGMENT_INPUT_COMPONENTS;
         vertex_array_binding -> ?GL_VERTEX_ARRAY_BINDING;
-        max_depth_texture_samples -> ?GL_MAX_DEPTH_TEXTURE_SAMPLES;
-        num_shader_binary_formats -> ?GL_NUM_SHADER_BINARY_FORMATS;
         max_viewport_dims -> ?GL_MAX_VIEWPORT_DIMS;
-        unpack_skip_rows -> ?GL_UNPACK_SKIP_ROWS;
         blend_dst_alpha -> ?GL_BLEND_DST_ALPHA;
         vertex_binding_stride -> ?GL_VERTEX_BINDING_STRIDE;
-        num_extensions -> ?GL_NUM_EXTENSIONS;
         depth_bits -> ?GL_DEPTH_BITS;
-        max_vertex_shader_storage_blocks -> ?GL_MAX_VERTEX_SHADER_STORAGE_BLOCKS;
-        shader_storage_buffer_offset_alignment -> ?GL_SHADER_STORAGE_BUFFER_OFFSET_ALIGNMENT;
-        max_combined_fragment_uniform_components -> ?GL_MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS;
         transform_feedback_buffer_size -> ?GL_TRANSFORM_FEEDBACK_BUFFER_SIZE;
         max_server_wait_timeout -> ?GL_MAX_SERVER_WAIT_TIMEOUT;
-        max_compute_uniform_blocks -> ?GL_MAX_COMPUTE_UNIFORM_BLOCKS;
-        minor_version -> ?GL_MINOR_VERSION;
         scissor_box -> ?GL_SCISSOR_BOX;
         stencil_writemask -> ?GL_STENCIL_WRITEMASK;
-        max_3d_texture_size -> ?GL_MAX_3D_TEXTURE_SIZE;
         array_buffer_binding -> ?GL_ARRAY_BUFFER_BINDING;
-        max_vertex_texture_image_units -> ?GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS;
         sample_coverage_value -> ?GL_SAMPLE_COVERAGE_VALUE;
         cull_face -> ?GL_CULL_FACE;
-        max_compute_atomic_counters -> ?GL_MAX_COMPUTE_ATOMIC_COUNTERS;
-        unpack_image_height -> ?GL_UNPACK_IMAGE_HEIGHT;
         red_bits -> ?GL_RED_BITS;
-        max_texture_size -> ?GL_MAX_TEXTURE_SIZE;
-        unpack_skip_images -> ?GL_UNPACK_SKIP_IMAGES;
         stencil_pass_depth_fail -> ?GL_STENCIL_PASS_DEPTH_FAIL;
         texture_binding_cube_map -> ?GL_TEXTURE_BINDING_CUBE_MAP;
         read_framebuffer_binding -> ?GL_READ_FRAMEBUFFER_BINDING;
         renderbuffer_binding -> ?GL_RENDERBUFFER_BINDING;
         max_compute_work_group_size -> ?GL_MAX_COMPUTE_WORK_GROUP_SIZE;
-        pack_alignment -> ?GL_PACK_ALIGNMENT;
         vertex_binding_divisor -> ?GL_VERTEX_BINDING_DIVISOR;
-        max_combined_atomic_counters -> ?GL_MAX_COMBINED_ATOMIC_COUNTERS;
         stencil_back_pass_depth_pass -> ?GL_STENCIL_BACK_PASS_DEPTH_PASS;
-        max_framebuffer_width -> ?GL_MAX_FRAMEBUFFER_WIDTH;
-        num_program_binary_formats -> ?GL_NUM_PROGRAM_BINARY_FORMATS;
         stencil_back_pass_depth_fail -> ?GL_STENCIL_BACK_PASS_DEPTH_FAIL;
-        max_uniform_block_size -> ?GL_MAX_UNIFORM_BLOCK_SIZE;
         blend_equation_alpha -> ?GL_BLEND_EQUATION_ALPHA;
         blend_color -> ?GL_BLEND_COLOR;
         pixel_unpack_buffer_binding -> ?GL_PIXEL_UNPACK_BUFFER_BINDING;
@@ -10714,61 +9411,32 @@ get_integer(ParamName, Count) ->
         alpha_bits -> ?GL_ALPHA_BITS;
         implementation_color_read_type -> ?GL_IMPLEMENTATION_COLOR_READ_TYPE;
         green_bits -> ?GL_GREEN_BITS;
-        max_compute_atomic_counter_buffers -> ?GL_MAX_COMPUTE_ATOMIC_COUNTER_BUFFERS;
-        max_vertex_uniform_vectors -> ?GL_MAX_VERTEX_UNIFORM_VECTORS;
         blue_bits -> ?GL_BLUE_BITS;
-        max_sample_mask_words -> ?GL_MAX_SAMPLE_MASK_WORDS;
         element_array_buffer_binding -> ?GL_ELEMENT_ARRAY_BUFFER_BINDING;
-        samples -> ?GL_SAMPLES;
         sample_coverage_invert -> ?GL_SAMPLE_COVERAGE_INVERT;
         sampler_binding -> ?GL_SAMPLER_BINDING;
-        max_fragment_uniform_vectors -> ?GL_MAX_FRAGMENT_UNIFORM_VECTORS;
-        max_color_texture_samples -> ?GL_MAX_COLOR_TEXTURE_SAMPLES;
         scissor_test -> ?GL_SCISSOR_TEST;
-        max_fragment_atomic_counters -> ?GL_MAX_FRAGMENT_ATOMIC_COUNTERS;
         cull_face_mode -> ?GL_CULL_FACE_MODE;
-        max_compute_texture_image_units -> ?GL_MAX_COMPUTE_TEXTURE_IMAGE_UNITS;
         stencil_back_writemask -> ?GL_STENCIL_BACK_WRITEMASK;
         program_binary_formats -> ?GL_PROGRAM_BINARY_FORMATS;
         texture_2d -> ?GL_TEXTURE_2D;
-        max_vertex_attribs -> ?GL_MAX_VERTEX_ATTRIBS;
         front_face -> ?GL_FRONT_FACE;
         stencil_ref -> ?GL_STENCIL_REF;
-        max_vertex_atomic_counters -> ?GL_MAX_VERTEX_ATOMIC_COUNTERS;
         shader_binary_formats -> ?GL_SHADER_BINARY_FORMATS;
         transform_feedback_buffer_binding -> ?GL_TRANSFORM_FEEDBACK_BUFFER_BINDING;
-        pack_row_length -> ?GL_PACK_ROW_LENGTH;
-        max_vertex_attrib_relative_offset -> ?GL_MAX_VERTEX_ATTRIB_RELATIVE_OFFSET;
         current_program -> ?GL_CURRENT_PROGRAM;
-        max_draw_buffers -> ?GL_MAX_DRAW_BUFFERS;
-        max_shader_storage_buffer_bindings -> ?GL_MAX_SHADER_STORAGE_BUFFER_BINDINGS;
-        max_framebuffer_height -> ?GL_MAX_FRAMEBUFFER_HEIGHT;
-        max_compute_shader_storage_blocks -> ?GL_MAX_COMPUTE_SHADER_STORAGE_BLOCKS;
-        max_vertex_uniform_components -> ?GL_MAX_VERTEX_UNIFORM_COMPONENTS;
-        max_compute_work_group_invocations -> ?GL_MAX_COMPUTE_WORK_GROUP_INVOCATIONS;
-        major_version -> ?GL_MAJOR_VERSION;
         color_clear_value -> ?GL_COLOR_CLEAR_VALUE;
-        max_framebuffer_samples -> ?GL_MAX_FRAMEBUFFER_SAMPLES;
-        min_program_texel_offset -> ?GL_MIN_PROGRAM_TEXEL_OFFSET;
         shader_storage_buffer_start -> ?GL_SHADER_STORAGE_BUFFER_START;
-        max_combined_shader_storage_blocks -> ?GL_MAX_COMBINED_SHADER_STORAGE_BLOCKS;
         depth_test -> ?GL_DEPTH_TEST;
-        max_vertex_uniform_blocks -> ?GL_MAX_VERTEX_UNIFORM_BLOCKS;
         depth_func -> ?GL_DEPTH_FUNC;
-        max_compute_uniform_components -> ?GL_MAX_COMPUTE_UNIFORM_COMPONENTS;
-        max_elements_indices -> ?GL_MAX_ELEMENTS_INDICES;
         blend_equation_rgb -> ?GL_BLEND_EQUATION_RGB;
-        pack_skip_rows -> ?GL_PACK_SKIP_ROWS;
         draw_framebuffer_binding -> ?GL_DRAW_FRAMEBUFFER_BINDING;
-        max_combined_uniform_blocks -> ?GL_MAX_COMBINED_UNIFORM_BLOCKS;
         stencil_pass_depth_pass -> ?GL_STENCIL_PASS_DEPTH_PASS;
         stencil_back_func -> ?GL_STENCIL_BACK_FUNC;
-        max_combined_compute_uniform_components -> ?GL_MAX_COMBINED_COMPUTE_UNIFORM_COMPONENTS;
         dither -> ?GL_DITHER;
         shader_storage_buffer_size -> ?GL_SHADER_STORAGE_BUFFER_SIZE;
         polygon_offset_fill -> ?GL_POLYGON_OFFSET_FILL;
-        compressed_texture_formats -> ?GL_COMPRESSED_TEXTURE_FORMATS;
-        max_varying_vectors -> ?GL_MAX_VARYING_VECTORS
+        compressed_texture_formats -> ?GL_COMPRESSED_TEXTURE_FORMATS
     end,
 
     ?CALL_RAW_FUNC(glGetIntegervValues_raw(NewParamName, Count)).
@@ -10880,38 +9548,6 @@ vertex_attrib_divisor(Index, Divisor) ->
 
     ?CALL_RAW_FUNC(glVertexAttribDivisor_raw(Index, Divisor)).
 
--doc """
-Return the maximum number of fragment texture image units.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_texture_image_units().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_texture_image_units() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_texture_image_units() ->
-
-    ?CALL_RAW_FUNC(glGetIntegerv_raw(?GL_MAX_TEXTURE_IMAGE_UNITS)).
-
--doc """
-Return the minimum programmable texel offset.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Offset} = gl:get_min_program_texel_offset().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_min_program_texel_offset() -> {ok, Offset :: gl:int()} | {error, atom()}.
-get_min_program_texel_offset() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MIN_PROGRAM_TEXEL_OFFSET)).
-
 -type get_vertex_attrib_i_value() ::
     gl:int() |
     gl:uint()
@@ -10983,117 +9619,166 @@ Consult the documentation of the underlying [OpenGL function](https://docs.gl/es
 ) -> {ok, Values :: [gl:float()]} | {error, atom()}.
 get_float(ParamName, Count) ->
     NewParamName = case ParamName of
+        blend -> ?GL_BLEND;
+        depth_writemask -> ?GL_DEPTH_WRITEMASK;
+        line_width -> ?GL_LINE_WIDTH;
+        major_version -> ?GL_MAJOR_VERSION;
+        max_3d_texture_size -> ?GL_MAX_3D_TEXTURE_SIZE;
+        max_array_texture_layers -> ?GL_MAX_ARRAY_TEXTURE_LAYERS;
+        max_atomic_counter_buffer_bindings -> ?GL_MAX_ATOMIC_COUNTER_BUFFER_BINDINGS;
+        max_atomic_counter_buffer_size -> ?GL_MAX_ATOMIC_COUNTER_BUFFER_SIZE;
+        max_color_attachments -> ?GL_MAX_COLOR_ATTACHMENTS;
+        max_color_texture_samples -> ?GL_MAX_COLOR_TEXTURE_SAMPLES;
+        max_combined_atomic_counter_buffers -> ?GL_MAX_COMBINED_ATOMIC_COUNTER_BUFFERS;
+        max_combined_atomic_counters -> ?GL_MAX_COMBINED_ATOMIC_COUNTERS;
+        max_combined_compute_uniform_components -> ?GL_MAX_COMBINED_COMPUTE_UNIFORM_COMPONENTS;
+        max_combined_fragment_uniform_components -> ?GL_MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS;
+        max_combined_image_uniforms -> ?GL_MAX_COMBINED_IMAGE_UNIFORMS;
+        max_combined_shader_output_resources -> ?GL_MAX_COMBINED_SHADER_OUTPUT_RESOURCES;
+        max_combined_shader_storage_blocks -> ?GL_MAX_COMBINED_SHADER_STORAGE_BLOCKS;
+        max_combined_texture_image_units -> ?GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS;
+        max_combined_uniform_blocks -> ?GL_MAX_COMBINED_UNIFORM_BLOCKS;
+        max_combined_vertex_uniform_components -> ?GL_MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS;
+        max_compute_atomic_counter_buffers -> ?GL_MAX_COMPUTE_ATOMIC_COUNTER_BUFFERS;
+        max_compute_atomic_counters -> ?GL_MAX_COMPUTE_ATOMIC_COUNTERS;
+        max_compute_image_uniforms -> ?GL_MAX_COMPUTE_IMAGE_UNIFORMS;
+        max_compute_shader_storage_blocks -> ?GL_MAX_COMPUTE_SHADER_STORAGE_BLOCKS;
+        max_compute_shared_memory_size -> ?GL_MAX_COMPUTE_SHARED_MEMORY_SIZE;
+        max_compute_texture_image_units -> ?GL_MAX_COMPUTE_TEXTURE_IMAGE_UNITS;
+        max_compute_uniform_blocks -> ?GL_MAX_COMPUTE_UNIFORM_BLOCKS;
+        max_compute_uniform_components -> ?GL_MAX_COMPUTE_UNIFORM_COMPONENTS;
+        max_compute_work_group_invocations -> ?GL_MAX_COMPUTE_WORK_GROUP_INVOCATIONS;
+        max_cube_map_texture_size -> ?GL_MAX_CUBE_MAP_TEXTURE_SIZE;
+        max_depth_texture_samples -> ?GL_MAX_DEPTH_TEXTURE_SAMPLES;
+        max_draw_buffers -> ?GL_MAX_DRAW_BUFFERS;
+        max_element_index -> ?GL_MAX_ELEMENT_INDEX;
+        max_elements_indices -> ?GL_MAX_ELEMENTS_INDICES;
+        max_elements_vertices -> ?GL_MAX_ELEMENTS_VERTICES;
+        max_fragment_atomic_counter_buffers -> ?GL_MAX_FRAGMENT_ATOMIC_COUNTER_BUFFERS;
+        max_fragment_atomic_counters -> ?GL_MAX_FRAGMENT_ATOMIC_COUNTERS;
+        max_fragment_image_uniforms -> ?GL_MAX_FRAGMENT_IMAGE_UNIFORMS;
+        max_fragment_input_components -> ?GL_MAX_FRAGMENT_INPUT_COMPONENTS;
+        max_fragment_shader_storage_blocks -> ?GL_MAX_FRAGMENT_SHADER_STORAGE_BLOCKS;
+        max_fragment_uniform_blocks -> ?GL_MAX_FRAGMENT_UNIFORM_BLOCKS;
+        max_fragment_uniform_components -> ?GL_MAX_FRAGMENT_UNIFORM_COMPONENTS;
+        max_fragment_uniform_vectors -> ?GL_MAX_FRAGMENT_UNIFORM_VECTORS;
+        max_framebuffer_height -> ?GL_MAX_FRAMEBUFFER_HEIGHT;
+        max_framebuffer_samples -> ?GL_MAX_FRAMEBUFFER_SAMPLES;
+        max_framebuffer_width -> ?GL_MAX_FRAMEBUFFER_WIDTH;
+        max_image_units -> ?GL_MAX_IMAGE_UNITS;
+        max_integer_samples -> ?GL_MAX_INTEGER_SAMPLES;
+        max_program_texel_offset -> ?GL_MAX_PROGRAM_TEXEL_OFFSET;
+        max_program_texture_gather_offset -> ?GL_MAX_PROGRAM_TEXTURE_GATHER_OFFSET;
+        max_renderbuffer_size -> ?GL_MAX_RENDERBUFFER_SIZE;
+        max_sample_mask_words -> ?GL_MAX_SAMPLE_MASK_WORDS;
+        max_samples -> ?GL_MAX_SAMPLES;
+        max_shader_storage_block_size -> ?GL_MAX_SHADER_STORAGE_BLOCK_SIZE;
+        max_shader_storage_buffer_bindings -> ?GL_MAX_SHADER_STORAGE_BUFFER_BINDINGS;
+        max_texture_image_units -> ?GL_MAX_TEXTURE_IMAGE_UNITS;
+        max_texture_size -> ?GL_MAX_TEXTURE_SIZE;
+        max_transform_feedback_interleaved_components -> ?GL_MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS;
+        max_transform_feedback_separate_attribs -> ?GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS;
+        max_transform_feedback_separate_components -> ?GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS;
+        max_uniform_block_size -> ?GL_MAX_UNIFORM_BLOCK_SIZE;
+        max_uniform_buffer_bindings -> ?GL_MAX_UNIFORM_BUFFER_BINDINGS;
+        max_uniform_locations -> ?GL_MAX_UNIFORM_LOCATIONS;
+        max_varying_components -> ?GL_MAX_VARYING_COMPONENTS;
+        max_varying_vectors -> ?GL_MAX_VARYING_VECTORS;
+        max_vertex_atomic_counter_buffers -> ?GL_MAX_VERTEX_ATOMIC_COUNTER_BUFFERS;
+        max_vertex_atomic_counters -> ?GL_MAX_VERTEX_ATOMIC_COUNTERS;
+        max_vertex_attrib_bindings -> ?GL_MAX_VERTEX_ATTRIB_BINDINGS;
+        max_vertex_attrib_relative_offset -> ?GL_MAX_VERTEX_ATTRIB_RELATIVE_OFFSET;
+        max_vertex_attrib_stride -> ?GL_MAX_VERTEX_ATTRIB_STRIDE;
+        max_vertex_attribs -> ?GL_MAX_VERTEX_ATTRIBS;
+        max_vertex_image_uniforms -> ?GL_MAX_VERTEX_IMAGE_UNIFORMS;
+        max_vertex_output_components -> ?GL_MAX_VERTEX_OUTPUT_COMPONENTS;
+        max_vertex_shader_storage_blocks -> ?GL_MAX_VERTEX_SHADER_STORAGE_BLOCKS;
+        max_vertex_texture_image_units -> ?GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS;
+        max_vertex_uniform_blocks -> ?GL_MAX_VERTEX_UNIFORM_BLOCKS;
+        max_vertex_uniform_components -> ?GL_MAX_VERTEX_UNIFORM_COMPONENTS;
+        max_vertex_uniform_vectors -> ?GL_MAX_VERTEX_UNIFORM_VECTORS;
+        min_program_texel_offset -> ?GL_MIN_PROGRAM_TEXEL_OFFSET;
+        min_program_texture_gather_offset -> ?GL_MIN_PROGRAM_TEXTURE_GATHER_OFFSET;
+        minor_version -> ?GL_MINOR_VERSION;
+        num_compressed_texture_formats -> ?GL_NUM_COMPRESSED_TEXTURE_FORMATS;
+        num_extensions -> ?GL_NUM_EXTENSIONS;
+        num_program_binary_formats -> ?GL_NUM_PROGRAM_BINARY_FORMATS;
+        num_shader_binary_formats -> ?GL_NUM_SHADER_BINARY_FORMATS;
+        pack_alignment -> ?GL_PACK_ALIGNMENT;
+        pack_row_length -> ?GL_PACK_ROW_LENGTH;
+        pack_skip_pixels -> ?GL_PACK_SKIP_PIXELS;
+        pack_skip_rows -> ?GL_PACK_SKIP_ROWS;
+        sample_buffers -> ?GL_SAMPLE_BUFFERS;
+        samples -> ?GL_SAMPLES;
+        shader_compiler -> ?GL_SHADER_COMPILER;
+        shader_storage_buffer_offset_alignment -> ?GL_SHADER_STORAGE_BUFFER_OFFSET_ALIGNMENT;
+        subpixel_bits -> ?GL_SUBPIXEL_BITS;
+        uniform_buffer_offset_alignment -> ?GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT;
+        unpack_alignment -> ?GL_UNPACK_ALIGNMENT;
+        unpack_image_height -> ?GL_UNPACK_IMAGE_HEIGHT;
+        unpack_row_length -> ?GL_UNPACK_ROW_LENGTH;
+        unpack_skip_images -> ?GL_UNPACK_SKIP_IMAGES;
+        unpack_skip_pixels -> ?GL_UNPACK_SKIP_PIXELS;
+        unpack_skip_rows -> ?GL_UNPACK_SKIP_ROWS;
         polygon_offset_units -> ?GL_POLYGON_OFFSET_UNITS;
         texture_binding_3d -> ?GL_TEXTURE_BINDING_3D;
-        num_compressed_texture_formats -> ?GL_NUM_COMPRESSED_TEXTURE_FORMATS;
         pixel_pack_buffer_binding -> ?GL_PIXEL_PACK_BUFFER_BINDING;
         stencil_fail -> ?GL_STENCIL_FAIL;
         viewport -> ?GL_VIEWPORT;
         active_texture -> ?GL_ACTIVE_TEXTURE;
-        line_width -> ?GL_LINE_WIDTH;
         blend_dst_rgb -> ?GL_BLEND_DST_RGB;
-        uniform_buffer_offset_alignment -> ?GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT;
         aliased_point_size_range -> ?GL_ALIASED_POINT_SIZE_RANGE;
-        max_fragment_uniform_blocks -> ?GL_MAX_FRAGMENT_UNIFORM_BLOCKS;
-        max_varying_components -> ?GL_MAX_VARYING_COMPONENTS;
         blend_src_alpha -> ?GL_BLEND_SRC_ALPHA;
         read_buffer -> ?GL_READ_BUFFER;
-        max_array_texture_layers -> ?GL_MAX_ARRAY_TEXTURE_LAYERS;
         texture_binding_2d -> ?GL_TEXTURE_BINDING_2D;
         uniform_buffer_start -> ?GL_UNIFORM_BUFFER_START;
-        max_uniform_buffer_bindings -> ?GL_MAX_UNIFORM_BUFFER_BINDINGS;
         stencil_func -> ?GL_STENCIL_FUNC;
         blend_equation -> ?GL_BLEND_EQUATION;
         implementation_color_read_format -> ?GL_IMPLEMENTATION_COLOR_READ_FORMAT;
         max_compute_work_group_count -> ?GL_MAX_COMPUTE_WORK_GROUP_COUNT;
-        max_program_texel_offset -> ?GL_MAX_PROGRAM_TEXEL_OFFSET;
         blend_src_rgb -> ?GL_BLEND_SRC_RGB;
-        depth_writemask -> ?GL_DEPTH_WRITEMASK;
         dispatch_indirect_buffer_binding -> ?GL_DISPATCH_INDIRECT_BUFFER_BINDING;
         uniform_buffer_binding -> ?GL_UNIFORM_BUFFER_BINDING;
-        max_uniform_locations -> ?GL_MAX_UNIFORM_LOCATIONS;
         texture_binding_2d_multisample -> ?GL_TEXTURE_BINDING_2D_MULTISAMPLE;
-        max_fragment_shader_storage_blocks -> ?GL_MAX_FRAGMENT_SHADER_STORAGE_BLOCKS;
         polygon_offset_factor -> ?GL_POLYGON_OFFSET_FACTOR;
         fragment_shader_derivative_hint -> ?GL_FRAGMENT_SHADER_DERIVATIVE_HINT;
-        max_cube_map_texture_size -> ?GL_MAX_CUBE_MAP_TEXTURE_SIZE;
-        sample_buffers -> ?GL_SAMPLE_BUFFERS;
         depth_range -> ?GL_DEPTH_RANGE;
-        max_combined_vertex_uniform_components -> ?GL_MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS;
         transform_feedback_buffer_start -> ?GL_TRANSFORM_FEEDBACK_BUFFER_START;
-        subpixel_bits -> ?GL_SUBPIXEL_BITS;
         vertex_binding_offset -> ?GL_VERTEX_BINDING_OFFSET;
-        unpack_alignment -> ?GL_UNPACK_ALIGNMENT;
-        max_elements_vertices -> ?GL_MAX_ELEMENTS_VERTICES;
         stencil_bits -> ?GL_STENCIL_BITS;
         stencil_test -> ?GL_STENCIL_TEST;
-        max_fragment_uniform_components -> ?GL_MAX_FRAGMENT_UNIFORM_COMPONENTS;
-        shader_compiler -> ?GL_SHADER_COMPILER;
         color_writemask -> ?GL_COLOR_WRITEMASK;
         stencil_clear_value -> ?GL_STENCIL_CLEAR_VALUE;
-        max_integer_samples -> ?GL_MAX_INTEGER_SAMPLES;
-        pack_skip_pixels -> ?GL_PACK_SKIP_PIXELS;
-        unpack_row_length -> ?GL_UNPACK_ROW_LENGTH;
         max_texture_lod_bias -> ?GL_MAX_TEXTURE_LOD_BIAS;
         stencil_value_mask -> ?GL_STENCIL_VALUE_MASK;
         program_pipeline_binding -> ?GL_PROGRAM_PIPELINE_BINDING;
-        blend -> ?GL_BLEND;
         shader_storage_buffer_binding -> ?GL_SHADER_STORAGE_BUFFER_BINDING;
-        max_vertex_attrib_bindings -> ?GL_MAX_VERTEX_ATTRIB_BINDINGS;
         uniform_buffer_size -> ?GL_UNIFORM_BUFFER_SIZE;
-        max_texture_image_units -> ?GL_MAX_TEXTURE_IMAGE_UNITS;
-        max_combined_texture_image_units -> ?GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS;
-        max_color_attachments -> ?GL_MAX_COLOR_ATTACHMENTS;
         stencil_back_value_mask -> ?GL_STENCIL_BACK_VALUE_MASK;
-        max_vertex_output_components -> ?GL_MAX_VERTEX_OUTPUT_COMPONENTS;
-        max_element_index -> ?GL_MAX_ELEMENT_INDEX;
-        max_renderbuffer_size -> ?GL_MAX_RENDERBUFFER_SIZE;
         stencil_back_ref -> ?GL_STENCIL_BACK_REF;
         stencil_back_fail -> ?GL_STENCIL_BACK_FAIL;
-        unpack_skip_pixels -> ?GL_UNPACK_SKIP_PIXELS;
         depth_clear_value -> ?GL_DEPTH_CLEAR_VALUE;
-        max_fragment_input_components -> ?GL_MAX_FRAGMENT_INPUT_COMPONENTS;
         vertex_array_binding -> ?GL_VERTEX_ARRAY_BINDING;
-        max_depth_texture_samples -> ?GL_MAX_DEPTH_TEXTURE_SAMPLES;
-        num_shader_binary_formats -> ?GL_NUM_SHADER_BINARY_FORMATS;
         max_viewport_dims -> ?GL_MAX_VIEWPORT_DIMS;
-        unpack_skip_rows -> ?GL_UNPACK_SKIP_ROWS;
         blend_dst_alpha -> ?GL_BLEND_DST_ALPHA;
         vertex_binding_stride -> ?GL_VERTEX_BINDING_STRIDE;
-        num_extensions -> ?GL_NUM_EXTENSIONS;
         depth_bits -> ?GL_DEPTH_BITS;
-        max_vertex_shader_storage_blocks -> ?GL_MAX_VERTEX_SHADER_STORAGE_BLOCKS;
-        shader_storage_buffer_offset_alignment -> ?GL_SHADER_STORAGE_BUFFER_OFFSET_ALIGNMENT;
-        max_combined_fragment_uniform_components -> ?GL_MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS;
         transform_feedback_buffer_size -> ?GL_TRANSFORM_FEEDBACK_BUFFER_SIZE;
         max_server_wait_timeout -> ?GL_MAX_SERVER_WAIT_TIMEOUT;
-        max_compute_uniform_blocks -> ?GL_MAX_COMPUTE_UNIFORM_BLOCKS;
-        minor_version -> ?GL_MINOR_VERSION;
         scissor_box -> ?GL_SCISSOR_BOX;
         stencil_writemask -> ?GL_STENCIL_WRITEMASK;
-        max_3d_texture_size -> ?GL_MAX_3D_TEXTURE_SIZE;
         array_buffer_binding -> ?GL_ARRAY_BUFFER_BINDING;
-        max_vertex_texture_image_units -> ?GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS;
         sample_coverage_value -> ?GL_SAMPLE_COVERAGE_VALUE;
         cull_face -> ?GL_CULL_FACE;
-        max_compute_atomic_counters -> ?GL_MAX_COMPUTE_ATOMIC_COUNTERS;
-        unpack_image_height -> ?GL_UNPACK_IMAGE_HEIGHT;
         red_bits -> ?GL_RED_BITS;
-        max_texture_size -> ?GL_MAX_TEXTURE_SIZE;
-        unpack_skip_images -> ?GL_UNPACK_SKIP_IMAGES;
         stencil_pass_depth_fail -> ?GL_STENCIL_PASS_DEPTH_FAIL;
         texture_binding_cube_map -> ?GL_TEXTURE_BINDING_CUBE_MAP;
         read_framebuffer_binding -> ?GL_READ_FRAMEBUFFER_BINDING;
         renderbuffer_binding -> ?GL_RENDERBUFFER_BINDING;
         max_compute_work_group_size -> ?GL_MAX_COMPUTE_WORK_GROUP_SIZE;
-        pack_alignment -> ?GL_PACK_ALIGNMENT;
         vertex_binding_divisor -> ?GL_VERTEX_BINDING_DIVISOR;
-        max_combined_atomic_counters -> ?GL_MAX_COMBINED_ATOMIC_COUNTERS;
         stencil_back_pass_depth_pass -> ?GL_STENCIL_BACK_PASS_DEPTH_PASS;
-        max_framebuffer_width -> ?GL_MAX_FRAMEBUFFER_WIDTH;
-        num_program_binary_formats -> ?GL_NUM_PROGRAM_BINARY_FORMATS;
         stencil_back_pass_depth_fail -> ?GL_STENCIL_BACK_PASS_DEPTH_FAIL;
-        max_uniform_block_size -> ?GL_MAX_UNIFORM_BLOCK_SIZE;
         blend_equation_alpha -> ?GL_BLEND_EQUATION_ALPHA;
         blend_color -> ?GL_BLEND_COLOR;
         pixel_unpack_buffer_binding -> ?GL_PIXEL_UNPACK_BUFFER_BINDING;
@@ -11102,61 +9787,32 @@ get_float(ParamName, Count) ->
         alpha_bits -> ?GL_ALPHA_BITS;
         implementation_color_read_type -> ?GL_IMPLEMENTATION_COLOR_READ_TYPE;
         green_bits -> ?GL_GREEN_BITS;
-        max_compute_atomic_counter_buffers -> ?GL_MAX_COMPUTE_ATOMIC_COUNTER_BUFFERS;
-        max_vertex_uniform_vectors -> ?GL_MAX_VERTEX_UNIFORM_VECTORS;
         blue_bits -> ?GL_BLUE_BITS;
-        max_sample_mask_words -> ?GL_MAX_SAMPLE_MASK_WORDS;
         element_array_buffer_binding -> ?GL_ELEMENT_ARRAY_BUFFER_BINDING;
-        samples -> ?GL_SAMPLES;
         sample_coverage_invert -> ?GL_SAMPLE_COVERAGE_INVERT;
         sampler_binding -> ?GL_SAMPLER_BINDING;
-        max_fragment_uniform_vectors -> ?GL_MAX_FRAGMENT_UNIFORM_VECTORS;
-        max_color_texture_samples -> ?GL_MAX_COLOR_TEXTURE_SAMPLES;
         scissor_test -> ?GL_SCISSOR_TEST;
-        max_fragment_atomic_counters -> ?GL_MAX_FRAGMENT_ATOMIC_COUNTERS;
         cull_face_mode -> ?GL_CULL_FACE_MODE;
-        max_compute_texture_image_units -> ?GL_MAX_COMPUTE_TEXTURE_IMAGE_UNITS;
         stencil_back_writemask -> ?GL_STENCIL_BACK_WRITEMASK;
         program_binary_formats -> ?GL_PROGRAM_BINARY_FORMATS;
         texture_2d -> ?GL_TEXTURE_2D;
-        max_vertex_attribs -> ?GL_MAX_VERTEX_ATTRIBS;
         front_face -> ?GL_FRONT_FACE;
         stencil_ref -> ?GL_STENCIL_REF;
-        max_vertex_atomic_counters -> ?GL_MAX_VERTEX_ATOMIC_COUNTERS;
         shader_binary_formats -> ?GL_SHADER_BINARY_FORMATS;
         transform_feedback_buffer_binding -> ?GL_TRANSFORM_FEEDBACK_BUFFER_BINDING;
-        pack_row_length -> ?GL_PACK_ROW_LENGTH;
-        max_vertex_attrib_relative_offset -> ?GL_MAX_VERTEX_ATTRIB_RELATIVE_OFFSET;
         current_program -> ?GL_CURRENT_PROGRAM;
-        max_draw_buffers -> ?GL_MAX_DRAW_BUFFERS;
-        max_shader_storage_buffer_bindings -> ?GL_MAX_SHADER_STORAGE_BUFFER_BINDINGS;
-        max_framebuffer_height -> ?GL_MAX_FRAMEBUFFER_HEIGHT;
-        max_compute_shader_storage_blocks -> ?GL_MAX_COMPUTE_SHADER_STORAGE_BLOCKS;
-        max_vertex_uniform_components -> ?GL_MAX_VERTEX_UNIFORM_COMPONENTS;
-        max_compute_work_group_invocations -> ?GL_MAX_COMPUTE_WORK_GROUP_INVOCATIONS;
-        major_version -> ?GL_MAJOR_VERSION;
         color_clear_value -> ?GL_COLOR_CLEAR_VALUE;
-        max_framebuffer_samples -> ?GL_MAX_FRAMEBUFFER_SAMPLES;
-        min_program_texel_offset -> ?GL_MIN_PROGRAM_TEXEL_OFFSET;
         shader_storage_buffer_start -> ?GL_SHADER_STORAGE_BUFFER_START;
-        max_combined_shader_storage_blocks -> ?GL_MAX_COMBINED_SHADER_STORAGE_BLOCKS;
         depth_test -> ?GL_DEPTH_TEST;
-        max_vertex_uniform_blocks -> ?GL_MAX_VERTEX_UNIFORM_BLOCKS;
         depth_func -> ?GL_DEPTH_FUNC;
-        max_compute_uniform_components -> ?GL_MAX_COMPUTE_UNIFORM_COMPONENTS;
-        max_elements_indices -> ?GL_MAX_ELEMENTS_INDICES;
         blend_equation_rgb -> ?GL_BLEND_EQUATION_RGB;
-        pack_skip_rows -> ?GL_PACK_SKIP_ROWS;
         draw_framebuffer_binding -> ?GL_DRAW_FRAMEBUFFER_BINDING;
-        max_combined_uniform_blocks -> ?GL_MAX_COMBINED_UNIFORM_BLOCKS;
         stencil_pass_depth_pass -> ?GL_STENCIL_PASS_DEPTH_PASS;
         stencil_back_func -> ?GL_STENCIL_BACK_FUNC;
-        max_combined_compute_uniform_components -> ?GL_MAX_COMBINED_COMPUTE_UNIFORM_COMPONENTS;
         dither -> ?GL_DITHER;
         shader_storage_buffer_size -> ?GL_SHADER_STORAGE_BUFFER_SIZE;
         polygon_offset_fill -> ?GL_POLYGON_OFFSET_FILL;
-        compressed_texture_formats -> ?GL_COMPRESSED_TEXTURE_FORMATS;
-        max_varying_vectors -> ?GL_MAX_VARYING_VECTORS
+        compressed_texture_formats -> ?GL_COMPRESSED_TEXTURE_FORMATS
     end,
 
     ?CALL_RAW_FUNC(glGetFloatv_raw(NewParamName, Count)).
@@ -11266,22 +9922,6 @@ tex_storage_3d(Target, Levels, InternalFormat, Width, Height, Depth) ->
     ?CALL_RAW_FUNC(glTexStorage3D_raw(NewTarget, Levels, NewInternalFormat, Width, Height, Depth)).
 
 -doc """
-Return the current unpack row length.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Length} = gl:get_unpack_row_length().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_unpack_row_length() -> {ok, Length :: gl:int()} | {error, atom()}.
-get_unpack_row_length() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_UNPACK_ROW_LENGTH)).
-
--doc """
 Enable and disable writing of frame buffer color components.
 
 It implements the `glColorMask` function
@@ -11301,54 +9941,6 @@ Consult the documentation of the underlying [OpenGL function](https://docs.gl/es
 color_mask(Red, Green, Blue, Alpha) ->
 
     ?CALL_RAW_FUNC(glColorMask_raw(Red, Green, Blue, Alpha)).
-
--doc """
-Return the maximum number of fragment shader input components.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_fragment_input_components().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_fragment_input_components() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_fragment_input_components() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_FRAGMENT_INPUT_COMPONENTS)).
-
--doc """
-Return the maximum number of compute shader atomic counters.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_compute_atomic_counters().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_compute_atomic_counters() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_compute_atomic_counters() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_COMPUTE_ATOMIC_COUNTERS)).
-
--doc """
-Return the maximum number of vertex-attrib bindings.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_vertex_attrib_bindings().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_vertex_attrib_bindings() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_vertex_attrib_bindings() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_VERTEX_ATTRIB_BINDINGS)).
 
 -doc """
 Returns shader objects attached to a program, up to the requested capacity.
@@ -11486,22 +10078,6 @@ is_texture(Texture) ->
     ?CALL_RAW_FUNC(glIsTexture_raw(Texture)).
 
 -doc """
-Return the maximum combined number of shader storage blocks.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_combined_shader_storage_blocks().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_combined_shader_storage_blocks() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_combined_shader_storage_blocks() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_COMBINED_SHADER_STORAGE_BLOCKS)).
-
--doc """
 Specify a three-dimensional texture image in a compressed format.
 
 It implements the `glCompressedTexImage3D` function
@@ -11618,22 +10194,6 @@ compressed_tex_image_3d(Target, Level, InternalFormat, Width, Height, Depth, Bor
     ?CALL_RAW_FUNC(glCompressedTexImage3D_raw(NewTarget, Level, NewInternalFormat, Width, Height, Depth, Border, ImageSize, ImageData0)).
 
 -doc """
-Return the maximum number of integer texture samples.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_integer_samples().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_integer_samples() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_integer_samples() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_INTEGER_SAMPLES)).
-
--doc """
 Determine if a name corresponds to a framebuffer object.
 
 It implements the `glIsFramebuffer` function
@@ -11666,22 +10226,6 @@ gen_samplers(N) ->
     ?CALL_RAW_FUNC(glGenSamplers_raw(N)).
 
 -doc """
-Return the current unpack skipped pixel count.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Pixels} = gl:get_unpack_skip_pixels().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_unpack_skip_pixels() -> {ok, Pixels :: gl:int()} | {error, atom()}.
-get_unpack_skip_pixels() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_UNPACK_SKIP_PIXELS)).
-
--doc """
 Reserve transform feedback object names.
 
 It implements the `glGenTransformFeedbacks` function
@@ -11698,22 +10242,6 @@ gen_transform_feedbacks(N) ->
     ?CALL_RAW_FUNC(glGenTransformFeedbacks_raw(N)).
 
 -doc """
-Return the maximum number of active draw buffers.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_draw_buffers().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_draw_buffers() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_draw_buffers() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_DRAW_BUFFERS)).
-
--doc """
 Determine if a name corresponds to a sampler object.
 
 It implements the `glIsSampler` function
@@ -11728,22 +10256,6 @@ Consult the documentation of the underlying [OpenGL function](https://docs.gl/es
 is_sampler(Sampler) ->
 
     ?CALL_RAW_FUNC(glIsSampler_raw(Sampler)).
-
--doc """
-Return the recommended maximum vertex count for draw-range commands.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_elements_vertices().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_elements_vertices() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_elements_vertices() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_ELEMENTS_VERTICES)).
 
 -doc """
 Define front- and back-facing polygons.
@@ -11812,22 +10324,6 @@ get_string(Name) ->
     ?CALL_RAW_FUNC(glGetString_raw(NewName)).
 
 -doc """
-Return whether a program object is separable.
-
-It implements the `glGetProgramiv` function
-
-```
-{ok, true} = gl:get_program_separable(Program).
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetProgramiv) for more information.
-""".
--spec get_program_separable(Program :: program()) -> {ok, Status :: gl:boolean()} | {error, atom()}.
-get_program_separable(Program) ->
-
-    ?CALL_RAW_FUNC(glGetProgramiv_raw(Program, ?GL_PROGRAM_SEPARABLE)).
-
--doc """
 Returns the information log for a shader object.
 
 It implements the `glGetShaderInfoLog` function
@@ -11862,22 +10358,6 @@ delete_queries(Queries) ->
     N = length(Queries),
     NewQueries = << <<ID:32/native>> || ID <- Queries >>,
     ?CALL_RAW_FUNC(glDeleteQueries_raw(N, NewQueries)).
-
--doc """
-Return the maximum number of vertex shader atomic counters.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_vertex_atomic_counters().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_vertex_atomic_counters() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_vertex_atomic_counters() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_VERTEX_ATOMIC_COUNTERS)).
 
 -doc """
 Generate query object names.
@@ -12233,22 +10713,6 @@ bind_renderbuffer(Target, Renderbuffer) ->
     ?CALL_RAW_FUNC(glBindRenderbuffer_raw(NewTarget, Renderbuffer)).
 
 -doc """
-Return the maximum number of compute shader uniform blocks.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_compute_uniform_blocks().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_compute_uniform_blocks() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_compute_uniform_blocks() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_COMPUTE_UNIFORM_BLOCKS)).
-
--doc """
 Specify clear values for the color buffers.
 
 It implements the `glClearColor` function
@@ -12270,22 +10734,6 @@ clear_color(Red, Green, Blue, Alpha) ->
     ?CALL_RAW_FUNC(glClearColor_raw(Red, Green, Blue, Alpha)).
 
 -doc """
-Return the maximum combined compute uniform components.
-
-It implements the `glGetInteger64v` function
-
-```
-{ok, Count} = gl:get_max_combined_compute_uniform_components().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetInteger64v) for more information.
-""".
--spec get_max_combined_compute_uniform_components() -> {ok, Count :: gl:int64()} | {error, atom()}.
-get_max_combined_compute_uniform_components() ->
-
-    ?CALL_RAW_FUNC(glGetInteger64vInteger_raw(?GL_MAX_COMBINED_COMPUTE_UNIFORM_COMPONENTS)).
-
--doc """
 Return the index of a named uniform block.
 
 It implements the `glGetUniformBlockIndex` function
@@ -12304,70 +10752,6 @@ get_uniform_block_index(Program, Name) ->
     Name0 = iolist_to_binary(Name),
 
     ?CALL_RAW_FUNC(glGetUniformBlockIndex_raw(Program, Name0)).
-
--doc """
-Return the maximum programmable texel offset.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Offset} = gl:get_max_program_texel_offset().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_program_texel_offset() -> {ok, Offset :: gl:int()} | {error, atom()}.
-get_max_program_texel_offset() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_PROGRAM_TEXEL_OFFSET)).
-
--doc """
-Return the maximum number of vertex shader storage blocks.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_vertex_shader_storage_blocks().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_vertex_shader_storage_blocks() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_vertex_shader_storage_blocks() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_VERTEX_SHADER_STORAGE_BLOCKS)).
-
--doc """
-Return the maximum supported sample count.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_samples().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_samples() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_samples() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_SAMPLES)).
-
--doc """
-Return the maximum number of vertex attributes.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_vertex_attribs().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_vertex_attribs() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_vertex_attribs() ->
-
-    ?CALL_RAW_FUNC(glGetIntegerv_raw(?GL_MAX_VERTEX_ATTRIBS)).
 
 -doc """
 Test whether a capability is enabled.
@@ -12493,22 +10877,6 @@ dispatch_compute(NumGroupsX, NumGroupsY, NumGroupsZ) ->
     ?CALL_RAW_FUNC(glDispatchCompute_raw(NumGroupsX, NumGroupsY, NumGroupsZ)).
 
 -doc """
-Return the current unpack skipped row count.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Rows} = gl:get_unpack_skip_rows().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_unpack_skip_rows() -> {ok, Rows :: gl:int()} | {error, atom()}.
-get_unpack_skip_rows() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_UNPACK_SKIP_ROWS)).
-
--doc """
 Return integer properties for an indexed resource within a program interface.
 
 It implements the `glGetProgramResourceiv` function
@@ -12563,22 +10931,6 @@ get_program_resource(Program, ProgramInterface, Index, Properties, Count) ->
     end,
 
     ?CALL_RAW_FUNC(glGetProgramResourceiv_raw(Program, NewProgramInterface, Index, NewProperties, Count)).
-
--doc """
-Return whether a program pipeline's last validation succeeded.
-
-It implements the `glGetProgramPipelineiv` function
-
-```
-{ok, true} = gl:get_program_pipeline_validation_status(Pipeline).
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetProgramPipelineiv) for more information.
-""".
--spec get_program_pipeline_validation_status(Pipeline :: program_pipeline()) -> {ok, Status :: gl:boolean()} | {error, atom()}.
-get_program_pipeline_validation_status(Pipeline) ->
-
-    ?CALL_RAW_FUNC(glGetProgramPipelineiv_raw(Pipeline, ?GL_VALIDATE_STATUS)).
 
 -doc """
 Generate buffer object names.
@@ -12774,38 +11126,6 @@ active_texture(Texture) ->
     ?CALL_RAW_FUNC(glActiveTexture_raw(NewTexture)).
 
 -doc """
-Return the maximum texture size.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Size} = gl:get_max_texture_size().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_texture_size() -> {ok, Size :: gl:int()} | {error, atom()}.
-get_max_texture_size() ->
-
-    ?CALL_RAW_FUNC(glGetIntegerv_raw(?GL_MAX_TEXTURE_SIZE)).
-
--doc """
-Return whether a shader object has been flagged for deletion.
-
-It implements the `glGetShaderiv` function
-
-```
-{ok, false} = gl:get_shader_delete_status(Shader).
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetShaderiv) for more information.
-""".
--spec get_shader_delete_status(Shader :: shader()) -> {ok, Status :: gl:boolean()} | {error, atom()}.
-get_shader_delete_status(Shader) ->
-
-    ?CALL_RAW_FUNC(glGetShaderiv_raw(Shader, ?GL_DELETE_STATUS)).
-
--doc """
 Resume transform feedback operation.
 
 It implements the `glResumeTransformFeedback` function
@@ -12839,117 +11159,166 @@ Consult the documentation of the underlying [OpenGL function](https://docs.gl/es
 ) -> {ok, Values :: [gl:int64()]} | {error, atom()}.
 get_integer64(ParamName, Index, Count) ->
     NewParamName = case ParamName of
+        blend -> ?GL_BLEND;
+        depth_writemask -> ?GL_DEPTH_WRITEMASK;
+        line_width -> ?GL_LINE_WIDTH;
+        major_version -> ?GL_MAJOR_VERSION;
+        max_3d_texture_size -> ?GL_MAX_3D_TEXTURE_SIZE;
+        max_array_texture_layers -> ?GL_MAX_ARRAY_TEXTURE_LAYERS;
+        max_atomic_counter_buffer_bindings -> ?GL_MAX_ATOMIC_COUNTER_BUFFER_BINDINGS;
+        max_atomic_counter_buffer_size -> ?GL_MAX_ATOMIC_COUNTER_BUFFER_SIZE;
+        max_color_attachments -> ?GL_MAX_COLOR_ATTACHMENTS;
+        max_color_texture_samples -> ?GL_MAX_COLOR_TEXTURE_SAMPLES;
+        max_combined_atomic_counter_buffers -> ?GL_MAX_COMBINED_ATOMIC_COUNTER_BUFFERS;
+        max_combined_atomic_counters -> ?GL_MAX_COMBINED_ATOMIC_COUNTERS;
+        max_combined_compute_uniform_components -> ?GL_MAX_COMBINED_COMPUTE_UNIFORM_COMPONENTS;
+        max_combined_fragment_uniform_components -> ?GL_MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS;
+        max_combined_image_uniforms -> ?GL_MAX_COMBINED_IMAGE_UNIFORMS;
+        max_combined_shader_output_resources -> ?GL_MAX_COMBINED_SHADER_OUTPUT_RESOURCES;
+        max_combined_shader_storage_blocks -> ?GL_MAX_COMBINED_SHADER_STORAGE_BLOCKS;
+        max_combined_texture_image_units -> ?GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS;
+        max_combined_uniform_blocks -> ?GL_MAX_COMBINED_UNIFORM_BLOCKS;
+        max_combined_vertex_uniform_components -> ?GL_MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS;
+        max_compute_atomic_counter_buffers -> ?GL_MAX_COMPUTE_ATOMIC_COUNTER_BUFFERS;
+        max_compute_atomic_counters -> ?GL_MAX_COMPUTE_ATOMIC_COUNTERS;
+        max_compute_image_uniforms -> ?GL_MAX_COMPUTE_IMAGE_UNIFORMS;
+        max_compute_shader_storage_blocks -> ?GL_MAX_COMPUTE_SHADER_STORAGE_BLOCKS;
+        max_compute_shared_memory_size -> ?GL_MAX_COMPUTE_SHARED_MEMORY_SIZE;
+        max_compute_texture_image_units -> ?GL_MAX_COMPUTE_TEXTURE_IMAGE_UNITS;
+        max_compute_uniform_blocks -> ?GL_MAX_COMPUTE_UNIFORM_BLOCKS;
+        max_compute_uniform_components -> ?GL_MAX_COMPUTE_UNIFORM_COMPONENTS;
+        max_compute_work_group_invocations -> ?GL_MAX_COMPUTE_WORK_GROUP_INVOCATIONS;
+        max_cube_map_texture_size -> ?GL_MAX_CUBE_MAP_TEXTURE_SIZE;
+        max_depth_texture_samples -> ?GL_MAX_DEPTH_TEXTURE_SAMPLES;
+        max_draw_buffers -> ?GL_MAX_DRAW_BUFFERS;
+        max_element_index -> ?GL_MAX_ELEMENT_INDEX;
+        max_elements_indices -> ?GL_MAX_ELEMENTS_INDICES;
+        max_elements_vertices -> ?GL_MAX_ELEMENTS_VERTICES;
+        max_fragment_atomic_counter_buffers -> ?GL_MAX_FRAGMENT_ATOMIC_COUNTER_BUFFERS;
+        max_fragment_atomic_counters -> ?GL_MAX_FRAGMENT_ATOMIC_COUNTERS;
+        max_fragment_image_uniforms -> ?GL_MAX_FRAGMENT_IMAGE_UNIFORMS;
+        max_fragment_input_components -> ?GL_MAX_FRAGMENT_INPUT_COMPONENTS;
+        max_fragment_shader_storage_blocks -> ?GL_MAX_FRAGMENT_SHADER_STORAGE_BLOCKS;
+        max_fragment_uniform_blocks -> ?GL_MAX_FRAGMENT_UNIFORM_BLOCKS;
+        max_fragment_uniform_components -> ?GL_MAX_FRAGMENT_UNIFORM_COMPONENTS;
+        max_fragment_uniform_vectors -> ?GL_MAX_FRAGMENT_UNIFORM_VECTORS;
+        max_framebuffer_height -> ?GL_MAX_FRAMEBUFFER_HEIGHT;
+        max_framebuffer_samples -> ?GL_MAX_FRAMEBUFFER_SAMPLES;
+        max_framebuffer_width -> ?GL_MAX_FRAMEBUFFER_WIDTH;
+        max_image_units -> ?GL_MAX_IMAGE_UNITS;
+        max_integer_samples -> ?GL_MAX_INTEGER_SAMPLES;
+        max_program_texel_offset -> ?GL_MAX_PROGRAM_TEXEL_OFFSET;
+        max_program_texture_gather_offset -> ?GL_MAX_PROGRAM_TEXTURE_GATHER_OFFSET;
+        max_renderbuffer_size -> ?GL_MAX_RENDERBUFFER_SIZE;
+        max_sample_mask_words -> ?GL_MAX_SAMPLE_MASK_WORDS;
+        max_samples -> ?GL_MAX_SAMPLES;
+        max_shader_storage_block_size -> ?GL_MAX_SHADER_STORAGE_BLOCK_SIZE;
+        max_shader_storage_buffer_bindings -> ?GL_MAX_SHADER_STORAGE_BUFFER_BINDINGS;
+        max_texture_image_units -> ?GL_MAX_TEXTURE_IMAGE_UNITS;
+        max_texture_size -> ?GL_MAX_TEXTURE_SIZE;
+        max_transform_feedback_interleaved_components -> ?GL_MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS;
+        max_transform_feedback_separate_attribs -> ?GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS;
+        max_transform_feedback_separate_components -> ?GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS;
+        max_uniform_block_size -> ?GL_MAX_UNIFORM_BLOCK_SIZE;
+        max_uniform_buffer_bindings -> ?GL_MAX_UNIFORM_BUFFER_BINDINGS;
+        max_uniform_locations -> ?GL_MAX_UNIFORM_LOCATIONS;
+        max_varying_components -> ?GL_MAX_VARYING_COMPONENTS;
+        max_varying_vectors -> ?GL_MAX_VARYING_VECTORS;
+        max_vertex_atomic_counter_buffers -> ?GL_MAX_VERTEX_ATOMIC_COUNTER_BUFFERS;
+        max_vertex_atomic_counters -> ?GL_MAX_VERTEX_ATOMIC_COUNTERS;
+        max_vertex_attrib_bindings -> ?GL_MAX_VERTEX_ATTRIB_BINDINGS;
+        max_vertex_attrib_relative_offset -> ?GL_MAX_VERTEX_ATTRIB_RELATIVE_OFFSET;
+        max_vertex_attrib_stride -> ?GL_MAX_VERTEX_ATTRIB_STRIDE;
+        max_vertex_attribs -> ?GL_MAX_VERTEX_ATTRIBS;
+        max_vertex_image_uniforms -> ?GL_MAX_VERTEX_IMAGE_UNIFORMS;
+        max_vertex_output_components -> ?GL_MAX_VERTEX_OUTPUT_COMPONENTS;
+        max_vertex_shader_storage_blocks -> ?GL_MAX_VERTEX_SHADER_STORAGE_BLOCKS;
+        max_vertex_texture_image_units -> ?GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS;
+        max_vertex_uniform_blocks -> ?GL_MAX_VERTEX_UNIFORM_BLOCKS;
+        max_vertex_uniform_components -> ?GL_MAX_VERTEX_UNIFORM_COMPONENTS;
+        max_vertex_uniform_vectors -> ?GL_MAX_VERTEX_UNIFORM_VECTORS;
+        min_program_texel_offset -> ?GL_MIN_PROGRAM_TEXEL_OFFSET;
+        min_program_texture_gather_offset -> ?GL_MIN_PROGRAM_TEXTURE_GATHER_OFFSET;
+        minor_version -> ?GL_MINOR_VERSION;
+        num_compressed_texture_formats -> ?GL_NUM_COMPRESSED_TEXTURE_FORMATS;
+        num_extensions -> ?GL_NUM_EXTENSIONS;
+        num_program_binary_formats -> ?GL_NUM_PROGRAM_BINARY_FORMATS;
+        num_shader_binary_formats -> ?GL_NUM_SHADER_BINARY_FORMATS;
+        pack_alignment -> ?GL_PACK_ALIGNMENT;
+        pack_row_length -> ?GL_PACK_ROW_LENGTH;
+        pack_skip_pixels -> ?GL_PACK_SKIP_PIXELS;
+        pack_skip_rows -> ?GL_PACK_SKIP_ROWS;
+        sample_buffers -> ?GL_SAMPLE_BUFFERS;
+        samples -> ?GL_SAMPLES;
+        shader_compiler -> ?GL_SHADER_COMPILER;
+        shader_storage_buffer_offset_alignment -> ?GL_SHADER_STORAGE_BUFFER_OFFSET_ALIGNMENT;
+        subpixel_bits -> ?GL_SUBPIXEL_BITS;
+        uniform_buffer_offset_alignment -> ?GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT;
+        unpack_alignment -> ?GL_UNPACK_ALIGNMENT;
+        unpack_image_height -> ?GL_UNPACK_IMAGE_HEIGHT;
+        unpack_row_length -> ?GL_UNPACK_ROW_LENGTH;
+        unpack_skip_images -> ?GL_UNPACK_SKIP_IMAGES;
+        unpack_skip_pixels -> ?GL_UNPACK_SKIP_PIXELS;
+        unpack_skip_rows -> ?GL_UNPACK_SKIP_ROWS;
         polygon_offset_units -> ?GL_POLYGON_OFFSET_UNITS;
         texture_binding_3d -> ?GL_TEXTURE_BINDING_3D;
-        num_compressed_texture_formats -> ?GL_NUM_COMPRESSED_TEXTURE_FORMATS;
         pixel_pack_buffer_binding -> ?GL_PIXEL_PACK_BUFFER_BINDING;
         stencil_fail -> ?GL_STENCIL_FAIL;
         viewport -> ?GL_VIEWPORT;
         active_texture -> ?GL_ACTIVE_TEXTURE;
-        line_width -> ?GL_LINE_WIDTH;
         blend_dst_rgb -> ?GL_BLEND_DST_RGB;
-        uniform_buffer_offset_alignment -> ?GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT;
         aliased_point_size_range -> ?GL_ALIASED_POINT_SIZE_RANGE;
-        max_fragment_uniform_blocks -> ?GL_MAX_FRAGMENT_UNIFORM_BLOCKS;
-        max_varying_components -> ?GL_MAX_VARYING_COMPONENTS;
         blend_src_alpha -> ?GL_BLEND_SRC_ALPHA;
         read_buffer -> ?GL_READ_BUFFER;
-        max_array_texture_layers -> ?GL_MAX_ARRAY_TEXTURE_LAYERS;
         texture_binding_2d -> ?GL_TEXTURE_BINDING_2D;
         uniform_buffer_start -> ?GL_UNIFORM_BUFFER_START;
-        max_uniform_buffer_bindings -> ?GL_MAX_UNIFORM_BUFFER_BINDINGS;
         stencil_func -> ?GL_STENCIL_FUNC;
         blend_equation -> ?GL_BLEND_EQUATION;
         implementation_color_read_format -> ?GL_IMPLEMENTATION_COLOR_READ_FORMAT;
         max_compute_work_group_count -> ?GL_MAX_COMPUTE_WORK_GROUP_COUNT;
-        max_program_texel_offset -> ?GL_MAX_PROGRAM_TEXEL_OFFSET;
         blend_src_rgb -> ?GL_BLEND_SRC_RGB;
-        depth_writemask -> ?GL_DEPTH_WRITEMASK;
         dispatch_indirect_buffer_binding -> ?GL_DISPATCH_INDIRECT_BUFFER_BINDING;
         uniform_buffer_binding -> ?GL_UNIFORM_BUFFER_BINDING;
-        max_uniform_locations -> ?GL_MAX_UNIFORM_LOCATIONS;
         texture_binding_2d_multisample -> ?GL_TEXTURE_BINDING_2D_MULTISAMPLE;
-        max_fragment_shader_storage_blocks -> ?GL_MAX_FRAGMENT_SHADER_STORAGE_BLOCKS;
         polygon_offset_factor -> ?GL_POLYGON_OFFSET_FACTOR;
         fragment_shader_derivative_hint -> ?GL_FRAGMENT_SHADER_DERIVATIVE_HINT;
-        max_cube_map_texture_size -> ?GL_MAX_CUBE_MAP_TEXTURE_SIZE;
-        sample_buffers -> ?GL_SAMPLE_BUFFERS;
         depth_range -> ?GL_DEPTH_RANGE;
-        max_combined_vertex_uniform_components -> ?GL_MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS;
         transform_feedback_buffer_start -> ?GL_TRANSFORM_FEEDBACK_BUFFER_START;
-        subpixel_bits -> ?GL_SUBPIXEL_BITS;
         vertex_binding_offset -> ?GL_VERTEX_BINDING_OFFSET;
-        unpack_alignment -> ?GL_UNPACK_ALIGNMENT;
-        max_elements_vertices -> ?GL_MAX_ELEMENTS_VERTICES;
         stencil_bits -> ?GL_STENCIL_BITS;
         stencil_test -> ?GL_STENCIL_TEST;
-        max_fragment_uniform_components -> ?GL_MAX_FRAGMENT_UNIFORM_COMPONENTS;
-        shader_compiler -> ?GL_SHADER_COMPILER;
         color_writemask -> ?GL_COLOR_WRITEMASK;
         stencil_clear_value -> ?GL_STENCIL_CLEAR_VALUE;
-        max_integer_samples -> ?GL_MAX_INTEGER_SAMPLES;
-        pack_skip_pixels -> ?GL_PACK_SKIP_PIXELS;
-        unpack_row_length -> ?GL_UNPACK_ROW_LENGTH;
         max_texture_lod_bias -> ?GL_MAX_TEXTURE_LOD_BIAS;
         stencil_value_mask -> ?GL_STENCIL_VALUE_MASK;
         program_pipeline_binding -> ?GL_PROGRAM_PIPELINE_BINDING;
-        blend -> ?GL_BLEND;
         shader_storage_buffer_binding -> ?GL_SHADER_STORAGE_BUFFER_BINDING;
-        max_vertex_attrib_bindings -> ?GL_MAX_VERTEX_ATTRIB_BINDINGS;
         uniform_buffer_size -> ?GL_UNIFORM_BUFFER_SIZE;
-        max_texture_image_units -> ?GL_MAX_TEXTURE_IMAGE_UNITS;
-        max_combined_texture_image_units -> ?GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS;
-        max_color_attachments -> ?GL_MAX_COLOR_ATTACHMENTS;
         stencil_back_value_mask -> ?GL_STENCIL_BACK_VALUE_MASK;
-        max_vertex_output_components -> ?GL_MAX_VERTEX_OUTPUT_COMPONENTS;
-        max_element_index -> ?GL_MAX_ELEMENT_INDEX;
-        max_renderbuffer_size -> ?GL_MAX_RENDERBUFFER_SIZE;
         stencil_back_ref -> ?GL_STENCIL_BACK_REF;
         stencil_back_fail -> ?GL_STENCIL_BACK_FAIL;
-        unpack_skip_pixels -> ?GL_UNPACK_SKIP_PIXELS;
         depth_clear_value -> ?GL_DEPTH_CLEAR_VALUE;
-        max_fragment_input_components -> ?GL_MAX_FRAGMENT_INPUT_COMPONENTS;
         vertex_array_binding -> ?GL_VERTEX_ARRAY_BINDING;
-        max_depth_texture_samples -> ?GL_MAX_DEPTH_TEXTURE_SAMPLES;
-        num_shader_binary_formats -> ?GL_NUM_SHADER_BINARY_FORMATS;
         max_viewport_dims -> ?GL_MAX_VIEWPORT_DIMS;
-        unpack_skip_rows -> ?GL_UNPACK_SKIP_ROWS;
         blend_dst_alpha -> ?GL_BLEND_DST_ALPHA;
         vertex_binding_stride -> ?GL_VERTEX_BINDING_STRIDE;
-        num_extensions -> ?GL_NUM_EXTENSIONS;
         depth_bits -> ?GL_DEPTH_BITS;
-        max_vertex_shader_storage_blocks -> ?GL_MAX_VERTEX_SHADER_STORAGE_BLOCKS;
-        shader_storage_buffer_offset_alignment -> ?GL_SHADER_STORAGE_BUFFER_OFFSET_ALIGNMENT;
-        max_combined_fragment_uniform_components -> ?GL_MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS;
         transform_feedback_buffer_size -> ?GL_TRANSFORM_FEEDBACK_BUFFER_SIZE;
         max_server_wait_timeout -> ?GL_MAX_SERVER_WAIT_TIMEOUT;
-        max_compute_uniform_blocks -> ?GL_MAX_COMPUTE_UNIFORM_BLOCKS;
-        minor_version -> ?GL_MINOR_VERSION;
         scissor_box -> ?GL_SCISSOR_BOX;
         stencil_writemask -> ?GL_STENCIL_WRITEMASK;
-        max_3d_texture_size -> ?GL_MAX_3D_TEXTURE_SIZE;
         array_buffer_binding -> ?GL_ARRAY_BUFFER_BINDING;
-        max_vertex_texture_image_units -> ?GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS;
         sample_coverage_value -> ?GL_SAMPLE_COVERAGE_VALUE;
         cull_face -> ?GL_CULL_FACE;
-        max_compute_atomic_counters -> ?GL_MAX_COMPUTE_ATOMIC_COUNTERS;
-        unpack_image_height -> ?GL_UNPACK_IMAGE_HEIGHT;
         red_bits -> ?GL_RED_BITS;
-        max_texture_size -> ?GL_MAX_TEXTURE_SIZE;
-        unpack_skip_images -> ?GL_UNPACK_SKIP_IMAGES;
         stencil_pass_depth_fail -> ?GL_STENCIL_PASS_DEPTH_FAIL;
         texture_binding_cube_map -> ?GL_TEXTURE_BINDING_CUBE_MAP;
         read_framebuffer_binding -> ?GL_READ_FRAMEBUFFER_BINDING;
         renderbuffer_binding -> ?GL_RENDERBUFFER_BINDING;
         max_compute_work_group_size -> ?GL_MAX_COMPUTE_WORK_GROUP_SIZE;
-        pack_alignment -> ?GL_PACK_ALIGNMENT;
         vertex_binding_divisor -> ?GL_VERTEX_BINDING_DIVISOR;
-        max_combined_atomic_counters -> ?GL_MAX_COMBINED_ATOMIC_COUNTERS;
         stencil_back_pass_depth_pass -> ?GL_STENCIL_BACK_PASS_DEPTH_PASS;
-        max_framebuffer_width -> ?GL_MAX_FRAMEBUFFER_WIDTH;
-        num_program_binary_formats -> ?GL_NUM_PROGRAM_BINARY_FORMATS;
         stencil_back_pass_depth_fail -> ?GL_STENCIL_BACK_PASS_DEPTH_FAIL;
-        max_uniform_block_size -> ?GL_MAX_UNIFORM_BLOCK_SIZE;
         blend_equation_alpha -> ?GL_BLEND_EQUATION_ALPHA;
         blend_color -> ?GL_BLEND_COLOR;
         pixel_unpack_buffer_binding -> ?GL_PIXEL_UNPACK_BUFFER_BINDING;
@@ -12958,80 +11327,35 @@ get_integer64(ParamName, Index, Count) ->
         alpha_bits -> ?GL_ALPHA_BITS;
         implementation_color_read_type -> ?GL_IMPLEMENTATION_COLOR_READ_TYPE;
         green_bits -> ?GL_GREEN_BITS;
-        max_compute_atomic_counter_buffers -> ?GL_MAX_COMPUTE_ATOMIC_COUNTER_BUFFERS;
-        max_vertex_uniform_vectors -> ?GL_MAX_VERTEX_UNIFORM_VECTORS;
         blue_bits -> ?GL_BLUE_BITS;
-        max_sample_mask_words -> ?GL_MAX_SAMPLE_MASK_WORDS;
         element_array_buffer_binding -> ?GL_ELEMENT_ARRAY_BUFFER_BINDING;
-        samples -> ?GL_SAMPLES;
         sample_coverage_invert -> ?GL_SAMPLE_COVERAGE_INVERT;
         sampler_binding -> ?GL_SAMPLER_BINDING;
-        max_fragment_uniform_vectors -> ?GL_MAX_FRAGMENT_UNIFORM_VECTORS;
-        max_color_texture_samples -> ?GL_MAX_COLOR_TEXTURE_SAMPLES;
         scissor_test -> ?GL_SCISSOR_TEST;
-        max_fragment_atomic_counters -> ?GL_MAX_FRAGMENT_ATOMIC_COUNTERS;
         cull_face_mode -> ?GL_CULL_FACE_MODE;
-        max_compute_texture_image_units -> ?GL_MAX_COMPUTE_TEXTURE_IMAGE_UNITS;
         stencil_back_writemask -> ?GL_STENCIL_BACK_WRITEMASK;
         program_binary_formats -> ?GL_PROGRAM_BINARY_FORMATS;
         texture_2d -> ?GL_TEXTURE_2D;
-        max_vertex_attribs -> ?GL_MAX_VERTEX_ATTRIBS;
         front_face -> ?GL_FRONT_FACE;
         stencil_ref -> ?GL_STENCIL_REF;
-        max_vertex_atomic_counters -> ?GL_MAX_VERTEX_ATOMIC_COUNTERS;
         shader_binary_formats -> ?GL_SHADER_BINARY_FORMATS;
         transform_feedback_buffer_binding -> ?GL_TRANSFORM_FEEDBACK_BUFFER_BINDING;
-        pack_row_length -> ?GL_PACK_ROW_LENGTH;
-        max_vertex_attrib_relative_offset -> ?GL_MAX_VERTEX_ATTRIB_RELATIVE_OFFSET;
         current_program -> ?GL_CURRENT_PROGRAM;
-        max_draw_buffers -> ?GL_MAX_DRAW_BUFFERS;
-        max_shader_storage_buffer_bindings -> ?GL_MAX_SHADER_STORAGE_BUFFER_BINDINGS;
-        max_framebuffer_height -> ?GL_MAX_FRAMEBUFFER_HEIGHT;
-        max_compute_shader_storage_blocks -> ?GL_MAX_COMPUTE_SHADER_STORAGE_BLOCKS;
-        max_vertex_uniform_components -> ?GL_MAX_VERTEX_UNIFORM_COMPONENTS;
-        max_compute_work_group_invocations -> ?GL_MAX_COMPUTE_WORK_GROUP_INVOCATIONS;
-        major_version -> ?GL_MAJOR_VERSION;
         color_clear_value -> ?GL_COLOR_CLEAR_VALUE;
-        max_framebuffer_samples -> ?GL_MAX_FRAMEBUFFER_SAMPLES;
-        min_program_texel_offset -> ?GL_MIN_PROGRAM_TEXEL_OFFSET;
         shader_storage_buffer_start -> ?GL_SHADER_STORAGE_BUFFER_START;
-        max_combined_shader_storage_blocks -> ?GL_MAX_COMBINED_SHADER_STORAGE_BLOCKS;
         depth_test -> ?GL_DEPTH_TEST;
-        max_vertex_uniform_blocks -> ?GL_MAX_VERTEX_UNIFORM_BLOCKS;
         depth_func -> ?GL_DEPTH_FUNC;
-        max_compute_uniform_components -> ?GL_MAX_COMPUTE_UNIFORM_COMPONENTS;
-        max_elements_indices -> ?GL_MAX_ELEMENTS_INDICES;
         blend_equation_rgb -> ?GL_BLEND_EQUATION_RGB;
-        pack_skip_rows -> ?GL_PACK_SKIP_ROWS;
         draw_framebuffer_binding -> ?GL_DRAW_FRAMEBUFFER_BINDING;
-        max_combined_uniform_blocks -> ?GL_MAX_COMBINED_UNIFORM_BLOCKS;
         stencil_pass_depth_pass -> ?GL_STENCIL_PASS_DEPTH_PASS;
         stencil_back_func -> ?GL_STENCIL_BACK_FUNC;
-        max_combined_compute_uniform_components -> ?GL_MAX_COMBINED_COMPUTE_UNIFORM_COMPONENTS;
         dither -> ?GL_DITHER;
         shader_storage_buffer_size -> ?GL_SHADER_STORAGE_BUFFER_SIZE;
         polygon_offset_fill -> ?GL_POLYGON_OFFSET_FILL;
-        compressed_texture_formats -> ?GL_COMPRESSED_TEXTURE_FORMATS;
-        max_varying_vectors -> ?GL_MAX_VARYING_VECTORS
+        compressed_texture_formats -> ?GL_COMPRESSED_TEXTURE_FORMATS
     end,
 
     ?CALL_RAW_FUNC(glGetInteger64i_v_raw(NewParamName, Index, Count)).
-
--doc """
-Return the maximum number of image units.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_image_units().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_image_units() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_image_units() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_IMAGE_UNITS)).
 
 -doc """
 Block until all GL execution is complete.
@@ -13220,22 +11544,6 @@ compressed_tex_sub_image_3d(Target, Level, OffsetX, OffsetY, OffsetZ, Width, Hei
     ?CALL_RAW_FUNC(glCompressedTexSubImage3D_raw(NewTarget, Level, OffsetX, OffsetY, OffsetZ, Width, Height, Depth, NewFormat, ImageSize, ImageData0)).
 
 -doc """
-Return the number of supported program binary formats.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_num_program_binary_formats().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_num_program_binary_formats() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_num_program_binary_formats() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_NUM_PROGRAM_BINARY_FORMATS)).
-
--doc """
 Read query object result values.
 
 It implements the following OpenGL commands:
@@ -13297,38 +11605,6 @@ bind_buffer_range(Target, Index, Buffer, Offset, Size) ->
     end,
 
     ?CALL_RAW_FUNC(glBindBufferRange_raw(NewTarget, Index, Buffer, Offset, Size)).
-
--doc """
-Return whether a shader object's last compile succeeded.
-
-It implements the `glGetShaderiv` function
-
-```
-{ok, true} = gl:get_shader_compile_status(Shader).
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetShaderiv) for more information.
-""".
--spec get_shader_compile_status(Shader :: shader()) -> {ok, Status :: gl:boolean()} | {error, atom()}.
-get_shader_compile_status(Shader) ->
-
-    ?CALL_RAW_FUNC(glGetShaderiv_raw(Shader, ?GL_COMPILE_STATUS)).
-
--doc """
-Return the maximum three-dimensional texture size.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Size} = gl:get_max_3d_texture_size().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_3d_texture_size() -> {ok, Size :: gl:int()} | {error, atom()}.
-get_max_3d_texture_size() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_3D_TEXTURE_SIZE)).
 
 -doc """
 Creates a program object.
@@ -13583,6 +11859,47 @@ cull_face(Mode) ->
     ?CALL_RAW_FUNC(glCullFace_raw(NewMode)).
 
 -doc """
+Return integer parameter values for a program object.
+
+It implements the `glGetProgramiv` function
+
+```
+{ok, [Status]} = gl:get_program(Program, link_status, 1).
+```
+
+Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetProgramiv) for more information.
+""".
+-spec get_program(
+    Program :: program(),
+    ParamName :: program_parameter_name(),
+    Count :: pos_integer()
+) -> {ok, Values :: [gl:int()]} | {error, atom()}.
+get_program(Program, ParamName, Count) ->
+    NewParamName = case ParamName of
+        transform_feedback_buffer_mode -> ?GL_TRANSFORM_FEEDBACK_BUFFER_MODE;
+        active_uniform_blocks -> ?GL_ACTIVE_UNIFORM_BLOCKS;
+        active_uniform_max_length -> ?GL_ACTIVE_UNIFORM_MAX_LENGTH;
+        active_atomic_counter_buffers -> ?GL_ACTIVE_ATOMIC_COUNTER_BUFFERS;
+        compute_work_group_size -> ?GL_COMPUTE_WORK_GROUP_SIZE;
+        transform_feedback_varying_max_length -> ?GL_TRANSFORM_FEEDBACK_VARYING_MAX_LENGTH;
+        delete_status -> ?GL_DELETE_STATUS;
+        active_uniform_block_max_name_length -> ?GL_ACTIVE_UNIFORM_BLOCK_MAX_NAME_LENGTH;
+        transform_feedback_varyings -> ?GL_TRANSFORM_FEEDBACK_VARYINGS;
+        program_binary_length -> ?GL_PROGRAM_BINARY_LENGTH;
+        active_attributes -> ?GL_ACTIVE_ATTRIBUTES;
+        active_attribute_max_length -> ?GL_ACTIVE_ATTRIBUTE_MAX_LENGTH;
+        active_uniforms -> ?GL_ACTIVE_UNIFORMS;
+        validate_status -> ?GL_VALIDATE_STATUS;
+        info_log_length -> ?GL_INFO_LOG_LENGTH;
+        link_status -> ?GL_LINK_STATUS;
+        attached_shaders -> ?GL_ATTACHED_SHADERS;
+        program_separable -> ?GL_PROGRAM_SEPARABLE;
+        program_binary_retrievable_hint -> ?GL_PROGRAM_BINARY_RETRIEVABLE_HINT
+    end,
+
+    ?CALL_RAW_FUNC(glGetProgramivValues_raw(Program, NewParamName, Count)).
+
+-doc """
 Render indexed primitives using command parameters from the bound draw indirect buffer.
 
 It implements the `glDrawElementsIndirect` function
@@ -13617,22 +11934,6 @@ draw_elements_indirect(Mode, Type, Offset) ->
     ?CALL_RAW_FUNC(glDrawElementsIndirect_raw(NewMode, NewType, Offset)).
 
 -doc """
-Return the maximum number of vertex uniform vectors.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_vertex_uniform_vectors().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_vertex_uniform_vectors() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_vertex_uniform_vectors() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_VERTEX_UNIFORM_VECTORS)).
-
--doc """
 Installs a program object as part of current rendering state.
 
 It implements the `glUseProgram` function
@@ -13652,22 +11953,6 @@ use_program(Program) ->
     end,
 
     ?CALL_RAW_FUNC(glUseProgram_raw(NewProgram)).
-
--doc """
-Return the maximum number of fragment uniform blocks.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Count} = gl:get_max_fragment_uniform_blocks().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_max_fragment_uniform_blocks() -> {ok, Count :: gl:int()} | {error, atom()}.
-get_max_fragment_uniform_blocks() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_MAX_FRAGMENT_UNIFORM_BLOCKS)).
 
 -doc """
 Bind a sampler object to a texture unit.
@@ -13772,22 +12057,6 @@ delete_program(Program) ->
     ?CALL_RAW_FUNC(glDeleteProgram_raw(Program)).
 
 -doc """
-Return the current pack alignment.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Alignment} = gl:get_pack_alignment().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_pack_alignment() -> {ok, Alignment :: gl:int()} | {error, atom()}.
-get_pack_alignment() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_PACK_ALIGNMENT)).
-
--doc """
 Return the color number bound to a named fragment shader output variable.
 
 It implements the `glGetFragDataLocation` function
@@ -13852,38 +12121,6 @@ program_parameter(Program, ParamName, Value) ->
     ?CALL_RAW_FUNC(glProgramParameteri_raw(Program, NewParamName, Value)).
 
 -doc """
-Return the maximum atomic-counter buffer size in bytes.
-
-It implements the `glGetInteger64v` function
-
-```
-{ok, Size} = gl:get_max_atomic_counter_buffer_size().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetInteger64v) for more information.
-""".
--spec get_max_atomic_counter_buffer_size() -> {ok, Size :: gl:int64()} | {error, atom()}.
-get_max_atomic_counter_buffer_size() ->
-
-    ?CALL_RAW_FUNC(glGetInteger64vInteger_raw(?GL_MAX_ATOMIC_COUNTER_BUFFER_SIZE)).
-
--doc """
-Return the current pack row length.
-
-It implements the `glGetIntegerv` function
-
-```
-{ok, Length} = gl:get_pack_row_length().
-```
-
-Consult the documentation of the underlying [OpenGL function](https://docs.gl/es3/glGetIntegerv) for more information.
-""".
--spec get_pack_row_length() -> {ok, Length :: gl:int()} | {error, atom()}.
-get_pack_row_length() ->
-
-    ?CALL_RAW_FUNC(glGetIntegervInteger_raw(?GL_PACK_ROW_LENGTH)).
-
--doc """
 Bind a transform feedback object.
 
 It implements the `glBindTransformFeedback` function
@@ -13924,12 +12161,6 @@ glSamplerParameteri_raw(_Sampler, _ParamName, _Param) ->
 glSamplerParameteriv_raw(_Sampler, _ParamName, _Param) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGetIntegervInteger_raw(_PName) ->
-    erlang:nif_error(nif_library_not_loaded).
-
-glGetProgramiv_raw(_Program, _PName) ->
-    erlang:nif_error(nif_library_not_loaded).
-
 glTexSubImage2D_raw(_Target, _Level, _OffsetX, _OffsetY, _Width, _Height, _Format, _Type, _Pixels) ->
     erlang:nif_error(nif_library_not_loaded).
 
@@ -13937,9 +12168,6 @@ glEnableVertexAttribArray_raw(_Index) ->
     erlang:nif_error(nif_library_not_loaded).
 
 glClearStencil_raw(_Value) ->
-    erlang:nif_error(nif_library_not_loaded).
-
-glGetProgramivInteger_raw(_Program, _PName) ->
     erlang:nif_error(nif_library_not_loaded).
 
 glBindAttribLocation_raw(_Program, _Index, _Name) ->
@@ -14020,9 +12248,6 @@ glVertexAttribPointer_raw(_Index, _Size, _Type, _Normalized, _Stride, _Offset) -
 glGetInteger64vValues_raw(_ParamName, _Values) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGetInteger64vInteger_raw(_PName) ->
-    erlang:nif_error(nif_library_not_loaded).
-
 glDrawArraysInstanced_raw(_Mode, _First, _Count, _InstanceCount) ->
     erlang:nif_error(nif_library_not_loaded).
 
@@ -14039,9 +12264,6 @@ glDrawRangeElements_raw(_Mode, _Start, _End, _Count, _Type, _Offset) ->
     erlang:nif_error(nif_library_not_loaded).
 
 glActiveShaderProgram_raw(_Pipeline, _Program) ->
-    erlang:nif_error(nif_library_not_loaded).
-
-glGetShaderivInteger_raw(_Shader, _PName) ->
     erlang:nif_error(nif_library_not_loaded).
 
 glStencilMask_raw(_Mask) ->
@@ -14164,9 +12386,6 @@ glTexParameterfv_raw(_Target, _ParamName, _Param) ->
 glTexParameteriv_raw(_Target, _ParamName, _Param) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGetIntegervBoolean_raw(_PName) ->
-    erlang:nif_error(nif_library_not_loaded).
-
 glDrawBuffers_raw(_N, _Buffers) ->
     erlang:nif_error(nif_library_not_loaded).
 
@@ -14174,9 +12393,6 @@ glGetFramebufferParameteriv_raw(_Target, _ParamName, _Values) ->
     erlang:nif_error(nif_library_not_loaded).
 
 glBindBufferBase_raw(_Target, _Index, _Buffer) ->
-    erlang:nif_error(nif_library_not_loaded).
-
-glGetIntegerv_raw(_PName) ->
     erlang:nif_error(nif_library_not_loaded).
 
 glCheckFramebufferStatus_raw(_Target) ->
@@ -14467,7 +12683,7 @@ glSampleCoverage_raw(_Value, _Invert) ->
 glStencilOpSeparate_raw(_Face, _StencilFail, _DepthPassFail, _DepthPassPass) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGetProgramPipelineivInteger_raw(_Pipeline, _PName) ->
+glGetShaderivValues_raw(_Shader, _ParamName, _Values) ->
     erlang:nif_error(nif_library_not_loaded).
 
 glGetProgramResourceLocation_raw(_Program, _ProgramInterface, _Name) ->
@@ -14722,9 +12938,6 @@ glDispatchCompute_raw(_NumGroupsX, _NumGroupsY, _NumGroupsZ) ->
 glGetProgramResourceiv_raw(_Program, _ProgramInterface, _Index, _Properties, _Values) ->
     erlang:nif_error(nif_library_not_loaded).
 
-glGetProgramPipelineiv_raw(_Pipeline, _PName) ->
-    erlang:nif_error(nif_library_not_loaded).
-
 glGenBuffers_raw(_Buffers) ->
     erlang:nif_error(nif_library_not_loaded).
 
@@ -14747,9 +12960,6 @@ glGetSamplerParameteriv_raw(_Sampler, _ParamName, _Values) ->
     erlang:nif_error(nif_library_not_loaded).
 
 glActiveTexture_raw(_Texture) ->
-    erlang:nif_error(nif_library_not_loaded).
-
-glGetShaderiv_raw(_Shader, _PName) ->
     erlang:nif_error(nif_library_not_loaded).
 
 glResumeTransformFeedback_raw() ->
@@ -14792,6 +13002,9 @@ glDispatchComputeIndirect_raw(_Indirect) ->
     erlang:nif_error(nif_library_not_loaded).
 
 glCullFace_raw(_Mode) ->
+    erlang:nif_error(nif_library_not_loaded).
+
+glGetProgramivValues_raw(_Program, _ParamName, _Values) ->
     erlang:nif_error(nif_library_not_loaded).
 
 glDrawElementsIndirect_raw(_Mode, _Type, _Offset) ->
